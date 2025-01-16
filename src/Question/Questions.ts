@@ -1,6 +1,6 @@
-import type { Question } from "../types/QuestionType/QuestionType";
+import type { Question } from "./type/QuestionType";
 
-const questions: Question[] = [
+const questionsData: Question[] = [
   // CSS
   {
     id: "1",
@@ -193,4 +193,4 @@ const questions: Question[] = [
   },
 ];
 
-export default questions;
+export default questionsData;
