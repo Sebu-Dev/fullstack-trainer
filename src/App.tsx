@@ -1,46 +1,44 @@
-import { useState } from "react";
-import { DangerButton, InputField, Layout } from "sebu-dev-react-lib";
-import "sebu-dev-react-lib/dist/sebu-dev-react-lib.css";
-import { MainPage } from "./components/mainPage/MainPage";
-import { QuizComponent } from "./components/quizComponent";
-import questions from "./QuestionList/Questions";
-import type { AnswerOption, Question } from "./types/QuestionType/QuestionType";
+import { useEffect, useState } from "react";
+import { QuizComponent } from "./components/QuizComponents/QuizComponent";
+import { SolutionsQuizComponent } from "./components/QuizComponents/SolutionsQuizComponent"; // Import der Result-Komponente
+import { MainPage } from "./mainPage/MainPage";
+import type { Question } from "./Question/type/QuestionType";
+import useQuizStore from "./Question/zustand/QuizStore";
+import {
+  DangerButton,
+  Layout,
+} from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+import "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib/dist/sebu-dev-react-lib.css";
 
 const App = () => {
-  const [quizSet, setQuizSet] = useState<Question[]>(questions);
-  const [category, setCategory] = useState<string>("");
-  const createQuizByCategory = () => {
-    if (category) {
-      const filteredQuestions = questions.filter((question) =>
-        question.category?.includes(category)
-      );
-      setQuizSet(filteredQuestions);
-      console.log(filteredQuestions);
-    }
+  const [quizSet, setQuizSet] = useState<Question[]>([]);
+  const [resultsVisible, setResultsVisible] = useState(false);
+  const { questionList } = useQuizStore();
+
+  useEffect(() => {
+    const shuffled = [...questionList].sort(() => Math.random() - 0.5);
+    setQuizSet(shuffled.slice(0, 10));
+  }, [questionList]);
+
+  const handleQuizSubmit = () => {
+    setResultsVisible(true);
   };
 
   return (
     <Layout>
-      <MainPage></MainPage>
-      <div className="grid lg:grid-cols-1 md:grid-cols-1 gap-8 justify-center">
+      <MainPage />
+      <div className="pt-4 grid flex-row flex-wrap justify-center gap-8 mx-auto">
+        {resultsVisible ? (
+          <SolutionsQuizComponent />
+        ) : (
+          quizSet.map((question) => (
+            <QuizComponent key={question.id} question={question} />
+          ))
+        )}
         <DangerButton
-          handleOnClick={createQuizByCategory}
-          label="create Quiz"
-        ></DangerButton>
-        <InputField
-          placeholder="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        ></InputField>
-        {quizSet.map((question) => (
-          <QuizComponent
-            key={question.id}
-            question={question}
-            onAnswerSelect={function (selectedAnswer: AnswerOption): void {
-              throw new Error("Function not implemented.");
-            }}
-          ></QuizComponent>
-        ))}
+          label="Test abschicken"
+          handleOnClick={handleQuizSubmit}
+        />
       </div>
     </Layout>
   );
