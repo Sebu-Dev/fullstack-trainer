@@ -191,6 +191,89 @@ const questionsData: Question[] = [
     explanation:
       "Der Modifier beschreibt eine modifizierte Version eines Blocks oder Elements, z.B. eine Variation eines Buttons.",
   },
+
+  // React Advanced Questions
+  {
+    id: "11",
+    questionText:
+      "Was sind mögliche Probleme bei der Verwendung von `useEffect`?",
+    answerOptions: [
+      { text: "Unbeabsichtigte Endlosschleifen", isCorrect: true },
+      {
+        text: "Speicherlecks bei unbereinigten Subscriptions",
+        isCorrect: true,
+      },
+      { text: "Fehlende Rückgabewerte", isCorrect: false },
+      { text: "Unzureichende Hook-Regeln", isCorrect: false },
+    ],
+    difficultyLevel: "hard",
+    category: ["React", "Hooks"],
+    explanation:
+      "`useEffect` kann Probleme wie Endlosschleifen und Speicherlecks verursachen, wenn Abhängigkeiten nicht korrekt angegeben oder Subscriptions nicht bereinigt werden.",
+  },
+  {
+    id: "12",
+    questionText: "Wie zentriert man ein Element in CSS?",
+    answerOptions: [
+      {
+        text: "Mit `display: flex` und `justify-content: center; align-items: center;`",
+        isCorrect: true,
+      },
+      { text: "Mit `margin: auto`", isCorrect: true },
+      { text: "Mit `float: center`", isCorrect: false },
+      { text: "Mit `vertical-align: center`", isCorrect: false },
+    ],
+    difficultyLevel: "medium",
+    category: ["CSS"],
+    explanation:
+      "Zentrieren kann mit Flexbox, Grid oder `margin: auto` erfolgen. `float` oder `vertical-align` sind nicht geeignet.",
+  },
+  {
+    id: "13",
+    questionText: "Wann verwendet man `useReducer` anstelle von `useState`?",
+    answerOptions: [
+      {
+        text: "Bei komplexen State-Logiken mit mehreren Zuständen",
+        isCorrect: true,
+      },
+      { text: "Wenn man nur einen Boolean togglen möchte", isCorrect: false },
+      { text: "Für einfache State-Updates", isCorrect: false },
+      {
+        text: "Wenn man Zustand zwischen Komponenten teilen möchte",
+        isCorrect: false,
+      },
+    ],
+    difficultyLevel: "hard",
+    category: ["React", "Hooks"],
+    explanation:
+      "`useReducer` eignet sich besser für komplexe Logiken, während `useState` bei einfachen State-Änderungen vorzuziehen ist.",
+  },
+  {
+    id: "14",
+    questionText: "Wie definiert man eine generische Funktion in TypeScript?",
+    answerOptions: [
+      {
+        text: "function func<T>(param: T): T { return param; }",
+        isCorrect: true,
+      },
+      {
+        text: "function func(param: T): T { return param; }",
+        isCorrect: false,
+      },
+      {
+        text: "function func<T>(param: T) { return param; }",
+        isCorrect: false,
+      },
+      {
+        text: "function func<T, R>(param: T): R { return param; }",
+        isCorrect: false,
+      },
+    ],
+    difficultyLevel: "hard",
+    category: ["TypeScript"],
+    explanation:
+      "Generische Funktionen verwenden `<T>` zur Definition und können unterschiedliche Typen verarbeiten, z.B. `function func<T>(param: T): T {}`.",
+  },
 ];
 
 export default questionsData;

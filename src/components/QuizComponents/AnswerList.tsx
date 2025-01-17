@@ -1,21 +1,19 @@
 import type { AnswerOption, Question } from "../../Question/type/QuestionType";
 import useQuizStore from "../../Question/zustand/QuizStore";
 import { PrimaryButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+
 interface AnswerListProps {
   question: Question;
 }
 export const AnswerList = ({ question }: AnswerListProps) => {
-  const { selectedAnswers, toggleAnswer, setUserAnswer } = useQuizStore(
-    (state) => ({
-      selectedAnswers: state.userAnswers[question.id] || [],
-      toggleAnswer: state.toggleAnswer,
-      setUserAnswer: state.setUserAnswer,
-    })
-  );
+  const { userAnswers } = useQuizStore();
+  const selectedAnswers = userAnswers[question.id] || [];
+  const { toggleAnswer } = useQuizStore();
+
   const handleAnswerSelect = (answer: AnswerOption) => {
     toggleAnswer(question.id, answer);
-    setUserAnswer(question.id, selectedAnswers);
   };
+  console.log(selectedAnswers);
   return (
     <ul className="w-full">
       {question.answerOptions.map((option, index) => (

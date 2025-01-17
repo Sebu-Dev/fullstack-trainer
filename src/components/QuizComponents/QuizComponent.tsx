@@ -16,9 +16,8 @@ export const QuizComponent = ({ question }: QuizCompontentProps) => {
           <QuestionImage imageUrl={question.imageUrl} />
           <AnswerList question={question} />
           <QuestionDetails
-            category={question.category}
+            category={question.category.join(" ")}
             difficultyLevel={question.difficultyLevel}
-            explanation={question.explanation}
           />
         </div>
       </Card>

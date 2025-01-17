@@ -1,34 +1,33 @@
 import { useCallback, useMemo, useState } from "react";
-import questionsData from "../../Question/Questions";
 import useQuizStore from "../../Question/zustand/QuizStore";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const FilterQuestions = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const { questionList: questions, setQuestions } = useQuizStore();
+  const { questionList: questions } = useQuizStore();
+  const { setQuizSet, quizSet } = useQuizStore();
 
   const allCategories = useMemo(() => {
     const uniqueCategories = new Set<string>();
-    questions.forEach((question) => {
+    quizSet.forEach((question) => {
       question.category.forEach((categoryValue) => {
         uniqueCategories.add(categoryValue);
       });
     });
-
     return Array.from(uniqueCategories);
-  }, [questions]);
+  }, [quizSet]);
 
   const filterQuestionsByCategories = useCallback(
     (categories: string[]) => {
-      const filteredQuestions = questionsData.filter((question) =>
+      const filteredQuestions = questions.filter((question) =>
         categories.every((category: string) =>
           question.category.includes(category)
         )
       );
 
-      setQuestions(filteredQuestions);
+      setQuizSet(filteredQuestions);
     },
-    [setQuestions]
+    [questions, setQuizSet]
   );
 
   const handleCategorySelection = useCallback(
