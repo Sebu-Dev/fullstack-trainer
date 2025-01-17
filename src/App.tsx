@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { FilterQuestions } from "./components/Filter/FilterQuestions";
 import { LandingPage } from "./components/pages/LandingPage";
-import { CreateQuiz } from "./components/QuizComponents/CreateQuiz";
+import { CreateQuizButton } from "./components/QuizComponents/CreateQuizButton";
 import { QuizComponent } from "./components/QuizComponents/QuizComponent";
 import { SolutionsQuizComponent } from "./components/QuizComponents/SolutionsQuizComponent"; // Import der Result-Komponente
 import useQuizStore from "./Question/zustand/QuizStore";
@@ -47,12 +48,25 @@ const App = () => {
   };
 
   return (
-    <Layout nav={false}>
-      <LandingPage />
-      <FilterQuestions />
-      <CreateQuiz />
-      <ShowQuiz />
+    <Layout nav={true}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/filter"
+          element={
+            <>
+              <FilterQuestions />
+              <CreateQuizButton />
+            </>
+          }
+        />
+        <Route path="/quiz" element={<ShowQuiz />} />
+      </Routes>
     </Layout>
+
+    /* <FilterQuestions />
+<CreateQuiz />
+<ShowQuiz /> */
   );
 };
 

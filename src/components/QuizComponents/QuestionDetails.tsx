@@ -1,5 +1,5 @@
 interface QuestionDetailsPorps {
-  category?: string[];
+  category?: string;
   difficultyLevel?: string | undefined;
   explanation?: string | undefined;
   questionId?: string | undefined;
