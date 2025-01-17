@@ -4,7 +4,7 @@
 
 - Verbesserung der User Experience:
   - Wann und wie werden Komponenten gerendert oder ausgeblendet?
-  - Startseite neu strukturieren, damit nicht direkt alle Fragen sichtbar sind.
+  * Startseite neu strukturieren, damit nicht direkt alle Fragen sichtbar sind.
   - Routing einbauen, um klare Seiten- und Funktionsaufteilung zu gewährleisten.
 
 ### Zukunftspläne (nach aktueller Strukturierung):

@@ -26,13 +26,18 @@ const useQuizStore = create<QuizStore>((set) => ({
   setQuizSet: (newQuizSet) => set({ quizSet: newQuizSet }),
 
   // Erstellen eines neuen Quiz
-  createQuiz: (newQuiz) =>
-    set({
-      quizSet: newQuiz.map((quiz) => ({
-        ...quiz,
-        answerOptions: shuffleArray(quiz.answerOptions),
-      })),
-    }),
+  createQuiz: (newQuiz) => {
+    const shuffled = shuffleArray(newQuiz);
+    const newQuizSet = shuffled.slice(0, 5);
+
+    // Mische auch die Antwortoptionen jeder Frage
+    const quizWithShuffledAnswers = newQuizSet.map((quiz) => ({
+      ...quiz,
+      answerOptions: shuffleArray(quiz.answerOptions),
+    }));
+
+    set({ quizSet: quizWithShuffledAnswers });
+  },
 
   // Setzen der User-Antworten
   setUserAnswer: (questionId: string, answers: AnswerOption[]) =>
