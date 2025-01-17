@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { FilterQuestions } from "./components/Filter/FilterQuestions";
+import { LandingPage } from "./components/pages/LandingPage";
+import { CreateQuiz } from "./components/QuizComponents/CreateQuiz";
 import { QuizComponent } from "./components/QuizComponents/QuizComponent";
 import { SolutionsQuizComponent } from "./components/QuizComponents/SolutionsQuizComponent"; // Import der Result-Komponente
-import { MainPage } from "./mainPage/MainPage";
-import type { Question } from "./Question/type/QuestionType";
 import useQuizStore from "./Question/zustand/QuizStore";
 import {
   DangerButton,
@@ -11,35 +12,46 @@ import {
 import "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib/dist/sebu-dev-react-lib.css";
 
 const App = () => {
-  const [quizSet, setQuizSet] = useState<Question[]>([]);
   const [resultsVisible, setResultsVisible] = useState(false);
-  const { questionList } = useQuizStore();
-
-  useEffect(() => {
-    const shuffled = [...questionList].sort(() => Math.random() - 0.5);
-    setQuizSet(shuffled.slice(0, 10));
-  }, [questionList]);
+  const { quizSet } = useQuizStore();
 
   const handleQuizSubmit = () => {
     setResultsVisible(true);
   };
+  const ShowQuiz = () => {
+    return (
+      <>
+        {resultsVisible ? (
+          <div className="flex flex-wrap gap-8 mx-auto justify-center">
+            {quizSet.map((question) => (
+              <SolutionsQuizComponent key={question.id} question={question} />
+            ))}
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-wrap gap-8 mx-auto justify-center">
+              {quizSet.map((question) => (
+                <QuizComponent key={question.id} question={question} />
+              ))}
+            </div>
+            <div className="mt-4">
+              <DangerButton
+                label="Test abschicken"
+                handleOnClick={handleQuizSubmit}
+              />
+            </div>
+          </>
+        )}
+      </>
+    );
+  };
 
   return (
-    <Layout>
-      <MainPage />
-      <div className="pt-4 grid flex-row flex-wrap justify-center gap-8 mx-auto">
-        {resultsVisible ? (
-          <SolutionsQuizComponent />
-        ) : (
-          quizSet.map((question) => (
-            <QuizComponent key={question.id} question={question} />
-          ))
-        )}
-        <DangerButton
-          label="Test abschicken"
-          handleOnClick={handleQuizSubmit}
-        />
-      </div>
+    <Layout nav={false}>
+      <LandingPage />
+      <FilterQuestions />
+      <CreateQuiz />
+      <ShowQuiz />
     </Layout>
   );
 };

@@ -20,17 +20,17 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
 
     if (userSelectedAnswer) {
       if (isAnswerCorrect(option)) {
-        return "bg-green-500";
+        return "bg-blue-500";
       } else {
         return "bg-red-500";
       }
     }
 
     if (isAnswerCorrect(option)) {
-      return "bg-green-300";
+      return "bg-green-400/60";
     }
 
-    return "bg-gray-200";
+    return "bg-gray-600";
   };
 
   return (
