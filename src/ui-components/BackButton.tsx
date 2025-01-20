@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
-export const CreateQuizButton = () => {
+export const BackButton = () => {
   const navigate = useNavigate();
 
-  const handleOnClick = () => {
-    navigate("/");
+  const navigateBack = () => {
+    navigate(-1);
   };
-
   return (
     <BaseButton
-      handleOnClick={handleOnClick}
-      className="bg-green-600/60 hover:bg-green-500/60"
+      className="bg-slate-400/10 hover:bg-slate-300/10"
+      handleOnClick={navigateBack}
     >
-      Create Quiz
+      Zurück
     </BaseButton>
   );
 };

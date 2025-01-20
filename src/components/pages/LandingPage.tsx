@@ -1,18 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import useQuizStore from "../../Question/zustand/QuizStore";
+import useQuizStore from "../../Question/store/QuizStore";
 import {
   PrimaryButton,
   SecondaryButton,
 } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 export const LandingPage = () => {
   const { createQuiz } = useQuizStore();
-  const { quizSet } = useQuizStore();
   const navigate = useNavigate();
   const handleCategoryOnClick = () => {
     navigate("/filter");
   };
   const handleStartQuizOnClick = () => {
-    createQuiz(quizSet);
+    createQuiz();
     navigate("/quiz");
   };
   return (

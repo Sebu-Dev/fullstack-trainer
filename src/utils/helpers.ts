@@ -6,3 +6,19 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   }
   return shuffledArray;
 };
+export const getFromLocalStorage = <T>(key: string, defaultValue: T): T => {
+  try {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+  } catch (error) {
+    console.error(`Error reading key "${key}" from localStorage:`, error);
+    return defaultValue;
+  }
+};
+export const saveToLocalStorage = <T>(key: string, value: T): void => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(`Error writing key "${key}" to localStorage:`, error);
+  }
+};

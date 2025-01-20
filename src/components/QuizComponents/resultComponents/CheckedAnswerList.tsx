@@ -1,6 +1,9 @@
-import type { AnswerOption, Question } from "../../Question/type/QuestionType";
-import useQuizStore from "../../Question/zustand/QuizStore";
-import { PrimaryButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+import useQuizStore from "../../../Question/store/QuizStore";
+import type {
+  AnswerOption,
+  Question,
+} from "../../../Question/type/QuestionType";
+import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface CheckedAnswerListProps {
   question: Question;
@@ -20,7 +23,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
 
     if (userSelectedAnswer) {
       if (isAnswerCorrect(option)) {
-        return "bg-blue-500";
+        return "bg-cyan-500";
       } else {
         return "bg-red-500";
       }
@@ -37,10 +40,13 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
     <ul className="w-full">
       {question.answerOptions.map((option, index) => (
         <li key={index} className="flex flex-col">
-          <PrimaryButton
+          <BaseButton
             handleOnClick={() => {}}
             label={option.text}
-            bgColor={getButtonColor(question, option)}
+            className={`hover:cursor-default ${getButtonColor(
+              question,
+              option
+            )}`}
           />
         </li>
       ))}
