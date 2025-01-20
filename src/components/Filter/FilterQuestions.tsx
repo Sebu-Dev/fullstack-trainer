@@ -1,10 +1,16 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import useQuizStore from "../../Question/zustand/QuizStore";
+import { useCallback, useEffect, useMemo } from "react";
+import useQuizStore from "../../Question/store/QuizStore";
+import { BackButton } from "../../ui-components/BackButton";
+import { CreateQuizButton } from "../QuizComponents/CreateQuizButton";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const FilterQuestions = () => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const { questionList: questions, setQuizSet, quizSet } = useQuizStore();
+  const {
+    quizSet,
+    filterQuestionsByCategories,
+    selectedCategories,
+    setSelectedCategories: setStoreSelectedCategories,
+  } = useQuizStore();
 
   // Berechnung aller einzigartigen Kategorien
   const allCategories = useMemo(() => {
@@ -15,17 +21,6 @@ export const FilterQuestions = () => {
     return Array.from(uniqueCategories);
   }, [quizSet]);
 
-  // Filtert die Fragen basierend auf den ausgewählten Kategorien
-  const filterQuestionsByCategories = useCallback(
-    (categories: string[]) => {
-      const filteredQuestions = questions.filter((question) =>
-        categories.every((category) => question.category.includes(category))
-      );
-      setQuizSet(filteredQuestions);
-    },
-    [questions, setQuizSet]
-  );
-
   // Bearbeitung der Auswahl/Deselektion von Kategorien
   const handleCategorySelection = useCallback(
     (category: string) => {
@@ -33,14 +28,15 @@ export const FilterQuestions = () => {
         ? selectedCategories.filter((cat) => cat !== category)
         : [...selectedCategories, category];
 
-      setSelectedCategories(updatedCategories);
+      // Setze die Kategorien im Store
+      setStoreSelectedCategories(updatedCategories);
     },
-    [selectedCategories]
+    [selectedCategories, setStoreSelectedCategories]
   );
 
   // Überwacht Änderungen in den ausgewählten Kategorien und filtert die Fragen
   useEffect(() => {
-    filterQuestionsByCategories(selectedCategories);
+    filterQuestionsByCategories();
   }, [selectedCategories, filterQuestionsByCategories]);
 
   return (
@@ -56,11 +52,15 @@ export const FilterQuestions = () => {
             <BaseButton
               label={category}
               key={category}
-              className={buttonClass}
+              className={` ${buttonClass} hover:bg-purple-600/50`}
               handleOnClick={() => handleCategorySelection(category)}
             />
           );
         })}
+      </div>
+      <div className="flex justify-between">
+        <CreateQuizButton />
+        <BackButton />
       </div>
     </div>
   );
