@@ -26,24 +26,22 @@ export const SolutionsQuizComponent = ({
   };
 
   return (
-    <div className={`my-auto h-full w-auto max-w-md `}>
-      <Card
-        key={question.id}
-        title={question.questionText}
-        themeMode="light"
-        className={`${calculateCardColor()}`}
-      >
-        <div className="flex flex-col items-start">
-          <QuestionImage imageUrl={question.imageUrl} />
-          <CheckedAnswerList question={question} />
-          <QuestionDetails
-            category={question.category}
-            difficultyLevel={question.difficultyLevel}
-            explanation={question.explanation}
-            questionId={question.id}
-          />
-        </div>
-      </Card>
-    </div>
+    <Card
+      key={question.id}
+      title={question.questionText}
+      themeMode="light"
+      className={`h-full ${calculateCardColor()}`}
+    >
+      <div className="flex flex-col items-start">
+        <QuestionImage imageUrl={question.imageUrl} />
+        <CheckedAnswerList question={question} />
+        <QuestionDetails
+          category={question.category}
+          difficultyLevel={question.difficultyLevel}
+          explanation={question.explanation}
+          questionId={question.id}
+        />
+      </div>
+    </Card>
   );
 };

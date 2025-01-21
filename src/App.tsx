@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { FilterQuestions } from "./components/Filter/FilterQuestions";
 import { LandingPage } from "./components/pages/LandingPage";
-import { Quiz } from "./components/QuizComponents/Quiz";
+import { Quiz } from "./components/QuizComponents/quizComponents/Quiz";
 import { QuizResult } from "./components/QuizComponents/resultComponents/QuizResult";
 import { ResultLanding } from "./components/QuizComponents/resultComponents/ResultLanding";
 import { Layout } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";

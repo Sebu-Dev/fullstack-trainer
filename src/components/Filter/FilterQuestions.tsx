@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from "react";
 import useQuizStore from "../../Question/store/QuizStore";
 import { BackButton } from "../../ui-components/BackButton";
-import { CreateQuizButton } from "../QuizComponents/CreateQuizButton";
+import { CreateQuizButton } from "./CreateQuizButton";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const FilterQuestions = () => {
