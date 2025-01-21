@@ -43,7 +43,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
           <BaseButton
             handleOnClick={() => {}}
             label={option.text}
-            className={`hover:cursor-default ${getButtonColor(
+            className={`max-h-20 text-[clamp(12px,_3vw,_14px)] hover:cursor-default ${getButtonColor(
               question,
               option
             )}`}

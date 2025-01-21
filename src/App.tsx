@@ -21,8 +21,9 @@ const App = () => {
           }
         />
         <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz-result" element={<QuizResult />} />
-        <Route path="/quiz-result-landing" element={<ResultLanding />} />
+        <Route path="/quiz-result" element={<ResultLanding />}>
+          <Route path="checked-answers" element={<QuizResult />} />
+        </Route>
       </Routes>
     </Layout>
   );
