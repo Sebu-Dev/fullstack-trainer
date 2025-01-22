@@ -112,46 +112,59 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     };
 
     quizSet.forEach((question) => {
+      let points: number = 0;
       const userSelectedAnswers = userAnswers[question.id] || [];
-      const correctAnswers = question.answerOptions.filter(
-        (opt) => opt.isCorrect
+      const correctAnswerOptions = question.answerOptions.filter(
+        (option) => option.isCorrect
       );
-      const incorrectAnswers = question.answerOptions.filter(
-        (opt) => !opt.isCorrect
+      const incorrectAnswerOptions = question.answerOptions.filter(
+        (option) => !option.isCorrect
       );
-      let points = 0;
-      if (question.difficultyLevel === "easy") {
-        const allCorrectSelected = correctAnswers.every((opt) =>
-          userSelectedAnswers.includes(opt)
-        );
-        const noIncorrectSelected = incorrectAnswers.every(
-          (opt) => !userSelectedAnswers.includes(opt)
-        );
-        points = allCorrectSelected && noIncorrectSelected ? 1 : 0;
-      } else if (question.difficultyLevel === "medium") {
-        const incorrectCount = userSelectedAnswers.filter(
-          (opt) => !opt.isCorrect
-        ).length;
+      const correctAnswer = userSelectedAnswers.filter(
+        (option) => option.isCorrect
+      );
+      const incorrectAnswer = userSelectedAnswers.filter(
+        (option) => !option.isCorrect
+      );
 
-        if (incorrectCount === 0) {
+      const correctOptionAmmount = correctAnswerOptions.length;
+      const correctAnswerAmmount = correctAnswer.length;
+      const incorrectOptionAmmount = incorrectAnswerOptions.length;
+      const incorrectAnswerAmmount = incorrectAnswer.length;
+
+      if (question.difficultyLevel === "easy") {
+        points =
+          correctOptionAmmount === correctAnswerAmmount &&
+          incorrectOptionAmmount === incorrectAnswerAmmount
+            ? 1
+            : 0;
+      } else if (question.difficultyLevel === "medium") {
+        if (
+          correctOptionAmmount === correctAnswerAmmount &&
+          incorrectOptionAmmount === incorrectAnswerAmmount
+        ) {
           points = 1;
-        } else if (incorrectCount === 1) {
+        } else if (incorrectOptionAmmount - incorrectAnswerAmmount === -1) {
           points = 0.5;
         } else {
           points = 0;
         }
       } else if (question.difficultyLevel === "hard") {
-        const incorrectCount = userSelectedAnswers.filter(
+        const allCorrectAnswers = question.answerOptions.filter(
+          (opt) => opt.isCorrect
+        );
+        const selectedCorrectAnswers = userSelectedAnswers.filter(
+          (opt) => opt.isCorrect
+        );
+        const selectedIncorrectAnswers = userSelectedAnswers.filter(
           (opt) => !opt.isCorrect
-        ).length;
+        );
 
-        points =
-          userSelectedAnswers.filter((opt) => opt.isCorrect).length * 0.5 -
-          incorrectCount;
-        console.log("incorrectCount:");
-        console.log(incorrectCount);
-        console.log("correctAnswers:");
-        console.log(correctAnswers);
+        const incorrectCount =
+          selectedIncorrectAnswers.length +
+          (allCorrectAnswers.length - selectedCorrectAnswers.length);
+
+        points = selectedCorrectAnswers.length * 0.5 - incorrectCount;
         if (points < 0) {
           points = 0;
         }
