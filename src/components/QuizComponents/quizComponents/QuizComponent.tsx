@@ -4,19 +4,19 @@ import { QuestionImage } from "../QuestionImg";
 import { AnswerList } from "./AnswerList";
 import { Card } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
-interface QuizCompontentProps {
+interface QuizComponentProps {
   question: Question;
 }
 
-export const QuizComponent = ({ question }: QuizCompontentProps) => {
+export const QuizComponent = ({ question }: QuizComponentProps) => {
   return (
-    <Card title={question.questionText} themeMode="light">
+    <Card title={question.text} themeMode="light">
       <div className="flex flex-col items-start">
         <QuestionImage imageUrl={question.imageUrl} />
         <AnswerList question={question} />
         <QuestionDetails
           category={question.category}
-          difficultyLevel={question.difficultyLevel}
+          difficultyLevel={question.difficulty}
         />
       </div>
     </Card>

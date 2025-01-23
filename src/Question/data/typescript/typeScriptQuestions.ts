@@ -4,9 +4,8 @@ import type { Question } from "../../type/QuestionType";
 const typeScriptQuestions: Question[] = [
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen über TypeScript-Typen sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen über TypeScript-Typen sind korrekt?",
+    options: [
       {
         text: "TypeScript hat nur primitive Typen und keine komplexen Typen",
         isCorrect: false,
@@ -24,7 +23,7 @@ const typeScriptQuestions: Question[] = [
         isCorrect: true,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["TypeScript", "Types"],
     explanation:
       "TypeScript unterstützt sowohl primitive als auch komplexe Typen. Generics und Conditional Types bieten Flexibilität für die Typisierung.",

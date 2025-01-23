@@ -4,9 +4,8 @@ import type { Question } from "../../type/QuestionType";
 const javaScriptQuestions: Question[] = [
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen sind korrekt in Bezug auf die Funktionsweise von 'this' in JavaScript?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen sind korrekt in Bezug auf die Funktionsweise von 'this' in JavaScript?",
+    options: [
       {
         text: "'this' bezieht sich immer auf das Objekt, das die Methode aufruft",
         isCorrect: false,
@@ -24,31 +23,29 @@ const javaScriptQuestions: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["JavaScript"],
     explanation:
       "'this' kann in regulären Funktionen auf das globale Objekt zeigen, während Arrow-Funktionen das 'this' aus dem umgebenden Kontext verwenden.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Typen sind primitive Datentypen in JavaScript?",
-    answerOptions: [
+    text: "Welche der folgenden Typen sind primitive Datentypen in JavaScript?",
+    options: [
       { text: "Number", isCorrect: true },
       { text: "String", isCorrect: true },
       { text: "Object", isCorrect: false },
       { text: "Array", isCorrect: false },
     ],
-    difficultyLevel: "easy",
+    difficulty: "easy",
     category: ["JavaScript"],
     explanation:
       "Primitive Datentypen in JavaScript sind Number, String, Boolean, null, undefined, Symbol, und BigInt.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen über DOM-Manipulationen sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen über DOM-Manipulationen sind korrekt?",
+    options: [
       {
         text: "Mit `getElementById` kann man nur das erste Element mit einer bestimmten ID auswählen",
         isCorrect: true,
@@ -66,15 +63,15 @@ const javaScriptQuestions: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["Web APIs"],
     explanation:
       "`getElementById` wählt nur ein Element mit der angegebenen ID aus, während `createElement` ein neues DOM-Element erzeugt.",
   },
   {
     id: uuidv4(),
-    questionText: "Welche der folgenden Aussagen zur Fetch-API sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen zur Fetch-API sind korrekt?",
+    options: [
       {
         text: "Fetch gibt immer ein Promise zurück, auch wenn die Anfrage fehlschlägt",
         isCorrect: true,
@@ -92,16 +89,15 @@ const javaScriptQuestions: Question[] = [
         isCorrect: true,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["Web APIs"],
     explanation:
       "Fetch gibt immer ein Promise zurück, aber um Fehler zu behandeln, muss man manuell den HTTP-Status überprüfen und Fehler abfangen.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen zur Verwendung von 'async/await' sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen zur Verwendung von 'async/await' sind korrekt?",
+    options: [
       { text: "async macht eine Funktion immer asynchron", isCorrect: true },
       {
         text: "'await' kann nur mit Promises verwendet werden",
@@ -116,16 +112,15 @@ const javaScriptQuestions: Question[] = [
         isCorrect: true,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["Async Programming"],
     explanation:
       "'async/await' ist ein syntaktischer Zucker für die Arbeit mit Promises und hilft, asynchrone Operationen klarer zu schreiben.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen zu Promises und Parallelität in JavaScript sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen zu Promises und Parallelität in JavaScript sind korrekt?",
+    options: [
       {
         text: "Mit `Promise.all` können mehrere Promises gleichzeitig ausgeführt werden",
         isCorrect: true,
@@ -143,7 +138,7 @@ const javaScriptQuestions: Question[] = [
         isCorrect: true,
       },
     ],
-    difficultyLevel: "hard",
+    difficulty: "hard",
     category: ["Async Programming"],
     explanation:
       "`Promise.all` wartet auf alle Promises, aber gibt sie in einem Array zurück und bricht sofort ab, wenn eines fehlschlägt.",

@@ -2,169 +2,110 @@ import { create } from "zustand";
 import {
   getFromLocalStorage,
   saveToLocalStorage,
+  setDefaultAnswers,
   shuffleArray,
+  toggleAnswerInList,
 } from "../../utils/helpers";
-import questionsData from "../datas/questionData";
-import type { AnswerOption, Question } from "../type/QuestionType";
+import questionsData from "../data/questionData";
+import type { Answer, Option, Question } from "../type/QuestionType";
 
 interface QuizStore {
   questionList: Question[];
-  userAnswers: Record<string, AnswerOption[]>;
+  userAnswers: Record<string, Option[]>;
+  answers: Answer[];
   quizSet: Question[];
   selectedCategories: string[];
-  setUserAnswer: (questionId: string, answers: AnswerOption[]) => void;
-  toggleAnswer: (questionId: string, answer: AnswerOption) => void;
+  setUserAnswer: (questionId: string, answers: Option[]) => void;
+  toggleAnswer: (questionId: string, answer: Option) => void;
   createQuiz: () => void;
   setQuizSet: (newQuizSet: Question[]) => void;
   setSelectedCategories: (categories: string[]) => void;
   filterQuestionsByCategories: () => void;
   createNewRandomQuizSet: () => void;
-  calculatePoints: () => {
-    totalPoints: number;
-    categoryPoints: Record<string, number>;
-  };
 }
 
-const useQuizStore = create<QuizStore>((set, get) => ({
-  questionList: questionsData,
-  userAnswers: getFromLocalStorage("userAnswers", {}),
-  quizSet: getFromLocalStorage("quizSet", questionsData),
-  selectedCategories: [],
-
-  setQuizSet: (newQuizSet) => {
+const useQuizStore = create<QuizStore>((set, get) => {
+  const updateQuizSetInLocalStorage = (newQuizSet: Question[]) => {
     saveToLocalStorage("quizSet", newQuizSet);
     set({ quizSet: newQuizSet });
-  },
+  };
 
-  setSelectedCategories: (categories: string[]) => {
-    set({ selectedCategories: categories });
-    get().filterQuestionsByCategories();
-  },
+  const updateUserAnswersInLocalStorage = (
+    updatedAnswers: Record<string, Option[]>
+  ) => {
+    saveToLocalStorage("userAnswers", updatedAnswers);
+    set({ userAnswers: updatedAnswers });
+  };
 
-  filterQuestionsByCategories: () => {
-    const { selectedCategories } = get();
-    const filteredQuestions = selectedCategories.length
+  const filterQuestions = (categories: string[]) =>
+    categories.length
       ? questionsData.filter((question) =>
-          selectedCategories.every((category) =>
-            question.category.includes(category)
-          )
+          categories.every((category) => question.category.includes(category))
         )
       : questionsData;
-    set({ quizSet: filteredQuestions });
-  },
 
-  createQuiz: () => {
-    const { selectedCategories, questionList } = get();
-    const filteredQuestions = selectedCategories.length
-      ? questionList.filter((quiz) =>
-          selectedCategories.every((cat) => quiz.category.includes(cat))
-        )
-      : questionList;
-    const shuffledQuestions = shuffleArray(filteredQuestions);
+  return {
+    questionList: questionsData,
+    userAnswers: getFromLocalStorage("userAnswers", {}),
+    answers: getFromLocalStorage("answers", setDefaultAnswers()),
+    quizSet: getFromLocalStorage("quizSet", questionsData),
+    selectedCategories: [],
 
-    const newQuizSet = shuffledQuestions.slice(0, 5);
+    setQuizSet: updateQuizSetInLocalStorage,
 
-    const quizWithShuffledAnswers = newQuizSet.map((quiz) => ({
-      ...quiz,
-      answerOptions: shuffleArray(quiz.answerOptions),
-    }));
+    setSelectedCategories: (categories: string[]) => {
+      set({ selectedCategories: categories });
+      get().filterQuestionsByCategories();
+    },
 
-    saveToLocalStorage("quizSet", quizWithShuffledAnswers);
+    filterQuestionsByCategories: () => {
+      const { selectedCategories } = get();
+      const filteredQuestions = filterQuestions(selectedCategories);
+      set({ quizSet: filteredQuestions });
+    },
 
-    set({ quizSet: quizWithShuffledAnswers });
-  },
+    createQuiz: () => {
+      const { selectedCategories, questionList } = get();
+      const filteredQuestions = filterQuestions(selectedCategories);
+      const shuffledQuestions = shuffleArray(filteredQuestions);
+      const newQuizSet = shuffledQuestions.slice(0, 5);
 
-  createNewRandomQuizSet: () => {
-    set({ selectedCategories: [] });
-    get().filterQuestionsByCategories();
-  },
+      const quizWithShuffledAnswers = newQuizSet.map((quiz) => ({
+        ...quiz,
+        answerOptions: shuffleArray(quiz.options),
+      }));
 
-  setUserAnswer: (questionId: string, answers: AnswerOption[]) =>
-    set((state) => {
-      const updatedAnswers = {
-        ...state.userAnswers,
-        [questionId]: answers,
-      };
-      saveToLocalStorage("userAnswers", updatedAnswers);
-      return { userAnswers: updatedAnswers };
-    }),
+      updateQuizSetInLocalStorage(quizWithShuffledAnswers);
+    },
 
-  toggleAnswer: (questionId: string, answer: AnswerOption) =>
-    set((state) => {
-      const updatedAnswers = {
-        ...state.userAnswers,
-        [questionId]: toggleAnswerInList(
-          state.userAnswers[questionId] || [],
-          answer
-        ),
-      };
-      saveToLocalStorage("userAnswers", updatedAnswers);
-      return { userAnswers: updatedAnswers };
-    }),
-  calculatePoints: () => {
-    const { quizSet, userAnswers } = get();
+    createNewRandomQuizSet: () => {
+      set({ selectedCategories: [] });
+      get().filterQuestionsByCategories();
+    },
 
-    let totalPoints = 0;
-    const categoryPoints: Record<string, number> = {
-      easy: 0,
-      medium: 0,
-      hard: 0,
-    };
+    setUserAnswer: (questionId: string, answers: Option[]) =>
+      set((state) => {
+        const updatedAnswers = {
+          ...state.userAnswers,
+          [questionId]: answers,
+        };
+        updateUserAnswersInLocalStorage(updatedAnswers);
+        return { userAnswers: updatedAnswers };
+      }),
 
-    quizSet.forEach((question) => {
-      const userSelectedAnswers = userAnswers[question.id] || [];
-      const correctAnswers = question.answerOptions.filter(
-        (opt) => opt.isCorrect
-      );
-      const incorrectAnswers = question.answerOptions.filter(
-        (opt) => !opt.isCorrect
-      );
-      let points = 0;
-      if (question.difficultyLevel === "easy") {
-        const allCorrectSelected = correctAnswers.every((opt) =>
-          userSelectedAnswers.includes(opt)
-        );
-        const noIncorrectSelected = incorrectAnswers.every(
-          (opt) => !userSelectedAnswers.includes(opt)
-        );
-        points = allCorrectSelected && noIncorrectSelected ? 1 : 0;
-      } else if (question.difficultyLevel === "medium") {
-        const incorrectCount = userSelectedAnswers.filter(
-          (opt) => !opt.isCorrect
-        ).length;
-
-        if (incorrectCount === 0) {
-          points = 1;
-        } else if (incorrectCount === 1) {
-          points = 0.5;
-        } else {
-          points = 0;
-        }
-      } else if (question.difficultyLevel === "hard") {
-        const incorrectCount = userSelectedAnswers.filter(
-          (opt) => !opt.isCorrect
-        ).length;
-
-        points =
-          userSelectedAnswers.filter((opt) => opt.isCorrect).length * 0.5 -
-          incorrectCount;
-        console.log("incorrectCount:");
-        console.log(incorrectCount);
-        console.log("correctAnswers:");
-        console.log(correctAnswers);
-      }
-      totalPoints += points;
-    });
-    return { totalPoints, categoryPoints };
-  },
-}));
-const toggleAnswerInList = (
-  currentAnswers: AnswerOption[],
-  answer: AnswerOption
-): AnswerOption[] => {
-  return currentAnswers.includes(answer)
-    ? currentAnswers.filter((a) => a !== answer)
-    : [...currentAnswers, answer];
-};
+    toggleAnswer: (questionId: string, answer: Option) =>
+      set((state) => {
+        const updatedAnswers = {
+          ...state.userAnswers,
+          [questionId]: toggleAnswerInList(
+            state.userAnswers[questionId] || [],
+            answer
+          ),
+        };
+        updateUserAnswersInLocalStorage(updatedAnswers);
+        return { userAnswers: updatedAnswers };
+      }),
+  };
+});
 
 export default useQuizStore;

@@ -1,13 +1,21 @@
-export type AnswerOption = {
+export type Option = {
   text: string;
   isCorrect: boolean;
+};
+export type UserAnswer = {
+  option: Option;
+  isSelected: boolean;
+};
+export type Answer = {
+  question: Question;
+  userAnswers: UserAnswer[];
 };
 
 export type Question = {
   id: string;
-  questionText: string;
-  answerOptions: AnswerOption[];
-  difficultyLevel?: "easy" | "medium" | "hard";
+  text: string;
+  options: Option[];
+  difficulty?: "easy" | "medium" | "hard";
   category: string[];
   explanation?: string;
   imageUrl?: string;

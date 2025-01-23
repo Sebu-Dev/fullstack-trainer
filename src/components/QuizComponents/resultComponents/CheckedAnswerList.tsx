@@ -1,8 +1,5 @@
 import useQuizStore from "../../../Question/store/QuizStore";
-import type {
-  AnswerOption,
-  Question,
-} from "../../../Question/type/QuestionType";
+import type { Option, Question } from "../../../Question/type/QuestionType";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface CheckedAnswerListProps {
@@ -12,11 +9,11 @@ interface CheckedAnswerListProps {
 export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
   const { userAnswers } = useQuizStore();
 
-  const isAnswerCorrect = (answer: AnswerOption) => {
+  const isAnswerCorrect = (answer: Option) => {
     return answer.isCorrect;
   };
 
-  const getButtonColor = (question: Question, option: AnswerOption) => {
+  const getButtonColor = (question: Question, option: Option) => {
     const userAnswersForQuestion = userAnswers[question.id] || [];
 
     const userSelectedAnswer = userAnswersForQuestion.includes(option);
@@ -38,7 +35,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
 
   return (
     <ul className="w-full">
-      {question.answerOptions.map((option, index) => (
+      {question.options.map((option, index) => (
         <li key={index} className="flex flex-col">
           <BaseButton
             handleOnClick={() => {}}

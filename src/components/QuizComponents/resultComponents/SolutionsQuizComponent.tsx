@@ -14,9 +14,7 @@ export const SolutionsQuizComponent = ({
 
   const calculateCardColor = () => {
     const userSelectedAnswers = userAnswers[question.id] || [];
-    const correctAnswers = question.answerOptions.filter(
-      (opt) => opt.isCorrect
-    );
+    const correctAnswers = question.options.filter((opt) => opt.isCorrect);
 
     const isCorrect =
       correctAnswers.every((opt) => userSelectedAnswers.includes(opt)) &&
@@ -28,7 +26,7 @@ export const SolutionsQuizComponent = ({
   return (
     <Card
       key={question.id}
-      title={question.questionText}
+      title={question.text}
       themeMode="light"
       className={`h-full ${calculateCardColor()}`}
     >
@@ -37,7 +35,7 @@ export const SolutionsQuizComponent = ({
         <CheckedAnswerList question={question} />
         <QuestionDetails
           category={question.category}
-          difficultyLevel={question.difficultyLevel}
+          difficultyLevel={question.difficulty}
           explanation={question.explanation}
           questionId={question.id}
         />
