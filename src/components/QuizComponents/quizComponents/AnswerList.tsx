@@ -1,8 +1,5 @@
 import useQuizStore from "../../../Question/store/QuizStore";
-import type {
-  AnswerOption,
-  Question,
-} from "../../../Question/type/QuestionType";
+import type { Option, Question } from "../../../Question/type/QuestionType";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface AnswerListProps {
@@ -13,13 +10,13 @@ export const AnswerList = ({ question }: AnswerListProps) => {
   const selectedAnswers = userAnswers[question.id] || [];
   const { toggleAnswer } = useQuizStore();
 
-  const handleAnswerSelect = (answer: AnswerOption) => {
+  const handleAnswerSelect = (answer: Option) => {
     toggleAnswer(question.id, answer);
   };
 
   return (
     <ul className="w-full">
-      {question.answerOptions.map((option, index) => (
+      {question.options.map((option, index) => (
         <li key={index} className="flex flex-col">
           <BaseButton
             handleOnClick={() => handleAnswerSelect(option)}

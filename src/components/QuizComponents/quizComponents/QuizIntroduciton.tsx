@@ -34,7 +34,7 @@ export const QuizIntroduction = ({ handleOnClick }: QuizIntroductionProps) => {
         <p className="text-gray-300">Viel Erfolg beim Quiz! 😊</p>
         <div className="flex justify-center pt-8">
           <BaseButton
-            bgColor="bg-cyan-500 hover:bg-cyan-500/50"
+            className="bg-cyan-500 hover:bg-cyan-500/50"
             handleOnClick={handleOnClick}
           >
             Bestätigen

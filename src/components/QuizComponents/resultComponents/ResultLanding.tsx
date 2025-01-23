@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom"; // Importiere useNavigate
 import useQuizStore from "../../../Question/store/QuizStore";
+import { calculatePoints } from "../../../utils/helpers";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const ResultLanding = () => {
-  const { calculatePoints } = useQuizStore();
-  const { totalPoints, categoryPoints } = calculatePoints();
+  const { answers } = useQuizStore();
+  const { totalPoints, categoryPoints } = calculatePoints(answers);
   const [showResult, setShowResult] = useState(false);
   const navigate = useNavigate();
 

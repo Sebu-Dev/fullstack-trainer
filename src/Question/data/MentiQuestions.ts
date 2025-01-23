@@ -4,9 +4,8 @@ import type { Question } from "../type/QuestionType";
 export const mentiQuiz: Question[] = [
   {
     id: uuidv4(),
-    questionText:
-      "Was passiert, wenn eine Komponente in React `setState` mit einem neuen Zustand aufruft, der denselben Wert wie der aktuelle Zustand hat?",
-    answerOptions: [
+    text: "Was passiert, wenn eine Komponente in React `setState` mit einem neuen Zustand aufruft, der denselben Wert wie der aktuelle Zustand hat?",
+    options: [
       {
         text: "React ignoriert die Aktualisierung, da der Zustand nicht geändert wurde und rendert die Komponente nicht neu",
         isCorrect: true,
@@ -24,16 +23,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["React", "State"],
     explanation:
       "Wenn der neue Zustand identisch mit dem alten Zustand ist, wird das Re-Rendering von React vermieden, da keine Änderung vorliegt.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen zu `React.Fragment` sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen zu `React.Fragment` sind korrekt?",
+    options: [
       {
         text: "`React.Fragment` ermöglicht das Gruppieren von Komponenten ohne zusätzliche DOM-Elemente zu erzeugen",
         isCorrect: true,
@@ -51,16 +49,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: true,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["React"],
     explanation:
       "`React.Fragment` wird verwendet, um mehrere Elemente zu gruppieren, ohne zusätzliche DOM-Elemente hinzuzufügen. Es kann auch mit dem `key`-Attribut verwendet werden, wenn erforderlich.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen über das Lifecycle von React-Komponenten sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen über das Lifecycle von React-Komponenten sind korrekt?",
+    options: [
       {
         text: "Die `componentDidMount`-Methode wird nach dem ersten Rendern einer Klasse ausgeführt",
         isCorrect: true,
@@ -78,15 +75,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "hard",
+    difficulty: "hard",
     category: ["React"],
     explanation:
       "`componentDidMount` wird nach dem ersten Rendern einer Komponente ausgeführt, und `componentWillUnmount` wird ausgeführt, bevor die Komponente entfernt wird. Funktionskomponenten haben keinen direkten Zugriff auf diese Methoden, aber ähnliche Funktionen können mit `useEffect` erreicht werden.",
   },
   {
     id: uuidv4(),
-    questionText: "Was ist der Zweck von `React.memo` in React?",
-    answerOptions: [
+    text: "Was ist der Zweck von `React.memo` in React?",
+    options: [
       {
         text: "`React.memo` optimiert die Performance, indem es die Komponente nur dann neu rendert, wenn sich die Props ändern",
         isCorrect: true,
@@ -104,16 +101,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["React"],
     explanation:
       "`React.memo` ist ein High Order Component (HOC), das dafür sorgt, dass eine Komponente nur dann neu gerendert wird, wenn sich ihre Props ändern, wodurch unnötige Renderings vermieden werden.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Wie kannst du in React den Wert eines Formularfeldes wie eines `input` steuern?",
-    answerOptions: [
+    text: "Wie kannst du in React den Wert eines Formularfeldes wie eines `input` steuern?",
+    options: [
       {
         text: "Indem man den `value`-Prop des Formularfeldes mit dem Zustand der Komponente bindet",
         isCorrect: true,
@@ -131,16 +127,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "easy",
+    difficulty: "easy",
     category: ["React", "State"],
     explanation:
       "In React wird der Wert eines Formularfeldes durch den `value`-Prop gesteuert, der mit dem Zustand der Komponente verknüpft ist. Dies wird als kontrollierte Komponente bezeichnet.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Was ist der Unterschied zwischen `useEffect` und `useLayoutEffect` in React?",
-    answerOptions: [
+    text: "Was ist der Unterschied zwischen `useEffect` und `useLayoutEffect` in React?",
+    options: [
       {
         text: "`useEffect` wird nach dem Rendern ausgeführt, während `useLayoutEffect` vor dem Rendern des DOMs ausgeführt wird",
         isCorrect: true,
@@ -158,16 +153,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "hard",
+    difficulty: "hard",
     category: ["React", "Hook"],
     explanation:
       "`useEffect` wird nach dem Rendern ausgeführt, während `useLayoutEffect` synchron ausgeführt wird, bevor der DOM aktualisiert wird, was für Layout-Manipulationen nützlich ist.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Welche der folgenden Aussagen über `useContext` und `useReducer` sind korrekt?",
-    answerOptions: [
+    text: "Welche der folgenden Aussagen über `useContext` und `useReducer` sind korrekt?",
+    options: [
       {
         text: "`useContext` dient dazu, Daten an tief verschachtelte Komponenten zu übergeben, während `useReducer` komplexe Zustandsänderungen innerhalb einer Komponente behandelt",
         isCorrect: true,
@@ -185,16 +179,15 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["React", "Hook"],
     explanation:
       "`useContext` wird verwendet, um Daten zwischen Komponenten zu teilen, ohne Props weiterzugeben, und `useReducer` hilft bei der Verwaltung komplexerer Zustände, die mehrere Aktionen erfordern.",
   },
   {
     id: uuidv4(),
-    questionText:
-      "Wie verhinderst du in React, dass eine Komponente unnötig neu gerendert wird?",
-    answerOptions: [
+    text: "Wie verhinderst du in React, dass eine Komponente unnötig neu gerendert wird?",
+    options: [
       {
         text: "Verwende `shouldComponentUpdate` in Klassenkomponenten oder `React.memo` in Funktionskomponenten",
         isCorrect: true,
@@ -212,7 +205,7 @@ export const mentiQuiz: Question[] = [
         isCorrect: false,
       },
     ],
-    difficultyLevel: "medium",
+    difficulty: "medium",
     category: ["React"],
     explanation:
       "`shouldComponentUpdate` und `React.memo` helfen dabei, unnötige Renderings zu verhindern, indem sie sicherstellen, dass Komponenten nur neu gerendert werden, wenn sich die Props oder der Zustand ändern.",
