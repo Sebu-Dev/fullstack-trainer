@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useQuizStore from "../../../Question/store/QuizStore";
 import { QuizComponent } from "./QuizComponent";
-import { QuizIntroduction } from "./QuizIntroduciton";
+import { QuizIntroduction } from "./QuizIntroduction";
 import { DangerButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const Quiz = () => {
-  const { quizSet } = useQuizStore();
+  const { quizSet } = useQuizStore(); // Get quizSet from the store
   const navigator = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
 
@@ -21,7 +21,7 @@ export const Quiz = () => {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 pb-5 relative z-0">
-        {quizSet.map((question) => (
+        {quizSet.questions.map((question) => (
           <QuizComponent key={question.id} question={question} />
         ))}
       </div>

@@ -4,28 +4,27 @@ import { QuestionDetails } from "../QuestionDetails";
 import { QuestionImage } from "../QuestionImg";
 import { CheckedAnswerList } from "./CheckedAnswerList";
 import { Card } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+
 interface SolutionsQuizComponentProps {
   question: Question;
 }
+
 export const SolutionsQuizComponent = ({
   question,
 }: SolutionsQuizComponentProps) => {
-  const { userAnswers } = useQuizStore();
+  const { quizSet } = useQuizStore();
 
   const calculateCardColor = () => {
-    const userSelectedAnswers = userAnswers[question.id] || [];
-    const correctAnswers = question.options.filter((opt) => opt.isCorrect);
+    const answer = quizSet.answers.find((a) => a.question.id === question.id);
+    const allCorrect = answer?.userAnswers.every(
+      (ua) => ua.isSelected === ua.option.isCorrect
+    );
 
-    const isCorrect =
-      correctAnswers.every((opt) => userSelectedAnswers.includes(opt)) &&
-      userSelectedAnswers.every((opt) => opt.isCorrect);
-
-    return isCorrect ? "bg-green-600/30" : "bg-red-600/10";
+    return allCorrect ? "bg-green-600/30" : "bg-red-600/10";
   };
 
   return (
     <Card
-      key={question.id}
       title={question.text}
       themeMode="light"
       className={`h-full ${calculateCardColor()}`}
@@ -37,7 +36,6 @@ export const SolutionsQuizComponent = ({
           category={question.category}
           difficultyLevel={question.difficulty}
           explanation={question.explanation}
-          questionId={question.id}
         />
       </div>
     </Card>

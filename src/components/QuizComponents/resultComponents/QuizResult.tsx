@@ -7,7 +7,7 @@ export const QuizResult = () => {
   return (
     <div className="flex flex-col items-center gap-8 mx-auto justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 pb-32">
-        {quizSet.map((question) => (
+        {quizSet.questions.map((question) => (
           <SolutionsQuizComponent key={question.id} question={question} />
         ))}
       </div>
