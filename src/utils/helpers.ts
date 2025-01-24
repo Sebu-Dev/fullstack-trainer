@@ -52,6 +52,7 @@ export const setDefaultAnswers = (): Answer[] => {
     defaultAnswers.push({
       question: quest,
       userAnswers,
+      achievedPoints: 0,
     });
   });
 
