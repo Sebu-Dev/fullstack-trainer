@@ -7,30 +7,21 @@ interface CheckedAnswerListProps {
 }
 
 export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
-  const { userAnswers } = useQuizStore();
+  const { quizSet } = useQuizStore();
 
-  const isAnswerCorrect = (answer: Option) => {
-    return answer.isCorrect;
-  };
+  const getAnswerState = (option: Option) => {
+    const answer = quizSet.answers.find((a) => a.question.id === question.id);
+    const userAnswer = answer?.userAnswers.find(
+      (ua) => ua.option.text === option.text
+    );
 
-  const getButtonColor = (question: Question, option: Option) => {
-    const userAnswersForQuestion = userAnswers[question.id] || [];
+    const isSelected = userAnswer?.isSelected;
+    const isCorrect = option.isCorrect;
 
-    const userSelectedAnswer = userAnswersForQuestion.includes(option);
-
-    if (userSelectedAnswer) {
-      if (isAnswerCorrect(option)) {
-        return "bg-cyan-500";
-      } else {
-        return "bg-red-500";
-      }
+    if (isSelected) {
+      return isCorrect ? "bg-cyan-500" : "bg-red-500";
     }
-
-    if (isAnswerCorrect(option)) {
-      return "bg-green-400/60";
-    }
-
-    return "bg-gray-600";
+    return isCorrect ? "bg-green-400/60" : "bg-gray-600";
   };
 
   return (
@@ -38,12 +29,10 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
       {question.options.map((option, index) => (
         <li key={index} className="flex flex-col">
           <BaseButton
-            handleOnClick={() => {}}
             label={option.text}
-            className={`max-h-20 text-[clamp(12px,_3vw,_14px)] hover:cursor-default ${getButtonColor(
-              question,
-              option
-            )}`}
+            className={`max-h-20 ${getAnswerState(option)}`}
+            hoverEffect={{ scale: 1 }}
+            tapEffect={{ scale: 1 }}
           />
         </li>
       ))}

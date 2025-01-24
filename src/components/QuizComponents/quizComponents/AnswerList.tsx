@@ -1,36 +1,42 @@
 import useQuizStore from "../../../Question/store/QuizStore";
-import type { Option, Question } from "../../../Question/type/QuestionType";
+import type { Question } from "../../../Question/type/QuestionType";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface AnswerListProps {
   question: Question;
 }
-export const AnswerList = ({ question }: AnswerListProps) => {
-  const { userAnswers } = useQuizStore();
-  const selectedAnswers = userAnswers[question.id] || [];
-  const { toggleAnswer } = useQuizStore();
 
-  const handleAnswerSelect = (answer: Option) => {
-    toggleAnswer(question.id, answer);
+export const AnswerList = ({ question }: AnswerListProps) => {
+  const { quizSet, toggleUserAnswer } = useQuizStore();
+
+  // Find the user answers for the current question
+  const userAnswers = quizSet.answers.find(
+    (answer) => answer.question.text === question.text
+  )?.userAnswers;
+
+  const handleAnswerSelect = (optionText: string) => {
+    toggleUserAnswer(question.id, optionText);
   };
 
   return (
     <ul className="w-full">
-      {question.options.map((option, index) => (
-        <li key={index} className="flex flex-col">
-          <BaseButton
-            handleOnClick={() => handleAnswerSelect(option)}
-            hoverEffect={{ scale: 1.01 }}
-            tapEffect={{ scale: 1.005 }}
-            label={option.text}
-            className={
-              selectedAnswers.includes(option)
-                ? "bg-cyan-500"
-                : "bg-gray-600/70"
-            }
-          />
-        </li>
-      ))}
+      {question.options.map((option, index) => {
+        const isSelected = userAnswers?.find(
+          (ua) => ua.option.text === option.text
+        )?.isSelected;
+
+        return (
+          <li key={index} className="flex flex-col">
+            <BaseButton
+              handleOnClick={() => handleAnswerSelect(option.text)}
+              hoverEffect={{ scale: 1.01 }}
+              tapEffect={{ scale: 1.005 }}
+              label={option.text}
+              className={isSelected ? "bg-cyan-500" : "bg-gray-600/70"}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };

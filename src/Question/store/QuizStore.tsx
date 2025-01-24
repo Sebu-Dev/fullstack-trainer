@@ -2,39 +2,25 @@ import { create } from "zustand";
 import {
   getFromLocalStorage,
   saveToLocalStorage,
-  setDefaultAnswers,
   shuffleArray,
-  toggleAnswerInList,
 } from "../../utils/helpers";
 import questionsData from "../data/questionData";
-import type { Answer, Option, Question } from "../type/QuestionType";
+import type { Question, Quizset } from "../type/QuestionType";
 
 interface QuizStore {
   questionList: Question[];
-  userAnswers: Record<string, Option[]>;
-  answers: Answer[];
-  quizSet: Question[];
+  quizSet: Quizset;
   selectedCategories: string[];
-  setUserAnswer: (questionId: string, answers: Option[]) => void;
-  toggleAnswer: (questionId: string, answer: Option) => void;
-  createQuiz: () => void;
-  setQuizSet: (newQuizSet: Question[]) => void;
+  createQuizset: () => void;
   setSelectedCategories: (categories: string[]) => void;
-  filterQuestionsByCategories: () => void;
-  createNewRandomQuizSet: () => void;
+  toggleUserAnswer: (questionId: string, optionId: string) => void;
+  submitQuiz: () => { correctAnswers: number; totalQuestions: number }; // Bewertung (später)
 }
 
 const useQuizStore = create<QuizStore>((set, get) => {
-  const updateQuizSetInLocalStorage = (newQuizSet: Question[]) => {
+  const updateQuizSetInLocalStorage = (newQuizSet: Quizset) => {
     saveToLocalStorage("quizSet", newQuizSet);
     set({ quizSet: newQuizSet });
-  };
-
-  const updateUserAnswersInLocalStorage = (
-    updatedAnswers: Record<string, Option[]>
-  ) => {
-    saveToLocalStorage("userAnswers", updatedAnswers);
-    set({ userAnswers: updatedAnswers });
   };
 
   const filterQuestions = (categories: string[]) =>
@@ -46,65 +32,69 @@ const useQuizStore = create<QuizStore>((set, get) => {
 
   return {
     questionList: questionsData,
-    userAnswers: getFromLocalStorage("userAnswers", {}),
-    answers: getFromLocalStorage("answers", setDefaultAnswers()),
-    quizSet: getFromLocalStorage("quizSet", questionsData),
+    quizSet: getFromLocalStorage("quizSet", {
+      questions: [],
+      answers: [],
+    }),
     selectedCategories: [],
-
-    setQuizSet: updateQuizSetInLocalStorage,
 
     setSelectedCategories: (categories: string[]) => {
       set({ selectedCategories: categories });
-      get().filterQuestionsByCategories();
     },
 
-    filterQuestionsByCategories: () => {
+    createQuizset: () => {
       const { selectedCategories } = get();
       const filteredQuestions = filterQuestions(selectedCategories);
-      set({ quizSet: filteredQuestions });
-    },
-
-    createQuiz: () => {
-      const { selectedCategories, questionList } = get();
-      const filteredQuestions = filterQuestions(selectedCategories);
       const shuffledQuestions = shuffleArray(filteredQuestions);
-      const newQuizSet = shuffledQuestions.slice(0, 5);
+      const selectedQuestions = shuffledQuestions.slice(0, 5);
 
-      const quizWithShuffledAnswers = newQuizSet.map((quiz) => ({
-        ...quiz,
-        answerOptions: shuffleArray(quiz.options),
-      }));
+      const quizset: Quizset = {
+        questions: selectedQuestions,
+        answers: selectedQuestions.map((question) => ({
+          question,
+          userAnswers: question.options.map((option) => ({
+            option,
+            isSelected: false,
+          })),
+        })),
+      };
 
-      updateQuizSetInLocalStorage(quizWithShuffledAnswers);
+      updateQuizSetInLocalStorage(quizset);
     },
 
-    createNewRandomQuizSet: () => {
-      set({ selectedCategories: [] });
-      get().filterQuestionsByCategories();
+    toggleUserAnswer: (questionId: string, optionText: string) => {
+      const { quizSet } = get();
+
+      const updatedAnswers = quizSet.answers.map((answer) => {
+        if (answer.question.id === questionId) {
+          return {
+            ...answer,
+            userAnswers: answer.userAnswers.map((userAnswer) =>
+              userAnswer.option.text === optionText
+                ? { ...userAnswer, isSelected: !userAnswer.isSelected }
+                : userAnswer
+            ),
+          };
+        }
+        return answer;
+      });
+
+      const updatedQuizSet = { ...quizSet, answers: updatedAnswers };
+      updateQuizSetInLocalStorage(updatedQuizSet);
     },
 
-    setUserAnswer: (questionId: string, answers: Option[]) =>
-      set((state) => {
-        const updatedAnswers = {
-          ...state.userAnswers,
-          [questionId]: answers,
-        };
-        updateUserAnswersInLocalStorage(updatedAnswers);
-        return { userAnswers: updatedAnswers };
-      }),
+    submitQuiz: () => {
+      const { quizSet } = get();
+      const totalQuestions = quizSet.questions.length;
+      const correctAnswers = quizSet.answers.reduce((total, answer) => {
+        const allCorrect = answer.userAnswers.every(
+          (userAnswer) => userAnswer.isSelected === userAnswer.option.isCorrect
+        );
+        return allCorrect ? total + 1 : total;
+      }, 0);
 
-    toggleAnswer: (questionId: string, answer: Option) =>
-      set((state) => {
-        const updatedAnswers = {
-          ...state.userAnswers,
-          [questionId]: toggleAnswerInList(
-            state.userAnswers[questionId] || [],
-            answer
-          ),
-        };
-        updateUserAnswersInLocalStorage(updatedAnswers);
-        return { userAnswers: updatedAnswers };
-      }),
+      return { correctAnswers, totalQuestions };
+    },
   };
 });
 

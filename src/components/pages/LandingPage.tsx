@@ -5,7 +5,7 @@ import {
   SecondaryButton,
 } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 export const LandingPage = () => {
-  const { createQuiz } = useQuizStore();
+  const { createQuizset: createQuiz } = useQuizStore();
   const navigate = useNavigate();
   const handleCategoryOnClick = () => {
     navigate("/filter");

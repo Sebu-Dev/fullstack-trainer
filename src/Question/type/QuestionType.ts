@@ -20,3 +20,8 @@ export type Question = {
   explanation?: string;
   imageUrl?: string;
 };
+
+export type Quizset = {
+  questions: Question[];
+  answers: Answer[];
+};

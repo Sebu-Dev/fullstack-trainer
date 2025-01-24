@@ -5,8 +5,8 @@ import { calculatePoints } from "../../../utils/helpers";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const ResultLanding = () => {
-  const { answers } = useQuizStore();
-  const { totalPoints, categoryPoints } = calculatePoints(answers);
+  const { quizSet } = useQuizStore();
+  const { totalPoints, categoryPoints } = calculatePoints(quizSet.answers);
   const [showResult, setShowResult] = useState(false);
   const navigate = useNavigate();
 

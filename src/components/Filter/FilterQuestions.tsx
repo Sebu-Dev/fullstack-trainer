@@ -6,7 +6,7 @@ import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-
 
 export const FilterQuestions = () => {
   const {
-    quizSet,
+    quizset: quizSet,
     filterQuestionsByCategories,
     selectedCategories,
     setSelectedCategories: setStoreSelectedCategories,
