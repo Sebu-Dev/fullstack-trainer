@@ -6,35 +6,30 @@ import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-
 
 export const FilterQuestions = () => {
   const {
-    quizset: quizSet,
+    quizSet,
     filterQuestionsByCategories,
     selectedCategories,
     setSelectedCategories: setStoreSelectedCategories,
   } = useQuizStore();
 
-  // Berechnung aller einzigartigen Kategorien
   const allCategories = useMemo(() => {
     const uniqueCategories = new Set<string>();
-    quizSet?.forEach((question) => {
+    quizSet.questions.forEach((question) => {
       question.category.forEach((category) => uniqueCategories.add(category));
     });
     return Array.from(uniqueCategories);
-  }, [quizSet]);
+  }, [quizSet.questions]);
 
-  // Bearbeitung der Auswahl/Deselektion von Kategorien
   const handleCategorySelection = useCallback(
     (category: string) => {
       const updatedCategories = selectedCategories.includes(category)
         ? selectedCategories.filter((cat) => cat !== category)
         : [...selectedCategories, category];
-
-      // Setze die Kategorien im Store
       setStoreSelectedCategories(updatedCategories);
     },
     [selectedCategories, setStoreSelectedCategories]
   );
 
-  // Überwacht Änderungen in den ausgewählten Kategorien und filtert die Fragen
   useEffect(() => {
     filterQuestionsByCategories();
   }, [selectedCategories, filterQuestionsByCategories]);
@@ -52,7 +47,7 @@ export const FilterQuestions = () => {
             <BaseButton
               label={category}
               key={category}
-              className={` ${buttonClass} hover:bg-purple-600/50`}
+              className={`${buttonClass} hover:bg-purple-600/50`}
               handleOnClick={() => handleCategorySelection(category)}
             />
           );

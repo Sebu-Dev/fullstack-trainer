@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom"; // Importiere useNavigate
+import { Outlet, useNavigate } from "react-router-dom";
 import useQuizStore from "../../../Question/store/QuizStore";
-import { calculatePoints } from "../../../utils/helpers";
+import { ScoringService } from "../../../services/ScoringService";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const ResultLanding = () => {
-  const { quizSet } = useQuizStore();
-  const { totalPoints, categoryPoints } = calculatePoints(quizSet.answers);
+  const { quizSet, getTotalPoints } = useQuizStore();
   const [showResult, setShowResult] = useState(false);
   const navigate = useNavigate();
+  const totalPoints = getTotalPoints();
+  const categoryPoints = ScoringService.calculateCategoryPoints(
+    quizSet.answers
+  );
 
   const handleOnClick = () => {
     setShowResult(true);
@@ -23,10 +26,11 @@ export const ResultLanding = () => {
       </h2>
 
       <div className="space-y-4 text-xl md:text-2xl">
-        <p>Gesamtpunkte: {totalPoints.toFixed(1)}</p>
-        <p>Easy: {categoryPoints.easy.toFixed(1)} Punkte</p>
-        <p>Medium: {categoryPoints.medium.toFixed(1)} Punkte</p>
-        <p>Hard: {categoryPoints.hard.toFixed(1)} Punkte</p>
+        <p>Gesamtpunkte: {totalPoints}</p>
+        <p>Mögliche Punkte: {quizSet.totalPossiblePoints}</p>
+        <p>Easy: {categoryPoints.easy} Punkte</p>
+        <p>Medium: {categoryPoints.medium} Punkte</p>
+        <p>Hard: {categoryPoints.hard} Punkte</p>
       </div>
 
       {!showResult && (

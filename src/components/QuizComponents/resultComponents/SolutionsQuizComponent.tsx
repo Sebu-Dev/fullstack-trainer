@@ -12,15 +12,18 @@ interface SolutionsQuizComponentProps {
 export const SolutionsQuizComponent = ({
   question,
 }: SolutionsQuizComponentProps) => {
-  const { quizSet } = useQuizStore();
+  const { getQuestionPoints } = useQuizStore();
+
+  const achievedPoints = getQuestionPoints(question.id);
+  const maxPoints = 4; // Jede Frage hat maximal 4 Punkte
 
   const calculateCardColor = () => {
-    const answer = quizSet.answers.find((a) => a.question.id === question.id);
-    const allCorrect = answer?.userAnswers.every(
-      (ua) => ua.isSelected === ua.option.isCorrect
-    );
-
-    return allCorrect ? "bg-green-600/30" : "bg-red-600/10";
+    if (achievedPoints === maxPoints) {
+      return "bg-green-600/30"; // Vollständig korrekt
+    } else if (achievedPoints > 0) {
+      return "bg-yellow-500/20"; // Teilweise korrekt
+    }
+    return "bg-red-600/10"; // Keine Punkte
   };
 
   return (
@@ -30,6 +33,12 @@ export const SolutionsQuizComponent = ({
       className={`h-full ${calculateCardColor()}`}
     >
       <div className="flex flex-col items-start">
+        {/* Punkte-Anzeige */}
+        <div className="self-end mb-2 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm">
+          {achievedPoints}/{maxPoints} Punkte
+        </div>
+
+        {/* Frage-Inhalt */}
         <QuestionImage imageUrl={question.imageUrl} />
         <CheckedAnswerList question={question} />
         <QuestionDetails

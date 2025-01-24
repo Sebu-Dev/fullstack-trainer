@@ -6,7 +6,7 @@ import { QuizIntroduction } from "./QuizIntroduction";
 import { DangerButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const Quiz = () => {
-  const { quizSet } = useQuizStore(); // Get quizSet from the store
+  const { quizSet } = useQuizStore();
   const navigator = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
 

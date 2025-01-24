@@ -880,27 +880,6 @@ const reactQuestions: Question[] = [
     difficulty: "hard",
     category: ["React", "Refs"],
   },
-  {
-    id: uuidv4(),
-    text: "Was ist ein Vorteil von Zustand gegenüber React Context?",
-    options: [
-      {
-        text: "Zustand hat weniger Boilerplate und ist schneller",
-        isCorrect: true,
-      },
-      {
-        text: "Zustand rendert Komponenten bei jedem Update neu",
-        isCorrect: false,
-      },
-      {
-        text: "Zustand nutzt ausschließlich Redux-ähnliche Patterns",
-        isCorrect: false,
-      },
-      { text: "Zustand erfordert mehrere Context-Provider", isCorrect: false },
-    ],
-    difficulty: "medium",
-    category: ["React", "State Management"],
-  },
 ];
 
 export default reactQuestions;

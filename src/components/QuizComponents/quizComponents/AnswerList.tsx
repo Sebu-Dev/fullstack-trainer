@@ -9,7 +9,6 @@ interface AnswerListProps {
 export const AnswerList = ({ question }: AnswerListProps) => {
   const { quizSet, toggleUserAnswer } = useQuizStore();
 
-  // Find the user answers for the current question
   const userAnswers = quizSet.answers.find(
     (answer) => answer.question.text === question.text
   )?.userAnswers;
