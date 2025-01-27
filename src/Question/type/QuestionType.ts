@@ -25,9 +25,10 @@ export type Question = {
   maxPoints?: number;
 };
 
-export type Quizset = {
+export type QuizSet = {
   questions: Question[];
   answers: Answer[];
   totalPossiblePoints: number;
   totalAchievedPoints: number;
 };
+// types/QuestionType.ts

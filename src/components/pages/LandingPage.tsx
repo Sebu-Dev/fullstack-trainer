@@ -5,13 +5,13 @@ import {
   SecondaryButton,
 } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 export const LandingPage = () => {
-  const { createQuizset: createQuiz } = useQuizStore();
+  const { generateQuizSet } = useQuizStore();
   const navigate = useNavigate();
   const handleCategoryOnClick = () => {
     navigate("/filter");
   };
   const handleStartQuizOnClick = () => {
-    createQuiz();
+    generateQuizSet();
     navigate("/quiz");
   };
   return (
@@ -32,12 +32,12 @@ export const LandingPage = () => {
           hoverEffect={{ scale: 1.03 }}
           handleOnClick={handleCategoryOnClick}
           glowEffect
-          textColor="text-xl"
+          className="text-xl"
         >
           Kategorien
         </PrimaryButton>
         <SecondaryButton
-          textColor="text-xl"
+          className="text-xl"
           animationHover
           hoverEffect={{
             scale: 1,
