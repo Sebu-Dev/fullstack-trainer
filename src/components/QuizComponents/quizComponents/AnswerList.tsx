@@ -7,14 +7,14 @@ interface AnswerListProps {
 }
 
 export const AnswerList = ({ question }: AnswerListProps) => {
-  const { quizSet, toggleUserAnswer } = useQuizStore();
+  const { quizSet, updateUserAnswer } = useQuizStore();
 
   const userAnswers = quizSet.answers.find(
     (answer) => answer.question.text === question.text
   )?.userAnswers;
 
   const handleAnswerSelect = (optionText: string) => {
-    toggleUserAnswer(question.id, optionText);
+    updateUserAnswer(question.id, optionText);
   };
 
   return (
