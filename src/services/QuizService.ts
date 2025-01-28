@@ -12,7 +12,10 @@ export const QuizService = {
     const selectedQuestions = shuffleArray(filtered).slice(0, questionCount);
 
     return {
-      questions: selectedQuestions,
+      questions: selectedQuestions.map((question) => ({
+        ...question,
+        options: shuffleArray(question.options),
+      })),
       answers: selectedQuestions.map((question) => ({
         question,
         userAnswers: question.options.map((option) => ({

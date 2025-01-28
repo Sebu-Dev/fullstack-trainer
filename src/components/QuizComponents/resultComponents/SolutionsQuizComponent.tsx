@@ -15,7 +15,7 @@ export const SolutionsQuizComponent = ({
   const { getQuestionPoints } = useQuizStore();
 
   const achievedPoints = getQuestionPoints(question.id);
-  const maxPoints = 4; // Jede Frage hat maximal 4 Punkte
+  const maxPoints = 4;
 
   const calculateCardColor = () => {
     if (achievedPoints === maxPoints) {
@@ -32,13 +32,14 @@ export const SolutionsQuizComponent = ({
       themeMode="light"
       className={`h-full ${calculateCardColor()}`}
     >
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start h-full">
         {/* Punkte-Anzeige */}
-        <div className="self-end mb-2 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm">
+        <div className="self-end mb-2 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm ">
           {achievedPoints}/{maxPoints} Punkte
         </div>
 
         {/* Frage-Inhalt */}
+
         <QuestionImage imageUrl={question.imageUrl} />
         <CheckedAnswerList question={question} />
         <QuestionDetails

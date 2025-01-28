@@ -19,12 +19,24 @@ interface QuizStore {
   getQuestionPoints: (questionId: string) => number;
   getTotalPoints: () => number;
   getAllCategories: () => string[];
+  resetQuizState: () => void;
 }
 
 const useQuizStore = create<QuizStore>((set, get) => ({
   questionList: questionsData,
   quizSet: LocalStorageService.getQuizSet(),
   selectedCategories: [],
+  resetQuizState: () => {
+    set({
+      quizSet: LocalStorageService.saveQuizSet({
+        questions: [],
+        answers: [],
+        totalPossiblePoints: 0,
+        totalAchievedPoints: 0,
+      }),
+      selectedCategories: [],
+    });
+  },
 
   generateQuizSet: () => {
     const newSet = QuizService.generateQuizSet(
@@ -57,6 +69,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     LocalStorageService.saveQuizSet(updatedQuizSet);
     set({ quizSet: updatedQuizSet });
   },
+
   getQuestionPoints: (questionId) =>
     get().quizSet.answers.find((a) => a.question.id === questionId)
       ?.achievedPoints || 0,

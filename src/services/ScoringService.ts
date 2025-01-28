@@ -2,16 +2,30 @@ import type { Answer, QuizSet } from "../Question/type/QuestionType";
 
 export class ScoringService {
   static calculateQuestionPoints(answer: Answer): number {
-    return Math.max(
-      0,
-      answer.userAnswers.reduce((totalPoints, userAnswer) => {
-        const isCorrectSelection =
-          userAnswer.isSelected === userAnswer.option.isCorrect;
-        return isCorrectSelection
-          ? totalPoints + (userAnswer.option.isCorrect ? 1 : -1)
-          : totalPoints;
-      }, 0)
-    );
+    const correctOptions = answer.question.options.filter(
+      (option) => option.isCorrect === true
+    ).length;
+
+    if (correctOptions === 1) {
+      const allCorrect = answer.userAnswers.every(
+        (answer) => answer.isSelected === answer.option.isCorrect
+      );
+      return allCorrect ? 4 : 0;
+    }
+
+    const correct = answer.userAnswers.filter(
+      (answer) => answer.isSelected === answer.option.isCorrect
+    ).length;
+    let inCorrect = answer.userAnswers.filter(
+      (answer) => !answer.isSelected === answer.option.isCorrect
+    ).length;
+
+    if (inCorrect > 1) {
+      inCorrect = 4;
+    }
+    const result = correct - inCorrect;
+    console.log(result);
+    return Math.max(0, result, 0);
   }
 
   static calculateTotalPoints(answers: Answer[]): number {
