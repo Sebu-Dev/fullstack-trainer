@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import useQuizStore from "../../../Question/store/QuizStore";
 import { ScoringService } from "../../../services/ScoringService";
+import { BackHomeButton } from "../../../ui-components/BackHomeButton";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const ResultLanding = () => {
@@ -20,11 +21,13 @@ export const ResultLanding = () => {
 
   return (
     <div className="px-4 py-8 text-center">
+      {/* Titel */}
       <h2 className="text-4xl font-bold mb-8 text-cyan-400 md:text-6xl lg:text-7xl">
         <span className="block lg:hidden">Quiz Ergebnis</span>
         <span className="hidden lg:block">Dein Quiz Ergebnis</span>
       </h2>
 
+      {/* Ergebnisse */}
       <div className="space-y-4 text-xl md:text-2xl">
         <p>Gesamtpunkte: {totalPoints}</p>
         <p>Mögliche Punkte: {quizSet.totalPossiblePoints}</p>
@@ -33,6 +36,7 @@ export const ResultLanding = () => {
         <p>Hard: {categoryPoints.hard} Punkte</p>
       </div>
 
+      {/* "Lösungen anzeigen" Button */}
       {!showResult && (
         <div className="mt-8 flex justify-center">
           <BaseButton
@@ -44,11 +48,16 @@ export const ResultLanding = () => {
         </div>
       )}
 
+      {/* Ergebnisanzeige */}
       {showResult && (
         <div className="mt-8">
+          <BackHomeButton />
           <Outlet />
         </div>
       )}
+
+      {/* Optional: Back Button unten */}
+      {!showResult && <div className="mt-8 flex justify-center"></div>}
     </div>
   );
 };

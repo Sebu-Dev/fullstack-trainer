@@ -1,10 +1,10 @@
 import type { Answer } from "../Question/type/QuestionType";
-import { calculatePoints } from "../utils/helpers";
+import { ScoringService } from "../services/ScoringService";
 
-describe("calculatePoints with multiple correct and incorrect options", () => {
-  it("should calculate points correctly for easy questions with multiple answers", () => {
-    const answers: Answer[] = [
-      {
+describe("ScoringService Tests", () => {
+  describe("calculateQuestionPoints", () => {
+    it("should calculate points correctly for a question with all correct answers", () => {
+      const answer: Answer = {
         question: {
           id: "1",
           text: "Which of the following are prime numbers?",
@@ -20,11 +20,18 @@ describe("calculatePoints with multiple correct and incorrect options", () => {
         userAnswers: [
           { option: { text: "2", isCorrect: true }, isSelected: true },
           { option: { text: "3", isCorrect: true }, isSelected: true },
-          { option: { text: "4", isCorrect: false }, isSelected: false },
+          { option: { text: "4", isCorrect: false }, isSelected: true },
           { option: { text: "5", isCorrect: true }, isSelected: true },
         ],
-      },
-      {
+        achievedPoints: 0,
+      };
+
+      const result = ScoringService.calculateQuestionPoints(answer);
+      expect(result).toBe(2);
+    });
+
+    it("should calculate points correctly for partially correct answers", () => {
+      const answer: Answer = {
         question: {
           id: "2",
           text: "Which of the following are even numbers?",
@@ -38,174 +45,115 @@ describe("calculatePoints with multiple correct and incorrect options", () => {
           category: ["math"],
         },
         userAnswers: [
-          { option: { text: "1", isCorrect: false }, isSelected: true },
+          { option: { text: "1", isCorrect: false }, isSelected: false },
           { option: { text: "2", isCorrect: true }, isSelected: false },
           { option: { text: "3", isCorrect: false }, isSelected: true },
           { option: { text: "4", isCorrect: true }, isSelected: true },
         ],
-      },
-    ];
+        achievedPoints: 0,
+      };
 
-    const result = calculatePoints(answers);
-    expect(result.totalPoints).toBe(1); // The first question is correct, the second has incorrect selections
-    expect(result.categoryPoints.easy).toBe(1);
+      const result = ScoringService.calculateQuestionPoints(answer);
+      expect(result).toBe(0);
+    });
   });
 
-  it("should calculate points correctly for medium questions with multiple answers", () => {
-    const answers: Answer[] = [
-      {
-        question: {
-          id: "3",
-          text: "Which of the following are colors of the rainbow?",
-          options: [
-            { text: "Red", isCorrect: true },
-            { text: "Blue", isCorrect: true },
-            { text: "Green", isCorrect: true },
-            { text: "Pink", isCorrect: false },
+  describe("calculateTotalPoints", () => {
+    it("should calculate total points across multiple answers", () => {
+      const answers: Answer[] = [
+        {
+          question: {
+            id: "1",
+            text: "Which of the following are prime numbers?",
+            options: [
+              { text: "2", isCorrect: true },
+              { text: "3", isCorrect: true },
+              { text: "4", isCorrect: false },
+              { text: "5", isCorrect: true },
+            ],
+            difficulty: "easy",
+            category: ["math"],
+          },
+          userAnswers: [
+            { option: { text: "2", isCorrect: true }, isSelected: true },
+            { option: { text: "3", isCorrect: true }, isSelected: true },
+            { option: { text: "4", isCorrect: false }, isSelected: false },
+            { option: { text: "5", isCorrect: true }, isSelected: true },
           ],
-          difficulty: "medium",
-          category: ["science"],
+          achievedPoints: 0,
         },
-        userAnswers: [
-          { option: { text: "Red", isCorrect: true }, isSelected: true },
-          { option: { text: "Blue", isCorrect: true }, isSelected: true },
-          { option: { text: "Green", isCorrect: true }, isSelected: true },
-          { option: { text: "Pink", isCorrect: false }, isSelected: false },
-        ],
-      },
-      {
-        question: {
-          id: "4",
-          text: "Which of the following are mammals?",
-          options: [
-            { text: "Lion", isCorrect: true },
-            { text: "Shark", isCorrect: false },
-            { text: "Elephant", isCorrect: true },
-            { text: "Crocodile", isCorrect: false },
+        {
+          question: {
+            id: "2",
+            text: "Which of the following are even numbers?",
+            options: [
+              { text: "1", isCorrect: false },
+              { text: "2", isCorrect: true },
+              { text: "3", isCorrect: false },
+              { text: "4", isCorrect: true },
+            ],
+            difficulty: "easy",
+            category: ["math"],
+          },
+          userAnswers: [
+            { option: { text: "1", isCorrect: false }, isSelected: true },
+            { option: { text: "2", isCorrect: true }, isSelected: false },
+            { option: { text: "3", isCorrect: false }, isSelected: true },
+            { option: { text: "4", isCorrect: true }, isSelected: true },
           ],
-          difficulty: "medium",
-          category: ["biology"],
+          achievedPoints: 0,
         },
-        userAnswers: [
-          { option: { text: "Lion", isCorrect: true }, isSelected: true },
-          { option: { text: "Shark", isCorrect: false }, isSelected: true },
-          { option: { text: "Elephant", isCorrect: true }, isSelected: true },
-          { option: { text: "Crocodile", isCorrect: false }, isSelected: true },
-        ],
-      },
-      {
-        question: {
-          id: "4",
-          text: "Which of the following are mammals?",
-          options: [
-            { text: "Lion", isCorrect: true },
-            { text: "Shark", isCorrect: false },
-            { text: "Elephant", isCorrect: true },
-            { text: "Crocodile", isCorrect: true },
-          ],
-          difficulty: "medium",
-          category: ["biology"],
-        },
-        userAnswers: [
-          { option: { text: "Lion", isCorrect: true }, isSelected: true },
-          { option: { text: "Shark", isCorrect: false }, isSelected: true },
-          { option: { text: "Elephant", isCorrect: true }, isSelected: true },
-          { option: { text: "Crocodile", isCorrect: true }, isSelected: true },
-        ],
-      },
-    ];
+      ];
+      const result = ScoringService.recalculateTotalPoints(answers);
 
-    const result = calculatePoints(answers);
-    expect(result.totalPoints).toBe(1.5); // The first question is fully correct (1 point), the second has 1 error (0.5 points)
-    expect(result.categoryPoints.medium).toBe(1.5);
+      expect(result).toBe(4);
+    });
   });
 
-  it("should calculate points correctly for hard questions with multiple answers", () => {
-    const answers: Answer[] = [
-      {
-        question: {
-          id: "5",
-          text: "Which of the following are even numbers?",
-          options: [
-            { text: "2", isCorrect: true },
-            { text: "4", isCorrect: true },
-            { text: "6", isCorrect: true },
-            { text: "8", isCorrect: true },
-          ],
-          difficulty: "hard",
-          category: ["math"],
+  describe("calculateCategoryPoints", () => {
+    it("should calculate points grouped by difficulty", () => {
+      const answers: Answer[] = [
+        {
+          question: {
+            id: "1",
+            text: "Prime numbers?",
+            options: [],
+            difficulty: "easy",
+            category: ["math"],
+          },
+          userAnswers: [],
+          achievedPoints: 3,
         },
-        userAnswers: [
-          { option: { text: "2", isCorrect: true }, isSelected: true },
-          { option: { text: "4", isCorrect: true }, isSelected: true },
-          { option: { text: "6", isCorrect: true }, isSelected: true },
-          { option: { text: "8", isCorrect: true }, isSelected: true },
-        ],
-      },
-      {
-        question: {
-          id: "6",
-          text: "Which of the following are planets?",
-          options: [
-            { text: "Earth", isCorrect: true },
-            { text: "Pluto", isCorrect: false },
-            { text: "Mars", isCorrect: true },
-            { text: "Sun", isCorrect: false },
-          ],
-          difficulty: "hard",
-          category: ["science"],
+        {
+          question: {
+            id: "2",
+            text: "Even numbers?",
+            options: [],
+            difficulty: "medium",
+            category: ["math"],
+          },
+          userAnswers: [],
+          achievedPoints: 2,
         },
-        userAnswers: [
-          { option: { text: "Earth", isCorrect: true }, isSelected: true },
-          { option: { text: "Pluto", isCorrect: false }, isSelected: true },
-          { option: { text: "Mars", isCorrect: true }, isSelected: true },
-          { option: { text: "Sun", isCorrect: false }, isSelected: true },
-        ],
-      },
-      {
-        question: {
-          id: "8",
-          text: "Which of the following are planets?",
-          options: [
-            { text: "Earth", isCorrect: true },
-            { text: "Pluto", isCorrect: false },
-            { text: "Mars", isCorrect: true },
-            { text: "Sun", isCorrect: false },
-          ],
-          difficulty: "hard",
-          category: ["science"],
+        {
+          question: {
+            id: "3",
+            text: "Rainbow colors?",
+            options: [],
+            difficulty: "hard",
+            category: ["science"],
+          },
+          userAnswers: [],
+          achievedPoints: 4,
         },
-        userAnswers: [
-          { option: { text: "Earth", isCorrect: true }, isSelected: true },
-          { option: { text: "Pluto", isCorrect: false }, isSelected: false },
-          { option: { text: "Mars", isCorrect: true }, isSelected: true },
-          { option: { text: "Sun", isCorrect: false }, isSelected: true },
-        ],
-      },
-      {
-        question: {
-          id: "9",
-          text: "Which of the following are planets?",
-          options: [
-            { text: "Earth", isCorrect: true },
-            { text: "Pluto", isCorrect: false },
-            { text: "Mars", isCorrect: false },
-            { text: "Sun", isCorrect: false },
-          ],
-          difficulty: "hard",
-          category: ["science"],
-        },
-        userAnswers: [
-          { option: { text: "Earth", isCorrect: true }, isSelected: true },
-          { option: { text: "Pluto", isCorrect: false }, isSelected: false },
-          { option: { text: "Mars", isCorrect: false }, isSelected: false },
-          { option: { text: "Sun", isCorrect: false }, isSelected: true },
-        ],
-      },
-    ];
+      ];
 
-    const result = calculatePoints(answers);
-    expect(result.totalPoints).toBe(4); // The first question is fully correct (2 points), the second has 1 error (1 point)
-    expect(result.categoryPoints.hard).toBe(4);
+      const result = ScoringService.calculateCategoryPoints(answers);
+      expect(result).toEqual({
+        easy: 3,
+        medium: 2,
+        hard: 4,
+      });
+    });
   });
 });

@@ -11,7 +11,7 @@ interface QuizComponentProps {
 export const QuizComponent = ({ question }: QuizComponentProps) => {
   return (
     <Card title={question.text} themeMode="light">
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start ">
         <QuestionImage imageUrl={question.imageUrl} />
         <AnswerList question={question} />
         <QuestionDetails

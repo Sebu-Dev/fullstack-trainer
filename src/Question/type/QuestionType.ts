@@ -31,4 +31,3 @@ export type QuizSet = {
   totalPossiblePoints: number;
   totalAchievedPoints: number;
 };
-// types/QuestionType.ts

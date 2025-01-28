@@ -30,7 +30,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
         <li key={index} className="flex flex-col">
           <BaseButton
             label={option.text}
-            className={`max-h-20 ${getAnswerState(option)}`}
+            className={`text-sm ${getAnswerState(option)}`}
             hoverEffect={{ scale: 1 }}
             tapEffect={{ scale: 1 }}
           />
