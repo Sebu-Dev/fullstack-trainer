@@ -1,20 +1,20 @@
-export type Option = {
+export interface Option {
   text: string;
   isCorrect: boolean;
-};
+}
 
-export type UserAnswer = {
+export interface UserAnswer {
   option: Option;
   isSelected: boolean;
-};
+}
 
-export type Answer = {
+export interface Answer {
   question: Question;
   userAnswers: UserAnswer[];
   achievedPoints: number;
-};
+}
 
-export type Question = {
+export interface Question {
   id: string;
   text: string;
   options: Option[];
@@ -23,11 +23,11 @@ export type Question = {
   explanation?: string;
   imageUrl?: string;
   maxPoints?: number;
-};
+}
 
-export type QuizSet = {
+export interface QuizSet {
   questions: Question[];
   answers: Answer[];
   totalPossiblePoints: number;
   totalAchievedPoints: number;
-};
+}

@@ -18,6 +18,7 @@ const reactQuestions: Question[] = [
         text: "`useState` ersetzt den globalen Zustand in einer Anwendung",
         isCorrect: false,
       },
+
       {
         text: "`useMemo` wird verwendet, um Re-Rendering zu vermeiden, indem es berechnete Werte speichert",
         isCorrect: true,
@@ -28,6 +29,34 @@ const reactQuestions: Question[] = [
     explanation:
       "`useEffect` wird für Seiteneffekte wie API-Aufrufe verwendet, `useMemo` speichert berechnete Werte, und `useRef` hilft bei der direkten Referenzierung von DOM-Elementen.",
   },
+
+  {
+    id: uuidv4(),
+    text: "Wann wird eine React-Komponente neu gerendert?",
+    options: [
+      { text: "Bei Änderung des eigenen State", isCorrect: true },
+      { text: "Wenn die Parent-Komponente rendert", isCorrect: true },
+      { text: "Bei Änderung von Context-Werten", isCorrect: true },
+      { text: "Bei Änderungen im Window-Objekt", isCorrect: false },
+    ],
+    difficulty: "hard",
+    category: ["React Rendering"],
+    explanation: "Rendering bei State/Prop-Änderungen oder Context-Updates.",
+  },
+  {
+    id: uuidv4(),
+    text: "Was bewirkt useMemo in React?",
+    options: [
+      { text: "Memoisiert teure Berechnungen", isCorrect: true },
+      { text: "Optimiert Performance bei Renderings", isCorrect: true },
+      { text: "Verhindert Neurendering der Komponente", isCorrect: false },
+      { text: "Speichert Funktionen zwischen", isCorrect: false },
+    ],
+    difficulty: "hard",
+    category: ["React Hooks"],
+    explanation: "useMemo reduziert teure Neuberechnungen zwischen Renders.",
+  },
+
   {
     id: uuidv4(),
     text: "Was ist der Hauptunterschied zwischen Funktionskomponenten und Klassenkomponenten in React?",
