@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+import { BaseButton } from "sebu-dev-react-lib";
 
 export const BackButton = () => {
   const navigate = useNavigate();

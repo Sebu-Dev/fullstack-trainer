@@ -16,7 +16,7 @@ export const Quiz = () => {
   };
 
   const handleQuizSubmit = () => {
-    navigator("/fullstack-trainer/quiz-result");
+    navigator("/quiz-result");
   };
 
   const SubmitButton = () => {

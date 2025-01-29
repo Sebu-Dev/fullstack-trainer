@@ -1,10 +1,7 @@
 import { useMemo, type ReactNode } from "react";
+import { Popup, PrimaryButton } from "sebu-dev-react-lib";
 import { QuizCsvConverter } from "../csv/csvUtils";
 import useQuizStore from "../store/QuizStore";
-import {
-  Popup,
-  PrimaryButton,
-} from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 interface CsvDownloadPopupProps {
   setToggleDownload: (togglePopup: boolean) => void;
   toggleDownload: boolean;

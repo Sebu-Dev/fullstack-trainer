@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 
 import { useCallback, useMemo } from "react";
+import { BaseButton, SecondaryButton } from "sebu-dev-react-lib";
 import useQuizStore from "../../store/QuizStore";
-import {
-  BaseButton,
-  SecondaryButton,
-} from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 interface FilterSidebarProps {
   isOpen: boolean;
   onClose: () => void;

@@ -1,7 +1,4 @@
-import {
-  BaseButton,
-  Popup,
-} from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
+import { BaseButton, Popup } from "sebu-dev-react-lib";
 
 interface QuizIntroductionProps {
   handleOnClick: () => void;
