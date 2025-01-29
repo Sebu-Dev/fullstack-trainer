@@ -24,7 +24,7 @@ export class ScoringService {
       inCorrect = 4;
     }
     const result = correct - inCorrect;
-    console.log(result);
+
     return Math.max(0, result, 0);
   }
 
