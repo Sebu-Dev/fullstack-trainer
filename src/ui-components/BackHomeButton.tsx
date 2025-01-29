@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import useQuizStore from "../Question/store/QuizStore";
+import useQuizStore from "../store/QuizStore";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const BackHomeButton = () => {
@@ -8,8 +8,8 @@ export const BackHomeButton = () => {
   const resetQuizState = useQuizStore((state) => state.resetQuizState);
 
   const handleRestart = () => {
-    resetQuizState(); // Zustand zurücksetzen
-    navigate("/", {}); // Navigation zur Mainpage
+    resetQuizState();
+    navigate("/fullstack-trainer", {});
   };
 
   return (

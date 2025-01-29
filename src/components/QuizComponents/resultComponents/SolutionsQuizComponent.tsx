@@ -1,5 +1,5 @@
-import useQuizStore from "../../../Question/store/QuizStore";
 import type { Question } from "../../../Question/type/QuestionType";
+import useQuizStore from "../../../store/QuizStore";
 import { QuestionDetails } from "../QuestionDetails";
 import { QuestionImage } from "../QuestionImg";
 import { CheckedAnswerList } from "./CheckedAnswerList";

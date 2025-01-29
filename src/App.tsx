@@ -1,5 +1,4 @@
-import { Route, Routes } from "react-router-dom";
-import { FilterQuestions } from "./components/Filter/FilterQuestions";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { LandingPage } from "./components/pages/LandingPage";
 import { Quiz } from "./components/QuizComponents/quizComponents/Quiz";
 import { QuizResult } from "./components/QuizComponents/resultComponents/QuizResult";
@@ -11,17 +10,21 @@ const App = () => {
   return (
     <Layout nav={true}>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route
-          path="/filter"
-          element={
-            <>
-              <FilterQuestions />
-            </>
-          }
+          path="/"
+          element={<Navigate to="/fullstack-trainer" replace />}
         />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz-result" element={<ResultLanding />}>
+        <Route
+          path="/Quiz/"
+          element={<Navigate to="/fullstack-trainer" replace />}
+        />
+
+        <Route path="/fullstack-trainer" element={<LandingPage />} />
+        <Route path="/fullstack-trainer/quiz" element={<Quiz />} />
+        <Route
+          path="/fullstack-trainer/quiz-result"
+          element={<ResultLanding />}
+        >
           <Route path="checked-answers" element={<QuizResult />} />
         </Route>
       </Routes>

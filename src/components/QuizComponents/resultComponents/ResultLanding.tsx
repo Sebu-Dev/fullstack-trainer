@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import useQuizStore from "../../../Question/store/QuizStore";
 import { ScoringService } from "../../../services/ScoringService";
+import useQuizStore from "../../../store/QuizStore";
 import { BackHomeButton } from "../../../ui-components/BackHomeButton";
 import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
