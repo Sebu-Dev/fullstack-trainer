@@ -1,4 +1,4 @@
-import useQuizStore from "../../../Question/store/QuizStore";
+import useQuizStore from "../../../store/QuizStore";
 import { SolutionsQuizComponent } from "./SolutionsQuizComponent";
 
 export const QuizResult = () => {

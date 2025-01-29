@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DangerButton } from "sebu-dev-react-lib";
-import useQuizStore from "../../../Question/store/QuizStore";
+import useQuizStore from "../../../store/QuizStore";
 import { BackButton } from "../../../ui-components/BackButton";
 import { QuizComponent } from "./QuizComponent";
 import { QuizIntroduction } from "./QuizIntroduction";
@@ -16,7 +16,7 @@ export const Quiz = () => {
   };
 
   const handleQuizSubmit = () => {
-    navigator("/quiz-result");
+    navigator("/fullstack-trainer/quiz-result");
   };
 
   const SubmitButton = () => {

@@ -1,6 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 import { QuizCsvConverter } from "../csv/csvUtils";
-import useQuizStore from "../Question/store/QuizStore";
+import useQuizStore from "../store/QuizStore";
 import {
   Popup,
   PrimaryButton,

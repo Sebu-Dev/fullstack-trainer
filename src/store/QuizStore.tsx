@@ -1,10 +1,9 @@
 import { create } from "zustand";
-import questionsData from "../data/questionData";
-
-import { FilterService } from "../../services/FilterService";
-import { LocalStorageService } from "../../services/LocalStorageService";
-import { QuizService } from "../../services/QuizService";
-import type { Question, QuizSet } from "../type/QuestionType";
+import questionsData from "../Question/data/questionData";
+import type { Question, QuizSet } from "../Question/type/QuestionType";
+import { FilterService } from "../services/FilterService";
+import { LocalStorageService } from "../services/LocalStorageService";
+import { QuizService } from "../services/QuizService";
 
 interface QuizStore {
   questionList: Question[];
@@ -42,7 +41,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     const newSet = QuizService.generateQuizSet(
       get().questionList,
       get().selectedCategories,
-      5 // Anzahl Fragen
+      6 // Anzahl Fragen
     );
     set({ quizSet: LocalStorageService.saveQuizSet(newSet) });
   },

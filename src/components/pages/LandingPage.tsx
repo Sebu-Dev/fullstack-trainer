@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useQuizStore from "../../Question/store/QuizStore";
+import useQuizStore from "../../store/QuizStore";
 import { CsvDownloadButton } from "../CsvDownloadButton";
 import { CsvDownloadPopup } from "../CsvDownloadPopup";
+import { FilterSidebar } from "../Filter/FilterSidebar";
 import {
   PrimaryButton,
   SecondaryButton,
@@ -10,14 +11,15 @@ import {
 export const LandingPage = () => {
   const { generateQuizSet } = useQuizStore();
   const [toggleDownload, setToggleDownload] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navigate = useNavigate();
   const handleCategoryOnClick = () => {
-    navigate("/filter");
+    setIsSidebarOpen(true);
   };
   const handleStartQuizOnClick = () => {
     generateQuizSet();
-    navigate("/quiz");
+    navigate("/fullstack-trainer/quiz");
   };
 
   return (
@@ -27,6 +29,10 @@ export const LandingPage = () => {
           toggleDownload={toggleDownload}
           setToggleDownload={setToggleDownload}
         >
+          <FilterSidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+          />
           <div
             className="flex  flex-col items-center justify-center text-center -translate-y-[50px] lg:-translate-y-[80px]"
             style={{ minHeight: "calc(100vh - 228px)" }}
