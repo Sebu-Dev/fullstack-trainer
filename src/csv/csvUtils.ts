@@ -30,7 +30,7 @@ export const QuizCsvConverter = {
         question.id || generateId(),
         escapeCsvField(question.text),
         question.difficulty || "",
-        question.category.join(";"),
+        question.category.join(" "),
         question.explanation ? escapeCsvField(question.explanation) : "",
         question.imageUrl || "",
         question.maxPoints?.toString() || "",
@@ -40,11 +40,11 @@ export const QuizCsvConverter = {
         ]),
       ];
 
-      return fields.join(",");
+      return fields.join(";");
     });
 
     // Gib das gesamte CSV zurück, bestehend aus den Headern und den Daten
-    return [CSV_HEADERS.join(","), ...csvRows].join("\n");
+    return "\uFEFF" + [CSV_HEADERS.join(";"), ...csvRows].join("\n");
   },
 
   // Parsen des CSV-Inhalts zurück zu Fragen
@@ -55,7 +55,7 @@ export const QuizCsvConverter = {
 
     if (!headerLine) return { questions: [], topic: "" };
 
-    const headers = headerLine.split(",");
+    const headers = headerLine.split(";");
     const topic = this.getCsvValue(
       headers,
       this.splitCsvLine(dataLines[0]),
@@ -72,7 +72,7 @@ export const QuizCsvConverter = {
           this.getCsvValue(headers, values, "QuestionText")
         ),
         options: this.parseOptions(headers, values),
-        category: this.getCsvValue(headers, values, "Categories").split(";"),
+        category: this.getCsvValue(headers, values, "Categories").split(" "),
         difficulty: this.getOptionalValue(headers, values, "Difficulty"),
         explanation: this.getOptionalValue(headers, values, "Explanation"),
         imageUrl: this.getOptionalValue(headers, values, "ImageURL"),
@@ -144,18 +144,6 @@ export const QuizCsvConverter = {
 
   // Teilt eine CSV-Zeile in einzelne Felder auf
   splitCsvLine(line: string): string[] {
-    const regex = /(?:,|\n|^)("(?:(?:")*[^"]*)*"|[^",\n]*|(?:\n|$))/g;
-    const values: string[] = [];
-    let match;
-
-    while ((match = regex.exec(line)) !== null) {
-      let value = match[1];
-      if (value.startsWith('"') && value.endsWith('"')) {
-        value = value.slice(1, -1);
-      }
-      values.push(value);
-    }
-
-    return values;
+    return line.split(";").map((value) => value.trim());
   },
 };
