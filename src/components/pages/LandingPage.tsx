@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PrimaryButton, SecondaryButton } from "sebu-dev-react-lib";
 import useQuizStore from "../../store/QuizStore";
 import { CsvDownloadButton } from "../CsvDownloadButton";
 import { CsvDownloadPopup } from "../CsvDownloadPopup";
 import { FilterSidebar } from "../Filter/FilterSidebar";
-import {
-  PrimaryButton,
-  SecondaryButton,
-} from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 export const LandingPage = () => {
   const { generateQuizSet } = useQuizStore();
   const [toggleDownload, setToggleDownload] = useState(false);
@@ -19,7 +16,7 @@ export const LandingPage = () => {
   };
   const handleStartQuizOnClick = () => {
     generateQuizSet();
-    navigate("/fullstack-trainer/quiz");
+    navigate("/quiz");
   };
 
   return (

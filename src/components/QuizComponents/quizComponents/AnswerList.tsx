@@ -1,6 +1,6 @@
+import { BaseButton } from "sebu-dev-react-lib";
 import type { Question } from "../../../Question/type/QuestionType";
 import useQuizStore from "../../../store/QuizStore";
-import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface AnswerListProps {
   question: Question;

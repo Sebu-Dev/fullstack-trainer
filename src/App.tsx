@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
+import { Layout } from "sebu-dev-react-lib";
 import { LandingPage } from "./components/pages/LandingPage";
 import { Quiz } from "./components/QuizComponents/quizComponents/Quiz";
 import { ResultLanding } from "./components/QuizComponents/resultComponents/ResultLanding";
-import { Layout } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 import "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib/dist/sebu-dev-react-lib.css";
 
 const App = () => {

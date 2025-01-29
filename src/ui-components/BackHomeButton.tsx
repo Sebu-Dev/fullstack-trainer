@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import { BaseButton } from "sebu-dev-react-lib";
 import useQuizStore from "../store/QuizStore";
-import { BaseButton } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 export const BackHomeButton = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ export const BackHomeButton = () => {
 
   const handleRestart = () => {
     resetQuizState();
-    navigate("/fullstack-trainer", {});
+    navigate("/", {});
   };
 
   return (

@@ -1,8 +1,8 @@
+import { Card } from "sebu-dev-react-lib";
 import type { Question } from "../../../Question/type/QuestionType";
 import { QuestionDetails } from "../QuestionDetails";
 import { QuestionImage } from "../QuestionImg";
 import { AnswerList } from "./AnswerList";
-import { Card } from "/Users/vwbspk0/Desktop/VsCode/npm-packages/sebu-dev-react-lib";
 
 interface QuizComponentProps {
   question: Question;
