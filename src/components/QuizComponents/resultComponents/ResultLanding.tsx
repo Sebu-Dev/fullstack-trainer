@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { BaseButton } from "sebu-dev-react-lib";
 import { ScoringService } from "../../../services/ScoringService";
 import useQuizStore from "../../../store/QuizStore";
@@ -8,7 +8,6 @@ import { BackHomeButton } from "../../../ui-components/BackHomeButton";
 export const ResultLanding = () => {
   const { quizSet, getTotalPoints } = useQuizStore();
   const [showResult, setShowResult] = useState(false);
-  const navigate = useNavigate();
   const totalPoints = getTotalPoints();
   const categoryPoints = ScoringService.calculateCategoryPoints(
     quizSet.answers
@@ -16,7 +15,6 @@ export const ResultLanding = () => {
 
   const handleOnClick = () => {
     setShowResult(true);
-    navigate("checked-answers");
   };
 
   return (

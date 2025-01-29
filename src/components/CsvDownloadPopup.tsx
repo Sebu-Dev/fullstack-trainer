@@ -26,8 +26,6 @@ export const CsvDownloadPopup = ({
   };
 
   const csvContent = useMemo(() => {
-    console.log(quizSet);
-    console.log(questionList);
     const topic = "fullstack";
     return {
       quizSetCsv: QuizCsvConverter.convertToCsv(quizSet.questions, topic),

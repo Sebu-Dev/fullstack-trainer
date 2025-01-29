@@ -14,6 +14,8 @@ export const CsvDownloadButton = ({
     <>
       <IconButton
         handleOnClick={handleToggleDownload}
+        animationHover
+        className="bg-transparent"
         size="text-2xl"
         icon={<FaFileDownload />}
       ></IconButton>
