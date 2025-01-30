@@ -1,18 +1,16 @@
-import { useMemo, type ReactNode } from "react";
+import { useMemo } from "react";
+import { useOutletContext } from "react-router-dom";
 import { Popup, PrimaryButton } from "sebu-dev-react-lib";
 import { QuizCsvConverter } from "../csv/csvUtils";
 import useQuizStore from "../store/QuizStore";
 interface CsvDownloadPopupProps {
   setToggleDownload: (togglePopup: boolean) => void;
   toggleDownload: boolean;
-  children: ReactNode;
 }
 
-export const CsvDownloadPopup = ({
-  children,
-  setToggleDownload,
-  toggleDownload,
-}: CsvDownloadPopupProps) => {
+export const CsvDownloadPopup = () => {
+  const { setToggleDownload, toggleDownload } =
+    useOutletContext<CsvDownloadPopupProps>();
   const { quizSet, questionList } = useQuizStore();
 
   const handleQuestionListCsvDownload = () => {
@@ -42,7 +40,6 @@ export const CsvDownloadPopup = ({
   };
   return (
     <div>
-      {children}
       {toggleDownload && (
         <Popup
           bgOpacity="bg-opacity-5"

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { DangerButton } from "sebu-dev-react-lib";
+import { useQuizNavigation } from "../../../routes/useQuizNavigation";
 import useQuizStore from "../../../store/QuizStore";
 import { BackButton } from "../../../ui-components/BackButton";
 import { QuizComponent } from "./QuizComponent";
@@ -8,15 +8,14 @@ import { QuizIntroduction } from "./QuizIntroduction";
 
 export const Quiz = () => {
   const { quizSet } = useQuizStore();
-  const navigator = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
-
+  const { showQuizResults } = useQuizNavigation();
   const handleClosePopup = () => {
     setShowPopup(false);
   };
 
   const handleQuizSubmit = () => {
-    navigator("/quiz-result");
+    showQuizResults();
   };
 
   const SubmitButton = () => {

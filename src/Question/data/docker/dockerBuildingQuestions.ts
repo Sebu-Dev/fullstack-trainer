@@ -76,7 +76,7 @@ export const dockerBuildingQuestions: Question[] = [
   },
   {
     id: uuidv4(),
-    text: "Welche Vorteile bieten Multi-Stage-Builds bei der Erstellung von Docker-Images? Nenne mindestens zwei Szenarien, in denen sie verwendet werden sollten.",
+    text: "Welche Vorteile bieten Multi-Stage-Builds bei der Erstellung von Docker-Images? ",
     options: [
       { text: "Reduktion der Image-Größe", isCorrect: true },
       { text: "Trennung von Build- und Runtime-Umgebung", isCorrect: true },
