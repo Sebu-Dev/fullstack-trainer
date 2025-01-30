@@ -15,7 +15,165 @@ const reactQuestions: Question[] = [
     category: ["React Rendering"],
     explanation: "Rendering bei State/Prop-Änderungen oder Context-Updates.",
   },
+  {
+    id: uuidv4(),
+    text: "Welche Komponente wird verwendet, um eine React-Anwendung mit der URL zu synchronisieren?",
+    options: [
+      { text: "<BrowserRouter>", isCorrect: true },
+      { text: "<NavLink>", isCorrect: false },
+      { text: "<Route>", isCorrect: false },
+      { text: "<Link>", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["React", "React Router"],
+    explanation:
+      "<BrowserRouter> ist die Basis-Komponente, die React-Router verwendet, um die URL und den Anwendungsstatus zu synchronisieren.",
+  },
+  {
+    id: uuidv4(),
+    text: "Was ist ein Vorteil von Zustand gegenüber React Context?",
+    options: [
+      {
+        text: "Zustand hat weniger Boilerplate und ist schneller",
+        isCorrect: true,
+      },
+      {
+        text: "Zustand rendert Komponenten bei jedem Update neu",
+        isCorrect: false,
+      },
+      {
+        text: "Zustand nutzt ausschließlich Redux-ähnliche Patterns",
+        isCorrect: false,
+      },
+      { text: "Zustand erfordert mehrere Context-Provider", isCorrect: false },
+    ],
+    difficulty: "medium",
+    category: ["React"],
+    explanation:
+      "Zustand ist leichter einzurichten und hat weniger Boilerplate im Vergleich zu React Context, was ihn für einfache Szenarien effizienter macht.",
+  },
+  {
+    id: uuidv4(),
+    text: "Welcher Hook wird in React Query verwendet, um Daten zu aktualisieren oder zu schreiben?",
+    options: [
+      { text: "useMutation", isCorrect: true },
+      { text: "useQueryClient", isCorrect: false },
+      { text: "useFetch", isCorrect: false },
+      { text: "useQuery", isCorrect: false },
+    ],
+    difficulty: "medium",
+    category: ["React"],
+    explanation:
+      "useMutation wird in React Query verwendet, um Daten zu schreiben oder zu aktualisieren, z. B. bei POST-, PUT- oder DELETE-Anfragen.",
+  },
 
+  {
+    id: uuidv4(),
+    text: "Was ist ein typischer Anwendungsfall für Refs in React?",
+    options: [
+      {
+        text: "Zustand speichern, der ein Re-Render auslöst",
+        isCorrect: false,
+      },
+      { text: "Ein DOM-Element direkt referenzieren", isCorrect: true },
+      { text: "Komplexe Animationen im State speichern", isCorrect: false },
+      { text: "Ein neues Re-Render erzwingen", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["React"],
+    explanation:
+      "Refs werden verwendet, um direkt auf DOM-Elemente zuzugreifen, ohne den Component-State zu beeinflussen.",
+  },
+
+  {
+    id: uuidv4(),
+    text: "Was teilen Custom Hooks zwischen Komponenten?",
+    options: [
+      { text: "Den Zustand der Komponente", isCorrect: false },
+      { text: "Props der Komponente", isCorrect: false },
+      { text: "Reaktive Werte werden überschrieben", isCorrect: false },
+      { text: "Die zustandsbehaftete Logik", isCorrect: true },
+    ],
+    difficulty: "medium",
+    category: ["React"],
+    explanation:
+      "Custom Hooks teilen zustandsbehaftete Logik, nicht jedoch den Zustand oder die Props zwischen Komponenten.",
+  },
+
+  {
+    id: uuidv4(),
+    text: "Was ist der Hauptzweck eines Providers im React Context-System?",
+    options: [
+      { text: "Um State zwischen Komponenten zu teilen", isCorrect: true },
+      { text: "Um den Context zu initialisieren", isCorrect: false },
+      { text: "Um die App schneller zu machen", isCorrect: false },
+      { text: "Um eine neue Komponente zu rendern", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["React", "React Context"],
+    explanation:
+      "Ein Provider teilt den Context-Wert an alle untergeordneten Komponenten, die den Context konsumieren.",
+  },
+  {
+    id: uuidv4(),
+    text: "Was ist der Hauptvorteil von useContext im Vergleich zu Props?",
+    options: [
+      {
+        text: "Vermeidet das explizite Weiterreichen von Daten durch Props",
+        isCorrect: true,
+      },
+      { text: "Erhöht die Performance automatisch", isCorrect: false },
+      { text: "Erlaubt das direkte Rendern von Komponenten", isCorrect: false },
+      { text: "Ersetzt alle anderen Hooks", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["React", "React Context"],
+    explanation:
+      "useContext erspart das Weiterreichen von Props über mehrere Ebenen und erleichtert die Handhabung globaler Zustände.",
+  },
+
+  {
+    id: uuidv4(),
+    text: "Welche Methode wird verwendet, um eine Komponente in React zu aktualisieren?",
+    options: [
+      { text: "`setState`", isCorrect: true },
+      { text: "`useEffect`", isCorrect: false },
+      { text: "`render`", isCorrect: false },
+      { text: "`updateState`", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["React"],
+    explanation:
+      "In React wird der Zustand einer Klasse durch die Methode `setState` und in Funktionskomponenten durch `useState` aktualisiert.",
+  },
+  {
+    id: uuidv4(),
+    text: "Wie wird der React Router für Navigation innerhalb einer React-App verwendet?",
+    options: [
+      { text: "`<Router>` und `<Route>`", isCorrect: true },
+      { text: "`<Navigate>` und `<Route>`", isCorrect: false },
+      { text: "`<Switch>` und `<Route>`", isCorrect: false },
+      { text: "`<Link>` und `<Route>`", isCorrect: false },
+    ],
+    difficulty: "medium",
+    category: ["React", "React Router"],
+    explanation:
+      "Der React Router verwendet `<Router>` und `<Route>`, um Navigation und Routen zu definieren.",
+  },
+  {
+    id: uuidv4(),
+    text: "Welche Funktion wird verwendet, um die aktuelle Route mit React Router zu navigieren?",
+    options: [
+      { text: "`useNavigate`", isCorrect: true },
+      { text: "`useHistory`", isCorrect: false },
+      { text: "`useLocation`", isCorrect: false },
+      { text: "`useRouteMatch`", isCorrect: false },
+    ],
+    difficulty: "medium",
+    category: ["React", "React Router"],
+    explanation:
+      "`useNavigate` wird verwendet, um die Navigation zu steuern, wenn der Zustand oder die Route geändert wird.",
+  },
   {
     id: uuidv4(),
     text: "Was ist der Hauptunterschied zwischen Funktionskomponenten und Klassenkomponenten in React?",
@@ -64,7 +222,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "`setState` in einer Klassenkomponente plant ein Re-Rendering. Der neue State wird nicht sofort verfügbar, sondern erst nach dem nächsten Renderzyklus.",
   },
@@ -143,7 +301,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Performance"],
+    category: ["React"],
     explanation:
       "`React.memo()` ist eine HOC (Higher-Order Component), die es ermöglicht, dass eine Komponente nur dann erneut gerendert wird, wenn sich ihre Props tatsächlich ändern, was Performance-Vorteile bringt.",
   },
@@ -222,7 +380,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Performance"],
+    category: ["React"],
     explanation:
       "`useCallback` wird verwendet, um eine Funktion zu speichern und sicherzustellen, dass sie nur dann neu erstellt wird, wenn sich ihre Abhängigkeiten ändern, um unnötige Neuberechnungen zu vermeiden.",
   },
@@ -275,7 +433,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "Wenn `useState` mit einem neuen Wert aufgerufen wird, vergleicht React den alten und den neuen Wert und rendert nur dann neu, wenn die Werte unterschiedlich sind.",
   },
@@ -327,7 +485,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Router"],
+    category: ["React", "React Router"],
     explanation:
       "React Router ermöglicht es, basierend auf der URL zwischen verschiedenen Komponenten zu navigieren und das passende Routing-Setup zu erstellen. Es ist für alle Komponentenarten geeignet, nicht nur für Funktionskomponenten.",
   },
@@ -379,7 +537,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "Formulardaten werden häufig mit `useState` verwaltet, indem man jedes Eingabefeld mit einem State-Value und einem `onChange`-Handler verknüpft, um die Eingaben zu überwachen.",
   },
@@ -405,7 +563,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "Wenn der neue Zustand identisch mit dem alten Zustand ist, wird das Re-Rendering von React vermieden, da keine Änderung vorliegt.",
   },
@@ -509,7 +667,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "easy",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "In React wird der Wert eines Formularfeldes durch den `value`-Prop gesteuert, der mit dem Zustand der Komponente verknüpft ist. Dies wird als kontrollierte Komponente bezeichnet.",
   },
@@ -554,29 +712,9 @@ const reactQuestions: Question[] = [
       { text: "Ein neues Re-Render erzwingen", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "Refs"],
+    category: ["React"],
   },
-  {
-    id: uuidv4(),
-    text: "Was bewirkt ein leeres Abhängigkeitsarray ([]) im useEffect-Hook?",
-    options: [
-      { text: "Der Effect wird bei jedem Render aufgerufen", isCorrect: false },
-      {
-        text: "Der Effect wird nur beim ersten Render aufgerufen",
-        isCorrect: true,
-      },
-      {
-        text: "Der Effect wird bei Änderungen des DOM ausgeführt",
-        isCorrect: false,
-      },
-      {
-        text: "Der Effect wird nach jedem Benutzer-Event aufgerufen",
-        isCorrect: false,
-      },
-    ],
-    difficulty: "easy",
-    category: ["React", "useEffect"],
-  },
+
   {
     id: uuidv4(),
     text: "Wann ist der Einsatz von useMemo sinnvoll?",
@@ -596,7 +734,7 @@ const reactQuestions: Question[] = [
       { text: "Für jede State-Änderung", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "Optimization"],
+    category: ["React"],
   },
   {
     id: uuidv4(),
@@ -608,7 +746,7 @@ const reactQuestions: Question[] = [
       { text: "useQuery", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "React Query"],
+    category: ["React"],
   },
   {
     id: uuidv4(),
@@ -620,7 +758,7 @@ const reactQuestions: Question[] = [
       { text: "Um eine neue Komponente zu rendern", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["React", "Context"],
+    category: ["React", "React Context"],
   },
   {
     id: uuidv4(),
@@ -635,7 +773,7 @@ const reactQuestions: Question[] = [
       { text: "Ersetzt alle anderen Hooks", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["React", "Context"],
+    category: ["React", "React Context"],
   },
 
   {
@@ -657,7 +795,7 @@ const reactQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Refs"],
+    category: ["React"],
   },
 ];
 

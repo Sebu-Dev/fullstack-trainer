@@ -12,7 +12,7 @@ export const terminalQuestions: Question[] = [
       { text: "ls -al", isCorrect: true },
     ],
     difficulty: "easy",
-    category: ["Terminal Basics"],
+    category: ["Terminal"],
     explanation:
       "Mit 'ls -a' werden auch versteckte Dateien (die mit '.' beginnen) angezeigt. 'ls -al' kombiniert dies mit einer detaillierten Ansicht.",
   },
@@ -26,7 +26,7 @@ export const terminalQuestions: Question[] = [
       { text: "cd ..", isCorrect: true },
     ],
     difficulty: "easy",
-    category: ["Terminal Basics"],
+    category: ["Terminal"],
     explanation:
       "Der Befehl 'cd' wechselt das Verzeichnis. Mit 'cd ..' gelangt man ins übergeordnete Verzeichnis.",
   },
@@ -40,7 +40,7 @@ export const terminalQuestions: Question[] = [
       { text: "echo $PWD", isCorrect: true },
     ],
     difficulty: "easy",
-    category: ["Terminal Basics"],
+    category: ["Terminal"],
     explanation:
       "'pwd' zeigt den aktuellen Verzeichnispfad an. Alternativ kann die Umgebungsvariable '$PWD' verwendet werden.",
   },
@@ -54,7 +54,7 @@ export const terminalQuestions: Question[] = [
       { text: "nano", isCorrect: true },
     ],
     difficulty: "medium",
-    category: ["File Management"],
+    category: ["Terminal"],
     explanation:
       "Mit 'touch' wird eine leere Datei erstellt. 'nano' öffnet einen Editor, mit dem eine neue Datei gespeichert werden kann.",
   },
@@ -68,7 +68,7 @@ export const terminalQuestions: Question[] = [
       { text: "delete", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["File Management"],
+    category: ["Terminal"],
     explanation:
       "'rm -rf' löscht ein Verzeichnis rekursiv und ohne Rückfragen. 'rm -r' fragt vor dem Löschen jeder Datei.",
   },
@@ -82,7 +82,7 @@ export const terminalQuestions: Question[] = [
       { text: "less", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["File Viewing"],
+    category: ["Terminal"],
     explanation:
       "'tail' zeigt standardmäßig die letzten 10 Zeilen einer Datei. Mit 'tail -n [Anzahl]' kann die Anzahl angepasst werden.",
   },
@@ -96,7 +96,7 @@ export const terminalQuestions: Question[] = [
       { text: "kill", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["System Monitoring"],
+    category: ["Terminal"],
     explanation:
       "'ps' zeigt eine Momentaufnahme der Prozesse, während 'top' die Prozesse in Echtzeit anzeigt.",
   },
@@ -110,7 +110,7 @@ export const terminalQuestions: Question[] = [
       { text: "stop", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Process Management"],
+    category: ["Terminal"],
     explanation:
       "Mit 'kill [PID]' wird ein Prozess beendet. 'kill -9 [PID]' erzwingt das Beenden.",
   },
@@ -119,12 +119,12 @@ export const terminalQuestions: Question[] = [
     text: "Wie sucht man rekursiv nach einem bestimmten String in Dateien?",
     options: [
       { text: "grep -r", isCorrect: true },
-      { text: "find", isCorrect: false },
+      { text: "find -r", isCorrect: false },
       { text: "grep", isCorrect: false },
       { text: "grep -i", isCorrect: false },
     ],
-    difficulty: "hard",
-    category: ["Search"],
+    difficulty: "medium",
+    category: ["Terminal"],
     explanation:
       "Mit 'grep -r' wird rekursiv nach einem String in allen Dateien eines Verzeichnisses gesucht.",
   },
@@ -138,7 +138,7 @@ export const terminalQuestions: Question[] = [
       { text: "compress", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["Archiving"],
+    category: ["Terminal"],
     explanation:
       "'tar -czf' erstellt ein .tar.gz Archiv. 'zip' erstellt ein .zip Archiv. 'gzip' komprimiert einzelne Dateien.",
   },

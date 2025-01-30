@@ -41,6 +41,34 @@ export const dockerFileQuestions: Question[] = [
   },
   {
     id: uuidv4(),
+    text: "Was ist der Unterschied zwischen ENTRYPOINT und CMD in Docker?",
+    options: [
+      { text: "ENTRYPOINT ist vorrangig gegenüber CMD", isCorrect: true },
+      { text: "CMD definiert Standardbefehle", isCorrect: true },
+      { text: "ENTRYPOINT kann nicht überschrieben werden", isCorrect: false },
+      { text: "CMD wird vor ENTRYPOINT ausgeführt", isCorrect: false },
+    ],
+    difficulty: "hard",
+    category: ["Docker", "Dockerfile"],
+    explanation:
+      "ENTRYPOINT ist vorrangig, CMD definiert Standardbefehle, die von ENTRYPOINT genutzt werden können.",
+  },
+  {
+    id: uuidv4(),
+    text: "Welche Schritte sind beim Erstellen eines Docker-Images erforderlich?",
+    options: [
+      { text: "Ein Dockerfile erstellen", isCorrect: true },
+      { text: "docker build ausführen", isCorrect: true },
+      { text: "Einen Container starten", isCorrect: false },
+      { text: "docker push verwenden", isCorrect: false },
+    ],
+    difficulty: "easy",
+    category: ["Docker", "Dockerfile"],
+    explanation:
+      "Ein Image wird durch ein Dockerfile und den Befehl 'docker build' erstellt.",
+  },
+  {
+    id: uuidv4(),
     text: "Welche Anweisung wird im Dockerfile genutzt, um eine Basis-Image zu definieren?",
     options: [
       { text: "FROM", isCorrect: true },

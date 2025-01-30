@@ -28,7 +28,6 @@ export const Quiz = () => {
     <>
       <div className="flex justify-between">
         <SubmitButton />
-
         <BackButton />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 pb-5 relative z-0">
