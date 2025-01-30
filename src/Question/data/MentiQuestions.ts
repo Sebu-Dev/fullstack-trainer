@@ -24,7 +24,7 @@ export const mentiQuiz: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "Wenn der neue Zustand identisch mit dem alten Zustand ist, wird das Re-Rendering von React vermieden, da keine Änderung vorliegt.",
   },
@@ -128,7 +128,7 @@ export const mentiQuiz: Question[] = [
       },
     ],
     difficulty: "easy",
-    category: ["React", "State"],
+    category: ["React"],
     explanation:
       "In React wird der Wert eines Formularfeldes durch den `value`-Prop gesteuert, der mit dem Zustand der Komponente verknüpft ist. Dies wird als kontrollierte Komponente bezeichnet.",
   },

@@ -12,7 +12,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Den Image-Namen vorher registrieren", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Ein Image wird durch ein Dockerfile und 'docker build' erstellt.",
   },
@@ -26,7 +26,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Nutzt das Dockerfile zur Image-Erstellung", isCorrect: true },
     ],
     difficulty: "easy",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Mit 'docker build' wird ein Docker-Image aus einem Dockerfile erzeugt.",
   },
@@ -40,7 +40,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Der Kontext ist immer festgelegt", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Der Build-Kontext wird durch den Pfad oder das '--context'-Flag definiert.",
   },
@@ -57,7 +57,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Er ist nur bei Multi-Stage-Builds verfügbar", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Der Build-Cache speichert Zwischenschritte, um Builds zu beschleunigen.",
   },
@@ -71,7 +71,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Es definiert das Zielverzeichnis", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation: "Das '-t' Flag gibt dem Image einen Namen (Tag).",
   },
   {
@@ -84,7 +84,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Erhöhte Netzwerkleistung", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Multi-Stage-Builds helfen, schlanke Images zu erstellen, indem sie unnötige Dateien und Abhängigkeiten aus der Runtime entfernen.",
   },
@@ -101,7 +101,7 @@ export const dockerBuildingQuestions: Question[] = [
       { text: "Durch Nutzung von Build-Argumenten", isCorrect: true },
     ],
     difficulty: "hard",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Fixe Versionsnummern und Build-Argumente sorgen für Konsistenz bei wiederholten Builds.",
   },
@@ -124,7 +124,7 @@ export const dockerBuildingQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Sensible Daten sollten über Umgebungsvariablen oder Docker Secrets bereitgestellt werden.",
   },
@@ -150,7 +150,7 @@ export const dockerBuildingQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Ein sauber definierter Build-Context reduziert die Build-Zeit und die Größe des Images.",
   },
@@ -170,7 +170,7 @@ export const dockerBuildingQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Docker", "Building Docker Images"],
+    category: ["Docker", "Docker Building Images"],
     explanation:
       "Weniger Layers bedeuten weniger Komplexität und Angriffsfläche im finalen Image.",
   },

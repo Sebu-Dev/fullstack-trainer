@@ -25,7 +25,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useEffect` wird für Seiteneffekte wie API-Aufrufe verwendet, `useMemo` speichert berechnete Werte, und `useRef` hilft bei der direkten Referenzierung von DOM-Elementen.",
   },
@@ -51,7 +51,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useContext` ermöglicht es, Werte aus einem Context-Objekt in Funktionskomponenten zu beziehen, wodurch das Prop-Drilling vermieden wird.",
   },
@@ -77,7 +77,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useReducer` ist besonders nützlich für komplexe Zustandslogik, bei der mehrere Sub-Änderungen am Zustand erforderlich sind, und wird als Alternative zu `useState` verwendet, wenn der Zustand mehrere Werte umfasst oder von mehreren Aktionen betroffen ist.",
   },
@@ -103,7 +103,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useEffect` wird nach dem ersten Rendern ausgeführt und kann bei jeder State- oder Props-Änderung erneut ausgeführt werden, abhängig von den angegebenen Abhängigkeiten.",
   },
@@ -129,7 +129,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "Wenn eine Abhängigkeitsliste im `useEffect` Hook angegeben wird, wird die Funktion nur ausgeführt, wenn sich eine der Abhängigkeiten ändert.",
   },
@@ -155,7 +155,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useLayoutEffect` wird synchron nach dem Rendern des DOMs ausgeführt und vor der Anzeige der Seite auf dem Bildschirm, was es nützlich für Layout-Anpassungen macht.",
   },
@@ -181,7 +181,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useEffect` wird nach dem Rendern ausgeführt, während `useLayoutEffect` synchron ausgeführt wird, bevor der DOM aktualisiert wird, was für Layout-Manipulationen nützlich ist.",
   },
@@ -207,7 +207,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hook"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useContext` wird verwendet, um Daten zwischen Komponenten zu teilen, ohne Props weiterzugeben, und `useReducer` hilft bei der Verwaltung komplexerer Zustände, die mehrere Aktionen erfordern.",
   },
@@ -221,7 +221,7 @@ export const reactHookQuestions: Question[] = [
       { text: "Speichert Funktionen zwischen", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["React Hooks"],
+    category: ["React", "React Hooks"],
     explanation: "useMemo reduziert teure Neuberechnungen zwischen Renders.",
   },
   {
@@ -243,7 +243,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
   },
   {
     id: uuidv4(),
@@ -255,7 +255,7 @@ export const reactHookQuestions: Question[] = [
       { text: "State direkt mutieren", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
   },
   {
     id: uuidv4(),
@@ -276,7 +276,7 @@ export const reactHookQuestions: Question[] = [
       { text: "Für jede State-Änderung", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "useMemo optimiert teure Berechnungen, indem sie nur neu ausgeführt werden, wenn sich ihre Abhängigkeiten ändern.",
   },
@@ -290,7 +290,7 @@ export const reactHookQuestions: Question[] = [
       { text: "Um DOM-Elemente zu referenzieren", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "useCallback wird genutzt, um Funktionen zu memoisieren und unnötige Neudeklarationen bei jedem Render zu vermeiden.",
   },
@@ -307,7 +307,7 @@ export const reactHookQuestions: Question[] = [
       { text: "Unzureichende Hook-Regeln", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useEffect` kann Probleme wie Endlosschleifen und Speicherlecks verursachen, wenn Abhängigkeiten nicht korrekt angegeben oder Subscriptions nicht bereinigt werden.",
   },
@@ -327,7 +327,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useReducer` eignet sich besser für komplexe Logiken, während `useState` bei einfachen State-Änderungen vorzuziehen ist.",
   },
@@ -350,7 +350,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "easy",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "`useState` ist ein Hook, um den Zustand in einer Funktionskomponente zu verwalten.",
   },
@@ -373,7 +373,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "easy",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "Ein leeres Abhängigkeitsarray bewirkt, dass der Effekt nur einmal beim Initial-Render ausgeführt wird.",
   },
@@ -387,7 +387,7 @@ export const reactHookQuestions: Question[] = [
       { text: "State direkt mutieren", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "Für unabhängige Werte sollten separate useState-Hooks verwendet werden. Dadurch bleibt der Code modular und leicht verständlich.",
   },
@@ -410,7 +410,7 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "useImperativeHandle erlaubt es, eine benutzerdefinierte API für ein ref-Objekt zu definieren, das vom Parent genutzt wird, ohne das gesamte DOM freizulegen.",
   },
@@ -433,8 +433,29 @@ export const reactHookQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["React", "Hooks"],
+    category: ["React", "React Hooks"],
     explanation:
       "useReducer eignet sich besser für komplexe Zustandslogiken, da es Aktionen und eine zentrale Reducer-Funktion verwendet, um den Zustand konsistent zu aktualisieren.",
+  },
+  {
+    id: uuidv4(),
+    text: "Was bewirkt ein leeres Abhängigkeitsarray ([]) im useEffect-Hook?",
+    options: [
+      { text: "Der Effect wird bei jedem Render aufgerufen", isCorrect: false },
+      {
+        text: "Der Effect wird nur beim ersten Render aufgerufen",
+        isCorrect: true,
+      },
+      {
+        text: "Der Effect wird bei Änderungen des DOM ausgeführt",
+        isCorrect: false,
+      },
+      {
+        text: "Der Effect wird nach jedem Benutzer-Event aufgerufen",
+        isCorrect: false,
+      },
+    ],
+    difficulty: "easy",
+    category: ["React"],
   },
 ];

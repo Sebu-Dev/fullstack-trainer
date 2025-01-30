@@ -12,7 +12,7 @@ export const dockerQuestions: Question[] = [
       { text: "docker ps", isCorrect: true },
     ],
     difficulty: "medium",
-    category: ["Docker", "Docker Basic"],
+    category: ["Docker"],
     explanation:
       "Container-Verwaltung: 'run' (erstellen/starten), 'start' (neustarten), 'ps' (anzeigen). 'build' erstellt Images.",
   },
@@ -27,7 +27,7 @@ export const dockerQuestions: Question[] = [
       { text: "Overlay: Nur für Bind Mounts verfügbar", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Docker Network"],
+    category: ["Docker"],
     explanation:
       "Bridge ist der Standard. Host teilt das Host-Netzwerk, None deaktiviert Netzwerke. Overlay ist für Swarm.",
   },
@@ -45,20 +45,6 @@ export const dockerQuestions: Question[] = [
     explanation:
       "Healthchecks prüfen die Funktionalität eines Containers und werden meist im Dockerfile definiert.",
   },
-  {
-    id: uuidv4(),
-    text: "Welche Schritte sind beim Erstellen eines Docker-Images erforderlich?",
-    options: [
-      { text: "Ein Dockerfile erstellen", isCorrect: true },
-      { text: "docker build ausführen", isCorrect: true },
-      { text: "Einen Container starten", isCorrect: false },
-      { text: "docker push verwenden", isCorrect: false },
-    ],
-    difficulty: "easy",
-    category: ["Docker", "Docker Basic", "Dockerfile"],
-    explanation:
-      "Ein Image wird durch ein Dockerfile und den Befehl 'docker build' erstellt.",
-  },
 
   {
     id: uuidv4(),
@@ -73,7 +59,7 @@ export const dockerQuestions: Question[] = [
       { text: "Docker reserviert Ports dynamisch", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["Docker", "Docker Network"],
+    category: ["Docker"],
     explanation:
       "Wenn mehrere Container denselben Port belegen, entstehen Konflikte, und die Container können nicht starten.",
   },
@@ -94,20 +80,7 @@ export const dockerQuestions: Question[] = [
     explanation:
       "Docker Secrets speichern sensible Daten und sind nur im Swarm-Modus verfügbar.",
   },
-  {
-    id: uuidv4(),
-    text: "Was ist der Unterschied zwischen ENTRYPOINT und CMD in Docker?",
-    options: [
-      { text: "ENTRYPOINT ist vorrangig gegenüber CMD", isCorrect: true },
-      { text: "CMD definiert Standardbefehle", isCorrect: true },
-      { text: "ENTRYPOINT kann nicht überschrieben werden", isCorrect: false },
-      { text: "CMD wird vor ENTRYPOINT ausgeführt", isCorrect: false },
-    ],
-    difficulty: "hard",
-    category: ["Docker", "Dockerfile"],
-    explanation:
-      "ENTRYPOINT ist vorrangig, CMD definiert Standardbefehle, die von ENTRYPOINT genutzt werden können.",
-  },
+
   {
     id: uuidv4(),
     text: "Welche Docker-Befehle dienen der Image-Verwaltung?",
@@ -118,7 +91,7 @@ export const dockerQuestions: Question[] = [
       { text: "docker exec", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Docker Basics"],
+    category: ["Docker"],
     explanation:
       "Befehle wie 'build', 'commit' und 'push' betreffen die Erstellung und Verwaltung von Images. 'exec' dient der Interaktion mit laufenden Containern.",
   },
@@ -132,7 +105,7 @@ export const dockerQuestions: Question[] = [
       { text: "package.json", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Docker Basics"],
+    category: ["Docker"],
     explanation:
       "In der .dockerignore-Datei werden unnötige Dateien wie 'node_modules' oder '.git' ausgeschlossen, um die Build-Performance zu verbessern.",
   },
@@ -176,28 +149,11 @@ export const dockerQuestions: Question[] = [
       { text: "docker container remove --all", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Docker Cleanup"],
+    category: ["Docker"],
     explanation:
       "'system prune', 'volume prune' und 'network prune' entfernen ungenutzte Ressourcen. 'container remove --all' ist kein gültiger Befehl.",
   },
 
-  {
-    id: uuidv4(),
-    text: "Welche der folgenden Aussagen zu Docker Compose sind korrekt?",
-    options: [
-      {
-        text: "Es ermöglicht das Definieren von Multi-Container-Anwendungen",
-        isCorrect: true,
-      },
-      { text: "Konfiguration erfolgt in einer YAML-Datei", isCorrect: true },
-      { text: "Es ersetzt Docker Swarm", isCorrect: false },
-      { text: "Es unterstützt keine Volumes", isCorrect: false },
-    ],
-    difficulty: "medium",
-    category: ["Docker", "Docker Compose"],
-    explanation:
-      "Docker Compose definiert Multi-Container-Apps in einer YAML-Datei. Es ergänzt Docker Swarm und unterstützt Volumes vollständig.",
-  },
   {
     id: uuidv4(),
     text: "Was bewirkt der Befehl 'docker network create'?",
@@ -232,7 +188,7 @@ export const dockerQuestions: Question[] = [
       { text: "Durch das Docker-Healthcheck-Feature", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation: "Volumes und Bind Mounts garantieren Persistenz.",
   },
   {
@@ -248,7 +204,7 @@ export const dockerQuestions: Question[] = [
       { text: "Daten aus 'tmpfs' bleiben erhalten", isCorrect: false },
     ],
     difficulty: "hard",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation: "Nur Daten in Volumes oder Bind Mounts überleben.",
   },
   {
@@ -261,7 +217,7 @@ export const dockerQuestions: Question[] = [
       { text: "Bind Mounts werden von Docker verwaltet", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation:
       "Named Volumes sind portabler, Bind Mounts hängen vom Host ab.",
   },
@@ -278,7 +234,7 @@ export const dockerQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation:
       "Volumes sind der beste Weg, um Daten zwischen Containern zu teilen.",
   },
@@ -292,7 +248,7 @@ export const dockerQuestions: Question[] = [
       { text: "Swarm Secrets", isCorrect: false },
     ],
     difficulty: "easy",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation: "Named Volumes und Bind Mounts sind die primären Optionen.",
   },
 
@@ -315,7 +271,7 @@ export const dockerQuestions: Question[] = [
       { text: "Nur Bind Mounts schützen Daten dauerhaft", isCorrect: false },
     ],
     difficulty: "medium",
-    category: ["Docker", "Datenpersistenz"],
+    category: ["Docker", "Docker Datenpersistenz"],
     explanation:
       "Container-File-Systeme sind flüchtig. Daten sollten extern gespeichert werden.",
   },

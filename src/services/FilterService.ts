@@ -6,9 +6,10 @@ export const FilterService = {
     categories: string[]
   ): Question[] => {
     if (categories.length === 0) return questions;
-    return questions.filter((q) =>
+    const filteredQuestions = questions.filter((q) =>
       q.category.some((cat) => categories.includes(cat))
     );
+    return filteredQuestions;
   },
 
   getAllCategories: (questions: Question[]): string[] => {

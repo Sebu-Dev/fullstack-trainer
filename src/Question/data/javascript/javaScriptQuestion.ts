@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Question } from "../../type/QuestionType";
 
-const javaScriptQuestions: Question[] = [
+const JavaScriptQuestions: Question[] = [
   {
     id: uuidv4(),
     text: "Welche der folgenden Aussagen sind korrekt in Bezug auf die Funktionsweise von 'this' in JavaScript?",
@@ -27,6 +27,32 @@ const javaScriptQuestions: Question[] = [
     category: ["JavaScript"],
     explanation:
       "'this' kann in regulären Funktionen auf das globale Objekt zeigen, während Arrow-Funktionen das 'this' aus dem umgebenden Kontext verwenden.",
+  },
+  {
+    id: uuidv4(),
+    text: "Was ist der Unterschied zwischen `let`, `const` und `var` in JavaScript?",
+    options: [
+      {
+        text: "`let` und `const` haben Blockscope, `var` hat Funktionsscope.",
+        isCorrect: true,
+      },
+      {
+        text: "`let` und `const` sind veränderbar, `var` ist konstant.",
+        isCorrect: false,
+      },
+      {
+        text: "`let` ist nur für primitive Werte, `var` für Objekte.",
+        isCorrect: false,
+      },
+      {
+        text: "`const` ist variabel, `let` und `var` sind konstant.",
+        isCorrect: false,
+      },
+    ],
+    difficulty: "medium",
+    category: ["JavaScript"],
+    explanation:
+      "`let` und `const` haben Blockscope, `var` hat Funktionsscope. `const` ermöglicht keine Wertänderung, während `let` und `var` verändert werden können.",
   },
   {
     id: uuidv4(),
@@ -64,7 +90,7 @@ const javaScriptQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Web APIs"],
+    category: ["JavaScript", "Web APIs"],
     explanation:
       "`getElementById` wählt nur ein Element mit der angegebenen ID aus, während `createElement` ein neues DOM-Element erzeugt.",
   },
@@ -90,7 +116,7 @@ const javaScriptQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Web APIs"],
+    category: ["JavaScript", "Web APIs"],
     explanation:
       "Fetch gibt immer ein Promise zurück, aber um Fehler zu behandeln, muss man manuell den HTTP-Status überprüfen und Fehler abfangen.",
   },
@@ -113,7 +139,7 @@ const javaScriptQuestions: Question[] = [
       },
     ],
     difficulty: "medium",
-    category: ["Async Programming"],
+    category: ["JavaScript", "Async Programming"],
     explanation:
       "'async/await' ist ein syntaktischer Zucker für die Arbeit mit Promises und hilft, asynchrone Operationen klarer zu schreiben.",
   },
@@ -139,10 +165,10 @@ const javaScriptQuestions: Question[] = [
       },
     ],
     difficulty: "hard",
-    category: ["Async Programming"],
+    category: ["JavaScript", "Async Programming"],
     explanation:
       "`Promise.all` wartet auf alle Promises, aber gibt sie in einem Array zurück und bricht sofort ab, wenn eines fehlschlägt.",
   },
 ];
 
-export default javaScriptQuestions;
+export default JavaScriptQuestions;
