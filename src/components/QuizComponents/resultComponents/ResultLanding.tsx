@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { BaseButton } from "sebu-dev-react-lib";
+import { useQuizNavigation } from "../../../routes/useQuizNavigation";
 import { ScoringService } from "../../../services/ScoringService";
 import useQuizStore from "../../../store/QuizStore";
 import { BackHomeButton } from "../../../ui-components/BackHomeButton";
@@ -12,9 +13,11 @@ export const ResultLanding = () => {
   const categoryPoints = ScoringService.calculateCategoryPoints(
     quizSet.answers
   );
+  const { showSolution } = useQuizNavigation();
 
   const handleOnClick = () => {
     setShowResult(true);
+    showSolution();
   };
 
   return (
@@ -50,12 +53,11 @@ export const ResultLanding = () => {
       {showResult && (
         <div className="mt-8">
           <BackHomeButton />
-          <Outlet />
         </div>
       )}
+      <Outlet />
 
       {/* Optional: Back Button unten */}
-      {!showResult && <div className="mt-8 flex justify-center"></div>}
     </div>
   );
 };

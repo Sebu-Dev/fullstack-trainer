@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { BaseButton, SecondaryButton } from "sebu-dev-react-lib";
+import { useClickOutside } from "../../hooks/useClickOutside";
 import useQuizStore from "../../store/QuizStore";
 interface FilterSidebarProps {
   isOpen: boolean;
@@ -17,7 +18,12 @@ export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
   } = useQuizStore();
 
   const allCategories = useMemo(() => getAllCategories(), [getAllCategories]);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
+  useClickOutside(sidebarRef, () => {
+    ("useClickOutside");
+    if (isOpen) onClose();
+  });
   const toggleCategory = useCallback(
     (category: string) => {
       const updatedCategories = selectedCategories.includes(category)
@@ -29,9 +35,9 @@ export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
     },
     [selectedCategories, setSelectedCategories, filterQuestions]
   );
-
   return (
     <motion.div
+      ref={sidebarRef}
       initial={{ x: -300, opacity: 0 }}
       animate={{ x: isOpen ? 0 : -300, opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.3 }}
