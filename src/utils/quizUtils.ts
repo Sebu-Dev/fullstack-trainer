@@ -5,12 +5,12 @@ import type { Question, QuizSet } from "../Question/type/QuestionType";
  */
 export const filterQuestions = (
   questions: Question[],
-  categories: string[]
+  categories: string[],
 ): Question[] => {
   if (categories.length === 0) return questions;
 
   return questions.filter((question) =>
-    categories.some((category) => question.category.includes(category))
+    categories.some((category) => question.category.includes(category)),
   );
 };
 /**
@@ -18,7 +18,7 @@ export const filterQuestions = (
  */
 export const shuffleQuestions = (
   questions: Question[],
-  count: number
+  count: number,
 ): Question[] => {
   const uniqueQuestions = Array.from(new Set(questions));
   const shuffled = uniqueQuestions.sort(() => Math.random() - 0.5);
@@ -32,7 +32,7 @@ export const calculateQuizStats = (quizSet: QuizSet) => {
   const totalPossiblePoints = quizSet.questions.length * 4; // Beispiel: jede Frage = 4 Punkte
   const totalAchievedPoints = quizSet.answers.reduce(
     (sum, answer) => sum + answer.achievedPoints,
-    0
+    0,
   );
 
   return { totalPossiblePoints, totalAchievedPoints };

@@ -45,7 +45,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     const newQuizSet = QuizService.generateQuizSet(
       get().questionList,
       get().selectedCategories,
-      6 // Anzahl der Fragen
+      6, // Anzahl der Fragen
     );
     LocalStorageService.saveQuizSet(newQuizSet);
     set({ quizSet: newQuizSet });
@@ -56,7 +56,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     const updatedQuizSet = QuizService.updateAnswer(
       get().quizSet,
       questionId,
-      optionText
+      optionText,
     );
     LocalStorageService.saveQuizSet(updatedQuizSet);
     set({ quizSet: updatedQuizSet });
@@ -66,7 +66,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
   filterQuestions: (categories) => {
     const filteredQuestions = FilterService.filterQuestions(
       get().questionList,
-      categories
+      categories,
     );
     set({
       quizSet: {

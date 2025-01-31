@@ -1,5 +1,5 @@
-import type { Answer } from "../Question/type/QuestionType";
-import { ScoringService } from "../services/ScoringService";
+import type { Answer } from "../../Question/type/QuestionType";
+import { ScoringService } from "../../services/ScoringService";
 
 describe("ScoringService Tests", () => {
   describe("calculateQuestionPoints", () => {

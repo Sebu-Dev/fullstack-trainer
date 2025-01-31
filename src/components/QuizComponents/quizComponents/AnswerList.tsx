@@ -10,7 +10,7 @@ export const AnswerList = ({ question }: AnswerListProps) => {
   const { quizSet, updateUserAnswer } = useQuizStore();
 
   const userAnswers = quizSet.answers.find(
-    (answer) => answer.question.text === question.text
+    (answer) => answer.question.text === question.text,
   )?.userAnswers;
 
   const handleAnswerSelect = (optionText: string) => {
@@ -21,7 +21,7 @@ export const AnswerList = ({ question }: AnswerListProps) => {
     <ul className="w-full">
       {question.options.map((option, index) => {
         const isSelected = userAnswers?.find(
-          (ua) => ua.option.text === option.text
+          (ua) => ua.option.text === option.text,
         )?.isSelected;
 
         return (

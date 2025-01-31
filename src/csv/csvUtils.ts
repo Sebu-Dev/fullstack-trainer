@@ -59,7 +59,7 @@ export const QuizCsvConverter = {
     const topic = this.getCsvValue(
       headers,
       this.splitCsvLine(dataLines[0]),
-      "Topic"
+      "Topic",
     );
 
     // Konvertiere jede Datenzeile zurück zu einer Frage
@@ -69,7 +69,7 @@ export const QuizCsvConverter = {
       return {
         id: this.getCsvValue(headers, values, "QuestionID") || generateId(),
         text: this.unescapeCsvField(
-          this.getCsvValue(headers, values, "QuestionText")
+          this.getCsvValue(headers, values, "QuestionText"),
         ),
         options: this.parseOptions(headers, values),
         category: this.getCsvValue(headers, values, "Categories").split(" "),
@@ -98,7 +98,7 @@ export const QuizCsvConverter = {
 
     for (let i = 1; i <= MAX_OPTION_COUNT; i++) {
       const optionText = this.unescapeCsvField(
-        this.getCsvValue(headers, values, `Option${i}Text`)
+        this.getCsvValue(headers, values, `Option${i}Text`),
       );
       const isCorrect =
         this.getCsvValue(headers, values, `Option${i}Correct`) === "true";
@@ -121,7 +121,7 @@ export const QuizCsvConverter = {
   getOptionalValue<T>(
     headers: string[],
     values: string[],
-    headerName: string
+    headerName: string,
   ): T | undefined {
     const value = this.getCsvValue(headers, values, headerName);
     return value ? (value as T) : undefined;
@@ -131,7 +131,7 @@ export const QuizCsvConverter = {
   getOptionalNumber(
     headers: string[],
     values: string[],
-    headerName: string
+    headerName: string,
   ): number | undefined {
     const value = this.getCsvValue(headers, values, headerName);
     return value ? Number(value) : undefined;

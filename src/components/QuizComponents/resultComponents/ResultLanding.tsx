@@ -11,7 +11,7 @@ export const ResultLanding = () => {
   const [showResult, setShowResult] = useState(false);
   const totalPoints = getTotalPoints();
   const categoryPoints = ScoringService.calculateCategoryPoints(
-    quizSet.answers
+    quizSet.answers,
   );
   const { showSolution } = useQuizNavigation();
 
