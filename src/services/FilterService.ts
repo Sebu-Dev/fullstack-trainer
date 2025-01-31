@@ -1,4 +1,5 @@
 import type { Question } from "../Question/type/QuestionType";
+import { sortArray } from "../utils/helpers";
 
 export const FilterService = {
   filterQuestions: (
@@ -15,6 +16,7 @@ export const FilterService = {
   getAllCategories: (questions: Question[]): string[] => {
     const categories = new Set<string>();
     questions.forEach((q) => q.category.forEach((cat) => categories.add(cat)));
-    return Array.from(categories);
+    const sortedArray = sortArray(Array.from(categories));
+    return sortedArray;
   },
 };

@@ -22,3 +22,7 @@ export const saveToLocalStorage = <T>(key: string, value: T): void => {
     console.error(`Error writing key "${key}" to localStorage:`, error);
   }
 };
+export const sortArray = <T>(array: T[]): T[] => {
+  const sortedArray = array.sort();
+  return sortedArray;
+};
