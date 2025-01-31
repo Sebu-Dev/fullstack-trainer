@@ -12,7 +12,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
   const getAnswerState = (option: Option) => {
     const answer = quizSet.answers.find((a) => a.question.id === question.id);
     const userAnswer = answer?.userAnswers.find(
-      (ua) => ua.option.text === option.text
+      (ua) => ua.option.text === option.text,
     );
 
     const isSelected = userAnswer?.isSelected;

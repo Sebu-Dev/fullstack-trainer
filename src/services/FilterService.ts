@@ -4,11 +4,11 @@ import { sortArray } from "../utils/helpers";
 export const FilterService = {
   filterQuestions: (
     questions: Question[],
-    categories: string[]
+    categories: string[],
   ): Question[] => {
     if (categories.length === 0) return questions;
     const filteredQuestions = questions.filter((q) =>
-      q.category.some((cat) => categories.includes(cat))
+      q.category.some((cat) => categories.includes(cat)),
     );
     return filteredQuestions;
   },

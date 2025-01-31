@@ -33,7 +33,7 @@ export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
       setSelectedCategories(updatedCategories);
       filterQuestions(updatedCategories);
     },
-    [selectedCategories, setSelectedCategories, filterQuestions]
+    [selectedCategories, setSelectedCategories, filterQuestions],
   );
   return (
     <motion.div
