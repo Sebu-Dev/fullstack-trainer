@@ -30,13 +30,13 @@ export const QuizCsvConverter = {
         question.id || generateId(),
         escapeCsvField(question.text),
         question.difficulty || "",
-        question.category.join(" "),
+        question.categories.join(" "),
         question.explanation ? escapeCsvField(question.explanation) : "",
         question.imageUrl || "",
         question.maxPoints?.toString() || "",
         ...this.padOptions(question.options).flatMap((option) => [
           escapeCsvField(option.text),
-          option.isCorrect.toString(),
+          option.correct.toString(),
         ]),
       ];
 
@@ -72,7 +72,7 @@ export const QuizCsvConverter = {
           this.getCsvValue(headers, values, "QuestionText"),
         ),
         options: this.parseOptions(headers, values),
-        category: this.getCsvValue(headers, values, "Categories").split(" "),
+        categories: this.getCsvValue(headers, values, "Categories").split(" "),
         difficulty: this.getOptionalValue(headers, values, "Difficulty"),
         explanation: this.getOptionalValue(headers, values, "Explanation"),
         imageUrl: this.getOptionalValue(headers, values, "ImageURL"),
@@ -87,7 +87,7 @@ export const QuizCsvConverter = {
   padOptions(options: Option[]): Option[] {
     const paddedOptions = [...options];
     while (paddedOptions.length < MAX_OPTION_COUNT) {
-      paddedOptions.push({ text: "", isCorrect: false });
+      paddedOptions.push({ text: "", correct: false });
     }
     return paddedOptions;
   },
@@ -104,7 +104,7 @@ export const QuizCsvConverter = {
         this.getCsvValue(headers, values, `Option${i}Correct`) === "true";
 
       if (optionText.trim()) {
-        options.push({ text: optionText, isCorrect });
+        options.push({ text: optionText, correct: isCorrect });
       }
     }
 

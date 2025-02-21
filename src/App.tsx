@@ -7,8 +7,15 @@ import { Quiz } from "./components/QuizComponents/quizComponents/Quiz";
 import { QuizResult } from "./components/QuizComponents/resultComponents/QuizResult";
 import { ResultLanding } from "./components/QuizComponents/resultComponents/ResultLanding";
 import { ROUTES } from "./routes/routes";
+import { useEffect } from "react";
+import useQuizStore from "./store/QuizStore";
 
 const App = () => {
+  const loadQuestions = useQuizStore((state) => state.loadQuestions); 
+
+  useEffect(() => {
+    loadQuestions();
+  }, [loadQuestions]);
   return (
     <Layout nav={true}>
       <Routes>

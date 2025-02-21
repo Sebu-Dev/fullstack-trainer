@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { PrimaryButton, SecondaryButton } from "sebu-dev-react-lib";
+import QuestionSyncButton from "../../api/useQuestionSync";
 import { useQuizNavigation } from "../../routes/useQuizNavigation";
 import useQuizStore from "../../store/QuizStore";
 import { CsvDownloadButton } from "../CsvDownloadButton";
 import { FilterSidebar } from "../Filter/FilterSidebar";
+import QuestionUpload from "../../api/QuestionUpload";
 export const LandingPage = () => {
   const { generateQuizSet } = useQuizStore();
   const [toggleDownload, setToggleDownload] = useState(false);
@@ -64,6 +66,8 @@ export const LandingPage = () => {
           </div>
         </div>
         <CsvDownloadButton setToggleDownload={setToggleDownload} />
+        <QuestionSyncButton></QuestionSyncButton>
+        <QuestionUpload></QuestionUpload>
       </div>
     </div>
   );

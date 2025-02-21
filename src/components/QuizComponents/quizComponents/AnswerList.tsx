@@ -10,7 +10,7 @@ export const AnswerList = ({ question }: AnswerListProps) => {
   const { quizSet, updateUserAnswer } = useQuizStore();
 
   const userAnswers = quizSet.answers.find(
-    (answer) => answer.question.text === question.text,
+    (answer) => answer.question.id === question.id, 
   )?.userAnswers;
 
   const handleAnswerSelect = (optionText: string) => {
@@ -22,7 +22,7 @@ export const AnswerList = ({ question }: AnswerListProps) => {
       {question.options.map((option, index) => {
         const isSelected = userAnswers?.find(
           (ua) => ua.option.text === option.text,
-        )?.isSelected;
+        )?.isSelected ?? false;
 
         return (
           <li key={index} className="flex flex-col">

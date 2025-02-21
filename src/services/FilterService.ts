@@ -8,14 +8,14 @@ export const FilterService = {
   ): Question[] => {
     if (categories.length === 0) return questions;
     const filteredQuestions = questions.filter((q) =>
-      q.category.some((cat) => categories.includes(cat)),
+      q.categories.some((cat) => categories.includes(cat)),
     );
     return filteredQuestions;
   },
 
   getAllCategories: (questions: Question[]): string[] => {
     const categories = new Set<string>();
-    questions.forEach((q) => q.category.forEach((cat) => categories.add(cat)));
+    questions.forEach((q) => q.categories.forEach((cat) => categories.add(cat)));
     const sortedArray = sortArray(Array.from(categories));
     return sortedArray;
   },

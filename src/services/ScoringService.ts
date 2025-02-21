@@ -4,22 +4,22 @@ export class ScoringService {
   /** Berechnet die Punkte für eine einzelne Frage */
   static calculateQuestionPoints(answer: Answer): number {
     const correctOptions = answer.question.options.filter(
-      (opt) => opt.isCorrect,
+      (opt) => opt.correct,
     ).length;
 
     if (correctOptions === 1) {
       const allCorrect = answer.userAnswers.every(
-        (userAnswer) => userAnswer.isSelected === userAnswer.option.isCorrect,
+        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
       );
       return allCorrect ? 4 : 0;
     }
 
     const correctSelections = answer.userAnswers.filter(
-      (userAnswer) => userAnswer.isSelected === userAnswer.option.isCorrect,
+      (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
     ).length;
 
     let incorrectSelections = answer.userAnswers.filter(
-      (userAnswer) => userAnswer.isSelected !== userAnswer.option.isCorrect,
+      (userAnswer) => userAnswer.isSelected !== userAnswer.option.correct,
     ).length;
 
     incorrectSelections = Math.min(incorrectSelections, 4); // Maximal -4 Punkte Abzug
@@ -49,7 +49,7 @@ export class ScoringService {
   static countCorrectAnswers(quizSet: QuizSet): number {
     return quizSet.answers.filter((answer) =>
       answer.userAnswers.every(
-        (userAnswer) => userAnswer.isSelected === userAnswer.option.isCorrect,
+        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
       ),
     ).length;
   }

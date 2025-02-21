@@ -16,7 +16,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
     );
 
     const isSelected = userAnswer?.isSelected;
-    const isCorrect = option.isCorrect;
+    const isCorrect = option.correct;
 
     if (isSelected) {
       return isCorrect ? "bg-cyan-500" : "bg-red-500";

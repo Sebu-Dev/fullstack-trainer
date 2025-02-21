@@ -8,23 +8,23 @@ const typeScriptQuestions: Question[] = [
     options: [
       {
         text: "TypeScript hat nur primitive Typen und keine komplexen Typen",
-        isCorrect: false,
+        correct: false,
       },
       {
         text: "Generics ermöglichen die Wiederverwendung von Code für unterschiedliche Typen",
-        isCorrect: true,
+        correct: true,
       },
       {
         text: "Ein Interface kann in TypeScript nicht von mehreren anderen Interfaces erben",
-        isCorrect: false,
+        correct: false,
       },
       {
         text: "Conditional Types ermöglichen die Typenbasierte Logik",
-        isCorrect: true,
+        correct: true,
       },
     ],
     difficulty: "medium",
-    category: ["TypeScript"],
+    categories: ["TypeScript"],
     explanation:
       "TypeScript unterstützt sowohl primitive als auch komplexe Typen. Generics und Conditional Types bieten Flexibilität für die Typisierung.",
   },
@@ -34,23 +34,23 @@ const typeScriptQuestions: Question[] = [
     options: [
       {
         text: "function func<T>(param: T): T { return param; }",
-        isCorrect: true,
+        correct: true,
       },
       {
         text: "function func(param: T): T { return param; }",
-        isCorrect: false,
+        correct: false,
       },
       {
         text: "function func<T>(param: T) { return param; }",
-        isCorrect: false,
+        correct: false,
       },
       {
         text: "function func<T, R>(param: T): R { return param; }",
-        isCorrect: false,
+        correct: false,
       },
     ],
     difficulty: "hard",
-    category: ["TypeScript"],
+    categories: ["TypeScript"],
     explanation:
       "Generische Funktionen verwenden `<T>` zur Definition und können unterschiedliche Typen verarbeiten, z.B. `function func<T>(param: T): T {}`.",
   },
@@ -58,13 +58,13 @@ const typeScriptQuestions: Question[] = [
     id: uuidv4(),
     text: "Wie wird eine Typisierung für eine Funktion in TypeScript angegeben?",
     options: [
-      { text: "function myFunction(param: string): void { }", isCorrect: true },
-      { text: "function myFunction(param: string): any { }", isCorrect: false },
-      { text: "function myFunction(param): string { }", isCorrect: false },
-      { text: "function myFunction(string): void { }", isCorrect: false },
+      { text: "function myFunction(param: string): void { }", correct: true },
+      { text: "function myFunction(param: string): any { }", correct: false },
+      { text: "function myFunction(param): string { }", correct: false },
+      { text: "function myFunction(string): void { }", correct: false },
     ],
     difficulty: "medium",
-    category: ["TypeScript"],
+    categories: ["TypeScript"],
     explanation:
       "In TypeScript wird die Typisierung der Parameter und des Rückgabewerts einer Funktion mit `param: type` angegeben.",
   },

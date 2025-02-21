@@ -15,7 +15,7 @@ export const QuizComponent = ({ question }: QuizComponentProps) => {
         <QuestionImage imageUrl={question.imageUrl} />
         <AnswerList question={question} />
         <QuestionDetails
-          category={question.category}
+          category={question.categories}
           difficultyLevel={question.difficulty}
         />
       </div>
