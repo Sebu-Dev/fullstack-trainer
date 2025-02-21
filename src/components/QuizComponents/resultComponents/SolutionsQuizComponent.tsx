@@ -43,7 +43,7 @@ export const SolutionsQuizComponent = ({
         <QuestionImage imageUrl={question.imageUrl} />
         <CheckedAnswerList question={question} />
         <QuestionDetails
-          category={question.category}
+          category={question.categories}
           difficultyLevel={question.difficulty}
           explanation={question.explanation}
         />

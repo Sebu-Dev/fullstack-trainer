@@ -10,7 +10,7 @@ export const filterQuestions = (
   if (categories.length === 0) return questions;
 
   return questions.filter((question) =>
-    categories.some((category) => question.category.includes(category)),
+    categories.some((category) => question.categories.includes(category)),
   );
 };
 /**
