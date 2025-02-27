@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Arbeitsverzeichnis setzen
-DOCKER_DIR="/root/project/fullstack_trainer_backend_frontend_docker/docker"
-cd "$DOCKER_DIR"
+# Projektverzeichnis
+DOCKER_DIR="/root/project/fullstack-trainerdocker"
+DOCKER_DIR="$PROJECT_DIR/docker"
 
 # Funktion zum Abfragen von Variablen mit Default-Werten
 prompt_with_default() {
@@ -17,6 +17,16 @@ prompt_with_default() {
         echo "$input"
     fi
 }
+
+# In Projektverzeichnis wechseln
+cd "$PROJECT_DIR"
+
+# Git Pull ausführen
+echo "Pulling latest changes from Git..."
+git pull origin main  # Passe 'main' an deinen Branch an, falls nötig
+
+# In Docker-Verzeichnis wechseln
+cd "$DOCKER_DIR"
 
 # Bestehende .env-Datei löschen, falls vorhanden
 if [ -f ".env" ]; then
@@ -51,8 +61,8 @@ VITE_API_BASE_URL=$(prompt_with_default "VITE_API_BASE_URL" "http://217.154.77.2
 VITE_API_USERNAME=$(prompt_with_default "VITE_API_USERNAME" "meinBenutzername" "Vite API Benutzername")
 VITE_API_PASSWORD=$(prompt_with_default "VITE_API_PASSWORD" "meinPasswort" "Vite API Passwort")
 
-NEW_IP="http://217.154.77.26:8080"
-sed -i "s|VITE_API_BASE_URL=.*|VITE_API_BASE_URL=$NEW_IP|" ../fullstack-trainer-frontend/.env.development
+NEW_IP="http://217.154.77.26:8080/quiz"
+sed -i "s|VITE_API_BASE_URL=.*|VITE_API_BASE_URL=$NEW_IP|" ../frontend/.env.development
 
 # Exportieren der Variablen in die Shell
 export POSTGRES_DB POSTGRES_USER POSTGRES_PASSWORD POSTGRES_HOST POSTGRES_PORT
@@ -79,6 +89,10 @@ echo "VITE_API_BASE_URL=$VITE_API_BASE_URL"
 echo "VITE_API_USERNAME=$VITE_API_USERNAME"
 echo "VITE_API_PASSWORD=$VITE_API_PASSWORD"
 
+# Docker Compose stoppen (falls es läuft)
+echo "Stopping existing containers..."
+docker compose down
+
 # Docker Compose starten
-echo "Starte Docker Compose..."
+echo "Building and starting Docker Compose..."
 docker compose up --build
