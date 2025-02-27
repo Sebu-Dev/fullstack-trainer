@@ -1,0 +1,74 @@
+[
+  {
+    "text": "Was ist eine stateless Anwendung?",
+    "options": [
+      { "text": "Eine Anwendung ohne Sitzungszustand", "isCorrect": true },
+      {
+        "text": "Eine Anwendung, die ihren Zustand speichert",
+        "isCorrect": false
+      },
+      { "text": "Eine Anwendung mit einer Datenbank", "isCorrect": false },
+      {
+        "text": "Eine Anwendung, die auf einem Server läuft",
+        "isCorrect": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Cloud Stateful/Stateless"],
+    "explanation": "Stateless Anwendungen speichern keine Sitzungsdaten zwischen Anfragen."
+  },
+  {
+    "text": "Was ist eine stateful Anwendung?",
+    "options": [
+      {
+        "text": "Eine Anwendung, die ihren Zustand speichert",
+        "isCorrect": true
+      },
+      { "text": "Eine Anwendung ohne Sitzungszustand", "isCorrect": false },
+      { "text": "Eine Anwendung mit einer API", "isCorrect": false },
+      {
+        "text": "Eine Anwendung, die keine Datenbank benötigt",
+        "isCorrect": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Cloud Stateful/Stateless"],
+    "explanation": "Stateful Anwendungen speichern Daten über die Sitzungsdauer hinweg."
+  },
+  {
+    "text": "Welcher Azure-Dienst eignet sich für stateless Anwendungen?",
+    "options": [
+      { "text": "Azure Functions", "isCorrect": true },
+      { "text": "Azure SQL Database", "isCorrect": false },
+      { "text": "Azure Virtual Machines", "isCorrect": false },
+      { "text": "Azure Kubernetes Service", "isCorrect": false }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Azure", "Stateful/Stateless"],
+    "explanation": "Azure Functions sind serverlose, stateless Anwendungen, die auf Anfrage ausgeführt werden."
+  },
+  {
+    "text": "Wie speichert eine stateless Anwendung Nutzerdaten langfristig?",
+    "options": [
+      { "text": "In einer externen Datenbank", "isCorrect": true },
+      { "text": "Im lokalen Arbeitsspeicher", "isCorrect": false },
+      { "text": "Im Session Storage des Browsers", "isCorrect": false },
+      { "text": "Auf der CPU des Servers", "isCorrect": false }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Cloud Stateful/Stateless"],
+    "explanation": "Stateless Anwendungen speichern Nutzerdaten nicht selbst, sondern nutzen externe Datenbanken."
+  },
+  {
+    "text": "Welche Art von Anwendung eignet sich am besten für Microservices?",
+    "options": [
+      { "text": "Stateless Anwendungen", "isCorrect": true },
+      { "text": "Stateful Anwendungen", "isCorrect": false },
+      { "text": "Monolithische Anwendungen", "isCorrect": false },
+      { "text": "Desktop-Anwendungen", "isCorrect": false }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Microservices", "Stateful/Stateless"],
+    "explanation": "Stateless Anwendungen eignen sich für Microservices, da sie skalierbarer und ausfallsicherer sind."
+  }
+]

@@ -13,10 +13,7 @@ export const QuizService = {
     questionCount: number
   ): QuizSet {
     const filteredQuestions = filterQuestions(questions, categories);
-    const selectedQuestions = getRandomQuestions(
-      filteredQuestions,
-      questionCount
-    );
+    const selectedQuestions = getRandomQuestions(filteredQuestions, questionCount);
 
     return {
       questions: formatQuestions(selectedQuestions),
@@ -29,11 +26,7 @@ export const QuizService = {
   /**
    * Aktualisiert die Antwort des Benutzers für eine bestimmte Frage und berechnet die Punktzahl neu.
    */
-  updateAnswer(
-    quizSet: QuizSet,
-    questionId: string,
-    optionText: string
-  ): QuizSet {
+  updateAnswer(quizSet: QuizSet, questionId: string, optionText: string): QuizSet {
     const updatedAnswers = quizSet.answers.map((answer) =>
       answer.question.id === questionId
         ? updateUserAnswer(answer, optionText)
@@ -48,7 +41,7 @@ export const QuizService = {
   },
 };
 
-/** Hilfsfunktionen für bessere Strukturierung **/
+/** Hilfsfunktionen für bessere Strukturierung */
 
 /**
  * Mischt eine Liste von Fragen und gibt die gewünschte Anzahl zurück.
@@ -83,11 +76,13 @@ function createInitialAnswers(questions: Question[]): Answer[] {
 
 /**
  * Aktualisiert die Benutzerantwort und berechnet die neue Punktzahl.
+ * Stellt sicher, dass nur eine Option pro Frage ausgewählt ist.
  */
 function updateUserAnswer(answer: Answer, optionText: string): Answer {
-  const updatedUserAnswers = answer.userAnswers.map((ua) =>
-    ua.option.text === optionText ? { ...ua, isSelected: !ua.isSelected } : ua
-  );
+  const updatedUserAnswers = answer.userAnswers.map((ua) => ({
+    ...ua,
+    isSelected: ua.option.text === optionText ? true : false, // Nur die ausgewählte Option ist true
+  }));
 
   return {
     ...answer,

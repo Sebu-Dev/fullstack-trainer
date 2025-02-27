@@ -1,0 +1,123 @@
+[
+    {
+      "text": "Was ist ein Load Balancer?",
+      "options": [
+        { "text": "Ein Gerät oder Dienst, der den Netzwerkverkehr verteilt", "isCorrect": true },
+        { "text": "Ein Datenbankserver", "isCorrect": false },
+        { "text": "Ein Cloud-Speicher", "isCorrect": false },
+        { "text": "Ein VPN-Dienst", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Networking"],
+      "explanation": "Ein Load Balancer verteilt den Netzwerkverkehr auf mehrere Server, um Last zu minimieren und Verfügbarkeit zu erhöhen."
+    },
+    {
+      "text": "Welche Arten von Load Balancern gibt es?",
+      "options": [
+        { "text": "Application Load Balancer und Network Load Balancer", "isCorrect": true },
+        { "text": "Datenbank Load Balancer und API Load Balancer", "isCorrect": false },
+        { "text": "DNS Load Balancer und Firewall Load Balancer", "isCorrect": false },
+        { "text": "Storage Load Balancer und Compute Load Balancer", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Networking"],
+      "explanation": "Application Load Balancer (Layer 7) und Network Load Balancer (Layer 4) sind die Haupttypen."
+    },
+    {
+      "text": "Was bedeutet Skalierung in der Cloud?",
+      "options": [
+        { "text": "Erhöhung oder Reduzierung von Ressourcen je nach Bedarf", "isCorrect": true },
+        { "text": "Einmalige Bereitstellung von Servern", "isCorrect": false },
+        { "text": "Erhöhung der CPU-Geschwindigkeit", "isCorrect": false },
+        { "text": "Erweiterung des Datenspeichers", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Scalability"],
+      "explanation": "Skalierung bedeutet, dass Ressourcen automatisch oder manuell angepasst werden, um Laständerungen zu bewältigen."
+    },
+    {
+      "text": "Was ist der Unterschied zwischen vertikaler und horizontaler Skalierung?",
+      "options": [
+        { "text": "Vertikale Skalierung erhöht Ressourcen eines einzelnen Servers, horizontale Skalierung fügt neue Server hinzu", "isCorrect": true },
+        { "text": "Vertikale Skalierung fügt Server hinzu, horizontale Skalierung erhöht nur die CPU-Leistung", "isCorrect": false },
+        { "text": "Beide bedeuten das gleiche", "isCorrect": false },
+        { "text": "Horizontale Skalierung ist teurer als vertikale Skalierung", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Scalability"],
+      "explanation": "Vertikale Skalierung (Scaling Up) erhöht Ressourcen eines bestehenden Servers, horizontale Skalierung (Scaling Out) fügt neue Instanzen hinzu."
+    },
+    {
+      "text": "Was ist eine serverlose Architektur?",
+      "options": [
+        { "text": "Eine Architektur, bei der der Cloud-Anbieter die Infrastruktur verwaltet", "isCorrect": true },
+        { "text": "Eine Architektur ohne Datenbank", "isCorrect": false },
+        { "text": "Eine Architektur ohne Netzwerk", "isCorrect": false },
+        { "text": "Eine Architektur mit festen Servern", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Serverless"],
+      "explanation": "Serverlose Architekturen, wie AWS Lambda oder Azure Functions, verwalten die Infrastruktur automatisch und skalieren bedarfsgerecht."
+    },
+    {
+      "text": "Welche Vorteile bietet eine serverlose Architektur?",
+      "options": [
+        { "text": "Automatische Skalierung und reduzierte Betriebskosten", "isCorrect": true },
+        { "text": "Ständige Serververfügbarkeit", "isCorrect": false },
+        { "text": "Geringere Latenzzeiten als traditionelle Server", "isCorrect": false },
+        { "text": "Erfordert keine Netzwerkanbindung", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Serverless"],
+      "explanation": "Serverlose Architekturen skalieren automatisch nach Bedarf und berechnen nur die tatsächlich genutzte Rechenleistung."
+    },
+    {
+      "text": "Was ist ein Content Delivery Network (CDN)?",
+      "options": [
+        { "text": "Ein verteiltes Netzwerk zur schnellen Bereitstellung von Inhalten", "isCorrect": true },
+        { "text": "Ein VPN-Dienst", "isCorrect": false },
+        { "text": "Ein Cloud-Speicher", "isCorrect": false },
+        { "text": "Ein Load Balancer", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Networking"],
+      "explanation": "CDNs speichern Inhalte an mehreren Standorten weltweit, um sie schneller an Benutzer auszuliefern."
+    },
+    {
+      "text": "Welche Cloud-Bereitstellungsmodelle gibt es?",
+      "options": [
+        { "text": "Public Cloud, Private Cloud, Hybrid Cloud", "isCorrect": true },
+        { "text": "Cloud, On-Premises, Serverless", "isCorrect": false },
+        { "text": "Azure, AWS, Google Cloud", "isCorrect": false },
+        { "text": "Dedicated Server, Shared Hosting, Cloud Hosting", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Deployment"],
+      "explanation": "Public Cloud ist für alle zugänglich, Private Cloud exklusiv für ein Unternehmen, und Hybrid Cloud kombiniert beide Modelle."
+    },
+    {
+      "text": "Welche Vorteile bietet Infrastructure as Code (IaC)?",
+      "options": [
+        { "text": "Automatisierung und Wiederholbarkeit der Infrastruktur", "isCorrect": true },
+        { "text": "Erfordert keine Cloud-Umgebung", "isCorrect": false },
+        { "text": "Reduziert die Latenzzeiten", "isCorrect": false },
+        { "text": "Ermöglicht bessere Hardwareleistung", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Automation"],
+      "explanation": "Mit IaC (z. B. Terraform oder AWS CloudFormation) können Infrastrukturen als Code verwaltet und reproduzierbar bereitgestellt werden."
+    },
+    {
+      "text": "Welche Cloud-Service-Modelle gibt es?",
+      "options": [
+        { "text": "IaaS, PaaS, SaaS", "isCorrect": true },
+        { "text": "Cloud, Serverless, Kubernetes", "isCorrect": false },
+        { "text": "Networking, Storage, Compute", "isCorrect": false },
+        { "text": "Frontend, Backend, Middleware", "isCorrect": false }
+      ],
+      "difficulty": "MEDIUM",
+      "categories": ["Cloud", "Cloud Services"],
+      "explanation": "IaaS (Infrastructure as a Service) bietet virtuelle Maschinen, PaaS (Platform as a Service) Entwicklungsplattformen und SaaS (Software as a Service) fertige Softwarelösungen."
+    }
+  ]
+  

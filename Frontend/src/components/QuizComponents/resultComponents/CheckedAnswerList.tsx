@@ -14,8 +14,7 @@ export const CheckedAnswerList = ({ question }: CheckedAnswerListProps) => {
     const userAnswer = answer?.userAnswers.find(
       (ua) => ua.option.text === option.text,
     );
-
-    const isSelected = userAnswer?.isSelected;
+    const isSelected = userAnswer?.isSelected ?? false;
     const isCorrect = option.correct;
 
     if (isSelected) {

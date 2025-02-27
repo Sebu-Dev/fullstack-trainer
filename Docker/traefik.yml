@@ -1,0 +1,50 @@
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    exposedByDefault: false
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: "fsebulke@web.de"
+      storage: "/acme.json"
+      httpChallenge:
+        entryPoint: "web"
+log:
+  level: DEBUG
+http:
+  middlewares:
+    https-redirect:
+      redirectScheme:
+        scheme: "https"
+        permanent: true
+    cors-headers:
+      headers:
+        accessControlAllowOriginList:
+          - "https://sebu-dev.github.io/"
+          - "http://localhost:3000"
+          - "https://sebu-dev.de"
+          - "http://217.154.77.26:8080"
+        accessControlAllowMethods:
+          - "GET"
+          - "POST"
+          - "PUT"
+          - "DELETE"
+        accessControlAllowHeaders: "*"
+  routers:
+    redirect-to-https:
+      rule: "Host(`sebu-dev.de`)"
+      entryPoints:
+        - "web"
+      middlewares:
+        - "https-redirect"
+      service: "noop"
+      

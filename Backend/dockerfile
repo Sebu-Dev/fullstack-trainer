@@ -1,0 +1,26 @@
+# 1. Stage: Build-Image mit Maven und JDK 17
+FROM maven:3-openjdk-17 AS build
+
+# Arbeitsverzeichnis im Container setzen
+WORKDIR /app
+
+# Quellcode in das Container-Arbeitsverzeichnis kopieren
+COPY . .
+
+# Abhängigkeiten und JAR-Datei bauen
+RUN mvn clean install -DskipTests
+
+# 2. Stage: Runtime-Image mit JDK 17
+FROM openjdk:17-jdk
+
+# Arbeitsverzeichnis im Container setzen
+WORKDIR /app
+
+# Die fertige JAR-Datei vom Build-Stage kopieren
+COPY --from=build /app/target/fullstack-trainer-backend-0.0.1-SNAPSHOT.jar app.jar
+
+# Port freigeben
+EXPOSE 8080
+
+# Startbefehl für Spring Boot
+ENTRYPOINT ["java", "-jar", "app.jar"]
