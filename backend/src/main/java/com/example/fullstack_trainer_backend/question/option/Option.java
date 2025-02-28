@@ -26,7 +26,7 @@ public class Option {
     private Question question;
 
     private String text;
-    private boolean isCorrect;
+    private boolean correct;
 
     // Getter & Setter
     // ...

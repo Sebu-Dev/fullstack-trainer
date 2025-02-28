@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import type { Question, QuizSet } from "../Question/type/QuestionType";
+import { apiService } from "../api/apiService";
+import { Question, QuizSet } from "../Question/type/QuestionType";
 import { FilterService } from "../services/FilterService";
 import { LocalStorageService } from "../services/LocalStorageService";
 import { QuizService } from "../services/QuizService";
-import { apiService } from "../api/apiService";
 
 interface QuizStore {
   questionList: Question[];
@@ -16,9 +16,8 @@ interface QuizStore {
   generateQuizSet: () => void;
   setSelectedCategories: (categories: string[]) => void;
   filterQuestions: (categories: string[]) => void;
-  updateUserAnswer: (questionId: string, optionText: string) => void;
+  updateUserAnswer: (questionId: string, optionId: number) => void; // Anpassung
   resetQuizState: () => void;
-
 
   // Getters
   getQuestionPoints: (questionId: string) => number;
@@ -31,14 +30,12 @@ const useQuizStore = create<QuizStore>((set, get) => ({
   quizSet: LocalStorageService.getQuizSet(),
   selectedCategories: [],
 
-    /** Lädt die Fragen aus der API oder nutzt lokale Daten */
-    loadQuestions: async () => {
-      const questions = await apiService.fetchQuestions();
-     const cats = FilterService.getAllCategories(questions);
-      set({ questionList: questions, categories: cats });
-    },
-  
-  /** Setzt den Quiz-Status zurück */
+  loadQuestions: async () => {
+    const questions = await apiService.fetchQuestions();
+    const cats = FilterService.getAllCategories(questions);
+    set({ questionList: questions, categories: cats });
+  },
+
   resetQuizState: () => {
     const emptyQuizSet: QuizSet = {
       questions: [],
@@ -50,33 +47,30 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     set({ quizSet: emptyQuizSet, selectedCategories: [] });
   },
 
-  /** Erstellt ein neues Quiz-Set mit den aktuellen Kategorien */
   generateQuizSet: () => {
     const newQuizSet = QuizService.generateQuizSet(
       get().questionList,
       get().selectedCategories,
-      6, // Anzahl der Fragen
+      6
     );
     LocalStorageService.saveQuizSet(newQuizSet);
     set({ quizSet: newQuizSet });
   },
 
-  /** Aktualisiert die Antwort des Benutzers */
-  updateUserAnswer: (questionId, optionText) => {
+  updateUserAnswer: (questionId, optionId) => {
     const updatedQuizSet = QuizService.updateAnswer(
       get().quizSet,
       questionId,
-      optionText,
+      optionId
     );
     LocalStorageService.saveQuizSet(updatedQuizSet);
     set({ quizSet: updatedQuizSet });
   },
 
-  /** Filtert die Fragen basierend auf den ausgewählten Kategorien */
   filterQuestions: (categories) => {
     const filteredQuestions = FilterService.filterQuestions(
       get().questionList,
-      categories,
+      categories
     );
     set({
       quizSet: {
@@ -86,19 +80,14 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     });
   },
 
-  /** Setzt die ausgewählten Kategorien */
-  setSelectedCategories: (categories) =>
-    set({ selectedCategories: categories }),
+  setSelectedCategories: (categories) => set({ selectedCategories: categories }),
 
-  /** Gibt die Punkte für eine bestimmte Frage zurück */
   getQuestionPoints: (questionId) =>
     get().quizSet.answers.find((answer) => answer.question.id === questionId)
       ?.achievedPoints || 0,
 
-  /** Gibt die Gesamtpunktzahl des Benutzers zurück */
   getTotalPoints: () => get().quizSet.totalAchievedPoints,
 
-  /** Gibt alle verfügbaren Kategorien zurück */
   getAllCategories: () => FilterService.getAllCategories(get().questionList),
 }));
 

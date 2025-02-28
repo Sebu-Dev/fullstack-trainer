@@ -26,3 +26,8 @@ export const sortArray = <T>(array: T[]): T[] => {
   const sortedArray = array.sort();
   return sortedArray;
 };
+let idCounter = 0;
+
+export function generateNumericId(): number {
+  return ++idCounter;
+}

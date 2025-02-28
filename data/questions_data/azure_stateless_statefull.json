@@ -2,15 +2,15 @@
   {
     "text": "Was ist eine stateless Anwendung?",
     "options": [
-      { "text": "Eine Anwendung ohne Sitzungszustand", "isCorrect": true },
+      { "text": "Eine Anwendung ohne Sitzungszustand", "correct": true },
       {
         "text": "Eine Anwendung, die ihren Zustand speichert",
-        "isCorrect": false
+        "correct": false
       },
-      { "text": "Eine Anwendung mit einer Datenbank", "isCorrect": false },
+      { "text": "Eine Anwendung mit einer Datenbank", "correct": false },
       {
         "text": "Eine Anwendung, die auf einem Server läuft",
-        "isCorrect": false
+        "correct": false
       }
     ],
     "difficulty": "MEDIUM",
@@ -22,13 +22,13 @@
     "options": [
       {
         "text": "Eine Anwendung, die ihren Zustand speichert",
-        "isCorrect": true
+        "correct": true
       },
-      { "text": "Eine Anwendung ohne Sitzungszustand", "isCorrect": false },
-      { "text": "Eine Anwendung mit einer API", "isCorrect": false },
+      { "text": "Eine Anwendung ohne Sitzungszustand", "correct": false },
+      { "text": "Eine Anwendung mit einer API", "correct": false },
       {
         "text": "Eine Anwendung, die keine Datenbank benötigt",
-        "isCorrect": false
+        "correct": false
       }
     ],
     "difficulty": "MEDIUM",
@@ -38,10 +38,10 @@
   {
     "text": "Welcher Azure-Dienst eignet sich für stateless Anwendungen?",
     "options": [
-      { "text": "Azure Functions", "isCorrect": true },
-      { "text": "Azure SQL Database", "isCorrect": false },
-      { "text": "Azure Virtual Machines", "isCorrect": false },
-      { "text": "Azure Kubernetes Service", "isCorrect": false }
+      { "text": "Azure Functions", "correct": true },
+      { "text": "Azure SQL Database", "correct": false },
+      { "text": "Azure Virtual Machines", "correct": false },
+      { "text": "Azure Kubernetes Service", "correct": false }
     ],
     "difficulty": "MEDIUM",
     "categories": ["Azure", "Stateful/Stateless"],
@@ -50,10 +50,10 @@
   {
     "text": "Wie speichert eine stateless Anwendung Nutzerdaten langfristig?",
     "options": [
-      { "text": "In einer externen Datenbank", "isCorrect": true },
-      { "text": "Im lokalen Arbeitsspeicher", "isCorrect": false },
-      { "text": "Im Session Storage des Browsers", "isCorrect": false },
-      { "text": "Auf der CPU des Servers", "isCorrect": false }
+      { "text": "In einer externen Datenbank", "correct": true },
+      { "text": "Im lokalen Arbeitsspeicher", "correct": false },
+      { "text": "Im Session Storage des Browsers", "correct": false },
+      { "text": "Auf der CPU des Servers", "correct": false }
     ],
     "difficulty": "MEDIUM",
     "categories": ["Cloud", "Cloud Stateful/Stateless"],
@@ -62,10 +62,10 @@
   {
     "text": "Welche Art von Anwendung eignet sich am besten für Microservices?",
     "options": [
-      { "text": "Stateless Anwendungen", "isCorrect": true },
-      { "text": "Stateful Anwendungen", "isCorrect": false },
-      { "text": "Monolithische Anwendungen", "isCorrect": false },
-      { "text": "Desktop-Anwendungen", "isCorrect": false }
+      { "text": "Stateless Anwendungen", "correct": true },
+      { "text": "Stateful Anwendungen", "correct": false },
+      { "text": "Monolithische Anwendungen", "correct": false },
+      { "text": "Desktop-Anwendungen", "correct": false }
     ],
     "difficulty": "MEDIUM",
     "categories": ["Microservices", "Stateful/Stateless"],

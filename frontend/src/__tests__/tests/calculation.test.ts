@@ -1,5 +1,6 @@
 import type { Answer } from "../../Question/type/QuestionType";
 import { ScoringService } from "../../services/ScoringService";
+import { generateNumericId } from "../../utils/helpers";
 
 describe("ScoringService Tests", () => {
   describe("calculateQuestionPoints", () => {
@@ -9,19 +10,31 @@ describe("ScoringService Tests", () => {
           id: "1",
           text: "Which of the following are prime numbers?",
           options: [
-            { text: "2", correct: true },
-            { text: "3", correct: true },
-            { text: "4", correct: false },
-            { text: "5", correct: true },
+            { id: generateNumericId(), text: "2", correct: true },
+            { id: generateNumericId(), text: "3", correct: true },
+            { id: generateNumericId(), text: "4", correct: false },
+            { id: generateNumericId(), text: "5", correct: true },
           ],
           difficulty: "easy",
           categories: ["math"],
         },
         userAnswers: [
-          { option: { text: "2", correct: true }, isSelected: true },
-          { option: { text: "3", correct: true }, isSelected: true },
-          { option: { text: "4", correct: false }, isSelected: true },
-          { option: { text: "5", correct: true }, isSelected: true },
+          {
+            option: { id: generateNumericId(), text: "2", correct: true },
+            isSelected: true,
+          },
+          {
+            option: { id: generateNumericId(), text: "3", correct: true },
+            isSelected: true,
+          },
+          {
+            option: { id: generateNumericId(), text: "4", correct: false },
+            isSelected: true,
+          },
+          {
+            option: { id: generateNumericId(), text: "5", correct: true },
+            isSelected: true,
+          },
         ],
         achievedPoints: 0,
       };
@@ -36,19 +49,31 @@ describe("ScoringService Tests", () => {
           id: "2",
           text: "Which of the following are even numbers?",
           options: [
-            { text: "1", correct: false },
-            { text: "2", correct: true },
-            { text: "3", correct: false },
-            { text: "4", correct: true },
+            { id: generateNumericId(), text: "1", correct: false },
+            { id: generateNumericId(), text: "2", correct: true },
+            { id: generateNumericId(), text: "3", correct: false },
+            { id: generateNumericId(), text: "4", correct: true },
           ],
           difficulty: "easy",
           categories: ["math"],
         },
         userAnswers: [
-          { option: { text: "1", correct: false }, isSelected: false },
-          { option: { text: "2", correct: true }, isSelected: false },
-          { option: { text: "3", correct: false }, isSelected: true },
-          { option: { text: "4", correct: true }, isSelected: true },
+          {
+            option: { id: generateNumericId(), text: "1", correct: false },
+            isSelected: false,
+          },
+          {
+            option: { id: generateNumericId(), text: "2", correct: true },
+            isSelected: false,
+          },
+          {
+            option: { id: generateNumericId(), text: "3", correct: false },
+            isSelected: true,
+          },
+          {
+            option: { id: generateNumericId(), text: "4", correct: true },
+            isSelected: true,
+          },
         ],
         achievedPoints: 0,
       };
@@ -66,19 +91,31 @@ describe("ScoringService Tests", () => {
             id: "1",
             text: "Which of the following are prime numbers?",
             options: [
-              { text: "2", correct: true },
-              { text: "3", correct: true },
-              { text: "4", correct: false },
-              { text: "5", correct: true },
+              { id: generateNumericId(), text: "2", correct: true },
+              { id: generateNumericId(), text: "3", correct: true },
+              { id: generateNumericId(), text: "4", correct: false },
+              { id: generateNumericId(), text: "5", correct: true },
             ],
             difficulty: "easy",
             categories: ["math"],
           },
           userAnswers: [
-            { option: { text: "2", correct: true }, isSelected: true },
-            { option: { text: "3", correct: true }, isSelected: true },
-            { option: { text: "4", correct: false }, isSelected: false },
-            { option: { text: "5", correct: true }, isSelected: true },
+            {
+              option: { id: generateNumericId(), text: "2", correct: true },
+              isSelected: true,
+            },
+            {
+              option: { id: generateNumericId(), text: "3", correct: true },
+              isSelected: true,
+            },
+            {
+              option: { id: generateNumericId(), text: "4", correct: false },
+              isSelected: false,
+            },
+            {
+              option: { id: generateNumericId(), text: "5", correct: true },
+              isSelected: true,
+            },
           ],
           achievedPoints: 0,
         },
@@ -87,19 +124,31 @@ describe("ScoringService Tests", () => {
             id: "2",
             text: "Which of the following are even numbers?",
             options: [
-              { text: "1", correct: false },
-              { text: "2", correct: true },
-              { text: "3", correct: false },
-              { text: "4", correct: true },
+              { id: generateNumericId(), text: "1", correct: false },
+              { id: generateNumericId(), text: "2", correct: true },
+              { id: generateNumericId(), text: "3", correct: false },
+              { id: generateNumericId(), text: "4", correct: true },
             ],
             difficulty: "easy",
             categories: ["math"],
           },
           userAnswers: [
-            { option: { text: "1", correct: false }, isSelected: true },
-            { option: { text: "2", correct: true }, isSelected: false },
-            { option: { text: "3", correct: false }, isSelected: true },
-            { option: { text: "4", correct: true }, isSelected: true },
+            {
+              option: { id: generateNumericId(), text: "1", correct: false },
+              isSelected: true,
+            },
+            {
+              option: { id: generateNumericId(), text: "2", correct: true },
+              isSelected: false,
+            },
+            {
+              option: { id: generateNumericId(), text: "3", correct: false },
+              isSelected: true,
+            },
+            {
+              option: { id: generateNumericId(), text: "4", correct: true },
+              isSelected: true,
+            },
           ],
           achievedPoints: 0,
         },

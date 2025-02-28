@@ -13,7 +13,10 @@ export const QuizService = {
     questionCount: number
   ): QuizSet {
     const filteredQuestions = filterQuestions(questions, categories);
-    const selectedQuestions = getRandomQuestions(filteredQuestions, questionCount);
+    const selectedQuestions = getRandomQuestions(
+      filteredQuestions,
+      questionCount
+    );
 
     return {
       questions: formatQuestions(selectedQuestions),
@@ -26,10 +29,14 @@ export const QuizService = {
   /**
    * Aktualisiert die Antwort des Benutzers für eine bestimmte Frage und berechnet die Punktzahl neu.
    */
-  updateAnswer(quizSet: QuizSet, questionId: string, optionText: string): QuizSet {
+  updateAnswer(
+    quizSet: QuizSet,
+    questionId: string,
+    optionId: number
+  ): QuizSet {
     const updatedAnswers = quizSet.answers.map((answer) =>
       answer.question.id === questionId
-        ? updateUserAnswer(answer, optionText)
+        ? updateUserAnswer(answer, optionId)
         : answer
     );
 
@@ -56,7 +63,7 @@ function getRandomQuestions(questions: Question[], count: number): Question[] {
 function formatQuestions(questions: Question[]): Question[] {
   return questions.map((question) => ({
     ...question,
-    options: shuffleArray(question.options),
+    options: shuffleArray(question.options), // IDs bleiben erhalten
   }));
 }
 
@@ -76,13 +83,15 @@ function createInitialAnswers(questions: Question[]): Answer[] {
 
 /**
  * Aktualisiert die Benutzerantwort und berechnet die neue Punktzahl.
- * Stellt sicher, dass nur eine Option pro Frage ausgewählt ist.
+ * Erlaubt das Umschalten mehrerer Optionen unabhängig voneinander.
  */
-function updateUserAnswer(answer: Answer, optionText: string): Answer {
-  const updatedUserAnswers = answer.userAnswers.map((ua) => ({
-    ...ua,
-    isSelected: ua.option.text === optionText ? true : false, // Nur die ausgewählte Option ist true
-  }));
+function updateUserAnswer(answer: Answer, optionId: number): Answer {
+  const updatedUserAnswers = answer.userAnswers.map(
+    (ua) =>
+      ua.option.id === optionId
+        ? { ...ua, isSelected: !ua.isSelected } // Toggle der ausgewählten Option
+        : ua // Andere Optionen bleiben unverändert
+  );
 
   return {
     ...answer,

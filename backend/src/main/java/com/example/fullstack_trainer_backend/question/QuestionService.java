@@ -58,6 +58,7 @@ public class QuestionService {
 
     private ResponseQuestionDto convertToResponseDto(Question question) {
         return new ResponseQuestionDto(
+                question.getId(),
                 question.getText(),
                 question.getDifficulty().name(),
                 question.getExplanation(),
@@ -224,7 +225,7 @@ public class QuestionService {
         } else if (options.size() > 4) {
             errors.add("Maximal 4 Antwortmöglichkeiten erlaubt");
         } else if (options.stream().noneMatch(RequestOptionDto::isCorrect)) {
-            errors.add("Mindestens eine Antwort muss korrekt sein (isCorrect = true)");
+            errors.add("Mindestens eine Antwort muss korrekt sein (correct = true)");
         }
 
         List<String> categories = questionDto.getCategories();

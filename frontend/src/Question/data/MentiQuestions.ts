@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Question } from "../type/QuestionType";
+import { generateNumericId } from "../../utils/helpers";
 
 export const mentiQuiz: Question[] = [
   {
@@ -7,18 +8,22 @@ export const mentiQuiz: Question[] = [
     text: "Was passiert, wenn eine Komponente in React `setState` mit einem neuen Zustand aufruft, der denselben Wert wie der aktuelle Zustand hat?",
     options: [
       {
+        id: generateNumericId(),
         text: "React ignoriert die Aktualisierung, da der Zustand nicht geändert wurde und rendert die Komponente nicht neu",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "Die Komponente wird dennoch neu gerendert, um sicherzustellen, dass der Zustand immer aktualisiert wird",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Der Zustand wird sofort aktualisiert und die neue Komponente wird gerendert",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Es führt zu einem Fehler, da der Zustand immer einzigartig sein muss",
         correct: false,
       },
@@ -33,18 +38,22 @@ export const mentiQuiz: Question[] = [
     text: "Welche der folgenden Aussagen zu `React.Fragment` sind korrekt?",
     options: [
       {
+        id: generateNumericId(),
         text: "`React.Fragment` ermöglicht das Gruppieren von Komponenten ohne zusätzliche DOM-Elemente zu erzeugen",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "`React.Fragment` wird nur für Listen von Komponenten benötigt",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`React.Fragment` kann nicht mit Schlüssel-Attributen (`key`) verwendet werden",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`React.Fragment` hat den gleichen Zweck wie ein `div`-Tag, aber ohne Styling",
         correct: true,
       },
@@ -59,18 +68,22 @@ export const mentiQuiz: Question[] = [
     text: "Welche der folgenden Aussagen über das Lifecycle von React-Komponenten sind korrekt?",
     options: [
       {
+        id: generateNumericId(),
         text: "Die `componentDidMount`-Methode wird nach dem ersten Rendern einer Klasse ausgeführt",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "Die `componentDidUpdate`-Methode wird nur bei Änderungen des Props ausgeführt",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Die `componentWillUnmount`-Methode wird aufgerufen, bevor eine Komponente vom DOM entfernt wird",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "Lifecycle-Methoden sind nur in Funktionskomponenten verfügbar",
         correct: false,
       },
@@ -85,18 +98,22 @@ export const mentiQuiz: Question[] = [
     text: "Was ist der Zweck von `React.memo` in React?",
     options: [
       {
+        id: generateNumericId(),
         text: "`React.memo` optimiert die Performance, indem es die Komponente nur dann neu rendert, wenn sich die Props ändern",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "`React.memo` verhindert das Re-Rendering einer Komponente, wenn der Zustand sich nicht ändert",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`React.memo` wird verwendet, um die Initialisierung der Komponente zu verhindern",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`React.memo` ist nur für Klassenkomponenten gedacht",
         correct: false,
       },
@@ -111,18 +128,22 @@ export const mentiQuiz: Question[] = [
     text: "Wie kannst du in React den Wert eines Formularfeldes wie eines `input` steuern?",
     options: [
       {
+        id: generateNumericId(),
         text: "Indem man den `value`-Prop des Formularfeldes mit dem Zustand der Komponente bindet",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "Indem man den `checked`-Prop für alle Formularfelder nutzt",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Indem man das `input`-Feld jedes Mal manuell ändert, wenn der Zustand sich ändert",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Indem man `useEffect` verwendet, um den Wert des `input`-Feldes zu setzen",
         correct: false,
       },
@@ -137,18 +158,22 @@ export const mentiQuiz: Question[] = [
     text: "Was ist der Unterschied zwischen `useEffect` und `useLayoutEffect` in React?",
     options: [
       {
+        id: generateNumericId(),
         text: "`useEffect` wird nach dem Rendern ausgeführt, während `useLayoutEffect` vor dem Rendern des DOMs ausgeführt wird",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "`useEffect` ist nur für API-Aufrufe gedacht, `useLayoutEffect` für DOM-Manipulationen",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`useEffect` ist synchron, `useLayoutEffect` asynchron",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`useEffect` wird nur in Funktionskomponenten verwendet, `useLayoutEffect` nur in Klassenkomponenten",
         correct: false,
       },
@@ -163,18 +188,22 @@ export const mentiQuiz: Question[] = [
     text: "Welche der folgenden Aussagen über `useContext` und `useReducer` sind korrekt?",
     options: [
       {
+        id: generateNumericId(),
         text: "`useContext` dient dazu, Daten an tief verschachtelte Komponenten zu übergeben, während `useReducer` komplexe Zustandsänderungen innerhalb einer Komponente behandelt",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "`useReducer` ersetzt `useState` immer, wenn der Zustand komplexer wird",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`useContext` kann nur in Funktionskomponenten und nicht in Klassenkomponenten verwendet werden",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "`useReducer` wird hauptsächlich für die Verwaltung von Formularen verwendet",
         correct: false,
       },
@@ -189,18 +218,22 @@ export const mentiQuiz: Question[] = [
     text: "Wie verhinderst du in React, dass eine Komponente unnötig neu gerendert wird?",
     options: [
       {
+        id: generateNumericId(),
         text: "Verwende `shouldComponentUpdate` in Klassenkomponenten oder `React.memo` in Funktionskomponenten",
         correct: true,
       },
       {
+        id: generateNumericId(),
         text: "Verwende immer den `key`-Prop in allen Komponenten",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Verwende `useEffect`, um die Komponente zu überwachen und nur bei Bedarf neu zu rendern",
         correct: false,
       },
       {
+        id: generateNumericId(),
         text: "Vermeide das Setzen von Zustand innerhalb von Komponenten",
         correct: false,
       },

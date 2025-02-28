@@ -10,24 +10,24 @@ export const AnswerList = ({ question }: AnswerListProps) => {
   const { quizSet, updateUserAnswer } = useQuizStore();
 
   const userAnswers = quizSet.answers.find(
-    (answer) => answer.question.id === question.id, 
+    (answer) => answer.question.id === question.id
   )?.userAnswers;
 
-  const handleAnswerSelect = (optionText: string) => {
-    updateUserAnswer(question.id, optionText);
+  const handleAnswerSelect = (optionId: number) => {
+    updateUserAnswer(question.id, optionId);
   };
 
   return (
     <ul className="w-full">
-      {question.options.map((option, index) => {
+      {question.options.map((option) => {
         const isSelected = userAnswers?.find(
-          (ua) => ua.option.text === option.text,
+          (ua) => ua.option.id === option.id
         )?.isSelected ?? false;
 
         return (
-          <li key={index} className="flex flex-col">
+          <li key={option.id} className="flex flex-col">
             <BaseButton
-              handleOnClick={() => handleAnswerSelect(option.text)}
+              handleOnClick={() => handleAnswerSelect(option.id)}
               hoverEffect={{ scale: 1.01 }}
               tapEffect={{ scale: 1.005 }}
               label={option.text}

@@ -1,18 +1,32 @@
 import { v4 as uuidv4 } from "uuid";
 import type { Question } from "../../type/QuestionType";
+import { generateNumericId } from "../../../utils/helpers";
 
 export const dockerFileQuestions: Question[] = [
   {
     id: uuidv4(),
     text: "Welche Best Practices gelten für das Schreiben von Dockerfiles?",
     options: [
-      { text: "Verwendung kleiner Basis-Images", correct: true },
-      { text: "Minimierung der Layer-Anzahl", correct: true },
       {
+        id: generateNumericId(),
+        text: "Verwendung kleiner Basis-Images",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
+        text: "Minimierung der Layer-Anzahl",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
         text: "Alle Befehle in einer einzigen RUN-Anweisung bündeln",
         correct: false,
       },
-      { text: "Verwendung von Multi-Stage Builds", correct: true },
+      {
+        id: generateNumericId(),
+        text: "Verwendung von Multi-Stage Builds",
+        correct: true,
+      },
     ],
     difficulty: "hard",
     categories: ["Docker", "Dockerfile"],
@@ -23,13 +37,23 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Was passiert, wenn ein Dockerfile keine CMD-Anweisung enthält?",
     options: [
-      { text: "Der Container startet nicht", correct: false },
       {
+        id: generateNumericId(),
+        text: "Der Container startet nicht",
+        correct: false,
+      },
+      {
+        id: generateNumericId(),
         text: "Der Container verwendet den Befehl des Basisimages",
         correct: true,
       },
-      { text: "Docker gibt einen Fehler beim Build aus", correct: false },
       {
+        id: generateNumericId(),
+        text: "Docker gibt einen Fehler beim Build aus",
+        correct: false,
+      },
+      {
+        id: generateNumericId(),
         text: "Es ist erforderlich, einen Entrypoint anzugeben",
         correct: false,
       },
@@ -43,10 +67,26 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Was ist der Unterschied zwischen ENTRYPOINT und CMD in Docker?",
     options: [
-      { text: "ENTRYPOINT ist vorrangig gegenüber CMD", correct: true },
-      { text: "CMD definiert Standardbefehle", correct: true },
-      { text: "ENTRYPOINT kann nicht überschrieben werden", correct: false },
-      { text: "CMD wird vor ENTRYPOINT ausgeführt", correct: false },
+      {
+        id: generateNumericId(),
+        text: "ENTRYPOINT ist vorrangig gegenüber CMD",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
+        text: "CMD definiert Standardbefehle",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
+        text: "ENTRYPOINT kann nicht überschrieben werden",
+        correct: false,
+      },
+      {
+        id: generateNumericId(),
+        text: "CMD wird vor ENTRYPOINT ausgeführt",
+        correct: false,
+      },
     ],
     difficulty: "hard",
     categories: ["Docker", "Dockerfile"],
@@ -57,10 +97,26 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Welche Schritte sind beim Erstellen eines Docker-Images erforderlich?",
     options: [
-      { text: "Ein Dockerfile erstellen", correct: true },
-      { text: "docker build ausführen", correct: true },
-      { text: "Einen Container starten", correct: false },
-      { text: "docker push verwenden", correct: false },
+      {
+        id: generateNumericId(),
+        text: "Ein Dockerfile erstellen",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
+        text: "docker build ausführen",
+        correct: true,
+      },
+      {
+        id: generateNumericId(),
+        text: "Einen Container starten",
+        correct: false,
+      },
+      {
+        id: generateNumericId(),
+        text: "docker push verwenden",
+        correct: false,
+      },
     ],
     difficulty: "easy",
     categories: ["Docker", "Dockerfile"],
@@ -71,10 +127,10 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Welche Anweisung wird im Dockerfile genutzt, um eine Basis-Image zu definieren?",
     options: [
-      { text: "FROM", correct: true },
-      { text: "RUN", correct: false },
-      { text: "COPY", correct: false },
-      { text: "CMD", correct: false },
+      { id: generateNumericId(), text: "FROM", correct: true },
+      { id: generateNumericId(), text: "RUN", correct: false },
+      { id: generateNumericId(), text: "COPY", correct: false },
+      { id: generateNumericId(), text: "CMD", correct: false },
     ],
     difficulty: "easy",
     categories: ["Docker", "Dockerfile"],
@@ -84,10 +140,14 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Wie kann man zusätzliche Software in einem Docker-Image installieren?",
     options: [
-      { text: "Mit der RUN-Anweisung", correct: true },
-      { text: "Mit der ADD-Anweisung", correct: false },
-      { text: "Durch CMD", correct: false },
-      { text: "Durch FROM", correct: false },
+      { id: generateNumericId(), text: "Mit der RUN-Anweisung", correct: true },
+      {
+        id: generateNumericId(),
+        text: "Mit der ADD-Anweisung",
+        correct: false,
+      },
+      { id: generateNumericId(), text: "Durch CMD", correct: false },
+      { id: generateNumericId(), text: "Durch FROM", correct: false },
     ],
     difficulty: "medium",
     categories: ["Docker", "Dockerfile"],
@@ -97,10 +157,10 @@ export const dockerFileQuestions: Question[] = [
     id: uuidv4(),
     text: "Welche Anweisung kopiert Dateien ins Image?",
     options: [
-      { text: "COPY", correct: true },
-      { text: "ADD", correct: true },
-      { text: "RUN", correct: false },
-      { text: "FROM", correct: false },
+      { id: generateNumericId(), text: "COPY", correct: true },
+      { id: generateNumericId(), text: "ADD", correct: true },
+      { id: generateNumericId(), text: "RUN", correct: false },
+      { id: generateNumericId(), text: "FROM", correct: false },
     ],
     difficulty: "medium",
     categories: ["Docker", "Dockerfile"],
