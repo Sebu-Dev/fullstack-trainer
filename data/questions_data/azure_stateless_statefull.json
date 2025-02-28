@@ -44,7 +44,7 @@
       { "text": "Azure Kubernetes Service", "correct": false }
     ],
     "difficulty": "MEDIUM",
-    "categories": ["Azure", "Stateful/Stateless"],
+    "categories": ["Cloud", "Stateful/Stateless"],
     "explanation": "Azure Functions sind serverlose, stateless Anwendungen, die auf Anfrage ausgeführt werden."
   },
   {

@@ -10,14 +10,16 @@ interface QuizStore {
   quizSet: QuizSet;
   selectedCategories: string[];
   categories?: string[];
+  mainCategories?: string[];
 
   // Actions
   loadQuestions: () => Promise<void>;
   generateQuizSet: () => void;
   setSelectedCategories: (categories: string[]) => void;
   filterQuestions: (categories: string[]) => void;
-  updateUserAnswer: (questionId: string, optionId: number) => void; // Anpassung
+  updateUserAnswer: (questionId: string, optionId: number) => void; 
   resetQuizState: () => void;
+  
 
   // Getters
   getQuestionPoints: (questionId: string) => number;
@@ -30,12 +32,12 @@ const useQuizStore = create<QuizStore>((set, get) => ({
   quizSet: LocalStorageService.getQuizSet(),
   selectedCategories: [],
 
+
   loadQuestions: async () => {
     const questions = await apiService.fetchQuestions();
-    const cats = FilterService.getAllCategories(questions);
-    set({ questionList: questions, categories: cats });
+    const { processedQuestions, allCategories } = FilterService.getProcessedQuestionsAndCategories(questions);
+    set({ questionList: processedQuestions, mainCategories: allCategories });
   },
-
   resetQuizState: () => {
     const emptyQuizSet: QuizSet = {
       questions: [],
@@ -46,6 +48,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     LocalStorageService.saveQuizSet(emptyQuizSet);
     set({ quizSet: emptyQuizSet, selectedCategories: [] });
   },
+  getAllCategories: () => FilterService.getAllCategories(get().questionList),
 
   generateQuizSet: () => {
     const newQuizSet = QuizService.generateQuizSet(
@@ -80,6 +83,8 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     });
   },
 
+  
+
   setSelectedCategories: (categories) => set({ selectedCategories: categories }),
 
   getQuestionPoints: (questionId) =>
@@ -88,7 +93,6 @@ const useQuizStore = create<QuizStore>((set, get) => ({
 
   getTotalPoints: () => get().quizSet.totalAchievedPoints,
 
-  getAllCategories: () => FilterService.getAllCategories(get().questionList),
 }));
 
 export default useQuizStore;

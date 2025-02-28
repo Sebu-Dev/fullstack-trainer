@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "sebu-dev-react-lib";
+import {  Layout, Navbar } from "sebu-dev-react-lib";
 import "sebu-dev-react-lib/dist/sebu-dev-react-lib.css";
 import { CsvDownloadPopup } from "./components/CsvDownloadPopup";
 import { LandingPage } from "./components/pages/LandingPage";
@@ -9,6 +9,8 @@ import { ResultLanding } from "./components/QuizComponents/resultComponents/Resu
 import { ROUTES } from "./routes/routes";
 import { useEffect } from "react";
 import useQuizStore from "./store/QuizStore";
+import AdminPanel from "./components/adminPanel/AdminPanel";
+import GoToAdminPanelButton from "./components/adminPanel/GoToAdminPanelButton";
 
 const App = () => {
   const loadQuestions = useQuizStore((state) => state.loadQuestions); 
@@ -17,7 +19,13 @@ const App = () => {
     loadQuestions();
   }, [loadQuestions]);
   return (
-    <Layout nav={true}>
+    <Layout nav={false}>
+      <Navbar> <GoToAdminPanelButton/></Navbar>
+      <Routes>
+        <Route
+          path={ROUTES.ADMIN} element={<AdminPanel/>}>
+          </Route>
+          </Routes>
       <Routes>
         <Route path={ROUTES.HOME} element={<LandingPage />}>
           <Route path={ROUTES.CSV} element={<CsvDownloadPopup />} />

@@ -94,3 +94,38 @@ was sind nachteile monoliten
 was sind vor teile eines microservices
 
 was sind nachteile microservice
+
+
+was ist eine hexagonale architektur
+
+warum will ich bei hexagonale architektur die geschäftslogik isoolieren ?
+ - nicht abhänging von technischen details abhängig.
+
+welche schichten gibt es in heagonale?
+- interaktions
+- adapter
+was machen interaktions in hexagonal?
+- verwalten von entitäten 
+
+
+was ist ein adapter?
+ - implementiereung des request
+ - implementiert ein port
+
+
+was ist ein port?
+- schnittstelle
+
+wie kann ich eine andere verbingung standart herstellen?
+- neuen adapter schreiben mit selben interface
+  
+was ist ein Repository?
+- interface
+
+was ist inversion of controll?
+
+hexa gonale repos können auch andere implementierung ermöglichen  spring boot kann nur dbs
+- z.b. on csv 
+
+wann hilft mir das interface in hexgonales?
+- 

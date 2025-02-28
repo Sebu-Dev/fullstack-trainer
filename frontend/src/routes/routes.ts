@@ -4,4 +4,5 @@ export const ROUTES = {
   QUIZ: "/quiz",
   QUIZ_RESULT: "/quiz-result-landing",
   SOLUTION: "/quiz-result-landing/solution",
+  ADMIN: "/admin",
 };

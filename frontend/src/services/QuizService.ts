@@ -89,8 +89,8 @@ function updateUserAnswer(answer: Answer, optionId: number): Answer {
   const updatedUserAnswers = answer.userAnswers.map(
     (ua) =>
       ua.option.id === optionId
-        ? { ...ua, isSelected: !ua.isSelected } // Toggle der ausgewählten Option
-        : ua // Andere Optionen bleiben unverändert
+        ? { ...ua, isSelected: !ua.isSelected } 
+        : ua 
   );
 
   return {

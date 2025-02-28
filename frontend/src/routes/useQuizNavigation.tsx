@@ -30,6 +30,9 @@ export const useQuizNavigation = () => {
     resetQuizState();
     navigate(ROUTES.HOME);
   };
+  const showAdminPanel=()=>{
+    navigate (ROUTES.ADMIN)
+  }
 
   return {
     showMainPage,
@@ -38,5 +41,6 @@ export const useQuizNavigation = () => {
     showDownload,
     showSolution,
     restartQuiz,
+    showAdminPanel
   };
 };
