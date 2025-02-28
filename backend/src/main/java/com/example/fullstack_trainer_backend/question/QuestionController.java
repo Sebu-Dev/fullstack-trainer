@@ -28,12 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/quiz/questions")
-@CrossOrigin(origins = {
-        "https://sebu-dev.github.io/",
-        "http://localhost:3000",
-        "https://sebu-dev.de",
-        "http://217.154.77.26:8080"
-})
 public class QuestionController {
 
     private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
