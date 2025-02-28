@@ -10,12 +10,11 @@ import React from "react";
 const withFeatureFlag = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
   featureName: string,
-  fallback: React.ReactNode = <p className="text-gray-500">Diese Funktion ist in dieser Umgebung nicht verfügbar.</p>
 ) => {
   const FeatureFlagComponent: React.FC<P> = (props) => {
     const isEnabled = import.meta.env[`VITE_FEATURE_${featureName.toUpperCase()}`] === "true";
 
-    return isEnabled ? <WrappedComponent {...props} /> : <>{fallback}</>;
+    return isEnabled ? <WrappedComponent {...props} /> : <></>;
   };
 
   // Setze den Display-Namen für bessere Debugging-Erfahrung
