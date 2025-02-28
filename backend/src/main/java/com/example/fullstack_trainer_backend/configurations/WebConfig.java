@@ -17,6 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "https://sebu-dev.github.io/",
                         "http://localhost:3000",
+                        "http://localhost:5173",
                         "https://sebu-dev.de",
                         "http://217.154.77.26:8080")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")

@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.fullstack_trainer_backend.question.dtos.QuestionDto;
 import com.example.fullstack_trainer_backend.question.dtos.ValidationErrorResponse;
+import com.example.fullstack_trainer_backend.question.dtos.question.RequestQuestionDto;
+import com.example.fullstack_trainer_backend.question.dtos.question.ResponseQuestionDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -49,9 +50,8 @@ public class QuestionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<QuestionDto>> getAllQuestions() {
-        List<QuestionDto> questions = questionService.getAllQuestions();
-        questions.get(0).getOptions().get(0).isCorrect();
+    public ResponseEntity<List<ResponseQuestionDto>> getAllQuestions() {
+        List<ResponseQuestionDto> questions = questionService.getAllQuestions();
         return ResponseEntity.ok(questions);
     }
 
@@ -63,7 +63,7 @@ public class QuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createQuestion(@RequestBody QuestionDto questionDto) {
+    public ResponseEntity<?> createQuestion(@RequestBody RequestQuestionDto questionDto) {
         try {
             Question created = questionService.createQuestion(questionDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(created);
@@ -73,7 +73,7 @@ public class QuestionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateQuestion(@PathVariable Long id, @RequestBody QuestionDto questionDto) {
+    public ResponseEntity<?> updateQuestion(@PathVariable Long id, @RequestBody RequestQuestionDto questionDto) {
         try {
             return questionService.updateQuestion(id, questionDto)
                     .map(ResponseEntity::ok)
@@ -92,7 +92,8 @@ public class QuestionController {
     }
 
     @PostMapping("/bulk")
-    public ResponseEntity<SaveResultWithErrors> bulkCreateQuestions(@RequestBody List<QuestionDto> questionDtos) {
+    public ResponseEntity<SaveResultWithErrors> bulkCreateQuestions(
+            @RequestBody List<RequestQuestionDto> questionDtos) {
         SaveResultWithErrors result = questionService.saveBulk(questionDtos);
         HttpStatus status = result.getValidationErrors().isEmpty() ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
         return ResponseEntity.status(status).body(result);
@@ -113,8 +114,8 @@ public class QuestionController {
         }
 
         try {
-            List<QuestionDto> questionsDto = objectMapper.readValue(file.getInputStream(),
-                    new TypeReference<List<QuestionDto>>() {
+            List<RequestQuestionDto> questionsDto = objectMapper.readValue(file.getInputStream(),
+                    new TypeReference<List<RequestQuestionDto>>() {
                     });
             SaveResultWithErrors result = questionService.saveAll(questionsDto);
             HttpStatus status = result.getValidationErrors().isEmpty() ? HttpStatus.OK : HttpStatus.BAD_REQUEST;

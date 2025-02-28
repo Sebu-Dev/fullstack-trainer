@@ -16,9 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fullstack_trainer_backend.question.category.Category;
 import com.example.fullstack_trainer_backend.question.category.CategoryService;
-import com.example.fullstack_trainer_backend.question.dtos.OptionDto;
-import com.example.fullstack_trainer_backend.question.dtos.QuestionDto;
 import com.example.fullstack_trainer_backend.question.dtos.ValidationErrorResponse;
+import com.example.fullstack_trainer_backend.question.dtos.option.RequestOptionDto;
+import com.example.fullstack_trainer_backend.question.dtos.option.ResponseOptionDto;
+import com.example.fullstack_trainer_backend.question.dtos.question.RequestQuestionDto;
+import com.example.fullstack_trainer_backend.question.dtos.question.ResponseQuestionDto;
 import com.example.fullstack_trainer_backend.question.option.Option;
 
 @Service
@@ -32,14 +34,14 @@ public class QuestionService {
         this.categoryService = categoryService;
     }
 
-    public List<QuestionDto> getAllQuestions() {
+    public List<ResponseQuestionDto> getAllQuestions() {
         return questionRepository.findAll().stream()
-                .map(this::convertToDto)
+                .map(this::convertToResponseDto)
                 .collect(Collectors.toList());
     }
 
-    private QuestionDto convertToDto(Question question) {
-        QuestionDto dto = new QuestionDto();
+    private RequestQuestionDto convertToDto(Question question) {
+        RequestQuestionDto dto = new RequestQuestionDto();
         dto.setText(question.getText());
         dto.setDifficulty(question.getDifficulty().name());
         dto.setExplanation(question.getExplanation());
@@ -49,9 +51,24 @@ public class QuestionService {
                 .map(Category::getName)
                 .collect(Collectors.toList()));
         dto.setOptions(question.getOptions().stream()
-                .map(option -> new OptionDto(option.getText(), option.isCorrect()))
+                .map(option -> new RequestOptionDto(option.getText(), option.isCorrect()))
                 .collect(Collectors.toList()));
         return dto;
+    }
+
+    private ResponseQuestionDto convertToResponseDto(Question question) {
+        return new ResponseQuestionDto(
+                question.getText(),
+                question.getDifficulty().name(),
+                question.getExplanation(),
+                question.getImageUrl(),
+                question.getMaxPoints(),
+                question.getCategories().stream()
+                        .map(Category::getName)
+                        .collect(Collectors.toList()),
+                question.getOptions().stream()
+                        .map(option -> new ResponseOptionDto(option.getId(), option.getText(), option.isCorrect()))
+                        .collect(Collectors.toList()));
     }
 
     public Optional<Question> getQuestionById(Long id) {
@@ -63,12 +80,12 @@ public class QuestionService {
     }
 
     @Transactional
-    public SaveResultWithErrors saveAll(List<QuestionDto> questionsDto) {
+    public SaveResultWithErrors saveAll(List<RequestQuestionDto> questionsDto) {
         List<Question> toSave = new ArrayList<>();
         List<String> failedQuestionsText = new ArrayList<>();
         List<ValidationErrorResponse> validationErrors = new ArrayList<>();
 
-        for (QuestionDto questionDto : questionsDto) {
+        for (RequestQuestionDto questionDto : questionsDto) {
             try {
                 List<String> errors = validateQuestionDto(questionDto);
                 if (!errors.isEmpty()) {
@@ -104,12 +121,12 @@ public class QuestionService {
     }
 
     @Transactional
-    public SaveResultWithErrors saveBulk(List<QuestionDto> questionDtos) {
+    public SaveResultWithErrors saveBulk(List<RequestQuestionDto> questionDtos) {
         List<Question> toSave = new ArrayList<>();
         List<String> skippedQuestions = new ArrayList<>();
         List<ValidationErrorResponse> validationErrors = new ArrayList<>();
 
-        for (QuestionDto dto : questionDtos) {
+        for (RequestQuestionDto dto : questionDtos) {
             try {
                 List<String> errors = validateQuestionDto(dto);
                 if (!errors.isEmpty()) {
@@ -142,7 +159,7 @@ public class QuestionService {
     }
 
     @Transactional
-    public Question createQuestion(QuestionDto questionDTO) {
+    public Question createQuestion(RequestQuestionDto questionDTO) {
         List<String> validationErrors = validateQuestionDto(questionDTO);
         if (!validationErrors.isEmpty()) {
             String errorMessage = "Ungültige Frage: " + String.join(", ", validationErrors);
@@ -157,7 +174,7 @@ public class QuestionService {
     }
 
     @Transactional
-    public Optional<Question> updateQuestion(Long id, QuestionDto questionDTO) {
+    public Optional<Question> updateQuestion(Long id, RequestQuestionDto questionDTO) {
         if (id == null || id <= 0) {
             logger.error("Ungültige ID für Update: {}", id);
             throw new IllegalArgumentException("Ungültige ID: " + id);
@@ -194,19 +211,19 @@ public class QuestionService {
                 .orElse(false);
     }
 
-    private List<String> validateQuestionDto(QuestionDto questionDto) {
+    private List<String> validateQuestionDto(RequestQuestionDto questionDto) {
         List<String> errors = new ArrayList<>();
 
         if (questionDto.getText() == null || questionDto.getText().trim().isEmpty()) {
             errors.add("Text fehlt");
         }
 
-        List<OptionDto> options = questionDto.getOptions();
+        List<RequestOptionDto> options = questionDto.getOptions();
         if (options == null || options.size() < 2) {
             errors.add("Mindestens 2 Antwortmöglichkeiten erforderlich");
         } else if (options.size() > 4) {
             errors.add("Maximal 4 Antwortmöglichkeiten erlaubt");
-        } else if (options.stream().noneMatch(OptionDto::isCorrect)) {
+        } else if (options.stream().noneMatch(RequestOptionDto::isCorrect)) {
             errors.add("Mindestens eine Antwort muss korrekt sein (isCorrect = true)");
         }
 
@@ -226,7 +243,7 @@ public class QuestionService {
         return errors;
     }
 
-    private Question updateExistingQuestion(Question existing, QuestionDto questionDto) {
+    private Question updateExistingQuestion(Question existing, RequestQuestionDto questionDto) {
         mapQuestionFields(existing, questionDto);
         existing.getOptions().clear();
         existing.getOptions().addAll(convertOptions(questionDto.getOptions(), existing));
@@ -253,7 +270,7 @@ public class QuestionService {
         }
     }
 
-    private List<Option> convertOptions(List<OptionDto> optionDtos, Question question) {
+    private List<Option> convertOptions(List<RequestOptionDto> optionDtos, Question question) {
         return optionDtos.stream()
                 .map(dto -> {
                     Option option = new Option();
@@ -272,7 +289,7 @@ public class QuestionService {
                 .collect(Collectors.toSet());
     }
 
-    private void mapQuestionFields(Question target, QuestionDto source) {
+    private void mapQuestionFields(Question target, RequestQuestionDto source) {
         target.setText(source.getText());
         target.setDifficulty(DifficultyEnum.valueOf(source.getDifficulty()));
         target.setExplanation(source.getExplanation());
@@ -280,7 +297,7 @@ public class QuestionService {
         target.setMaxPoints(source.getMaxPoints());
     }
 
-    private Question convertToEntity(QuestionDto questionDTO) {
+    private Question convertToEntity(RequestQuestionDto questionDTO) {
         Question question = new Question();
         mapQuestionFields(question, questionDTO);
         question.setOptions(convertOptions(questionDTO.getOptions(), question));
