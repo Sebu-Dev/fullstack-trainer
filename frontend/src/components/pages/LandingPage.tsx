@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { PrimaryButton, SecondaryButton } from "sebu-dev-react-lib";
+import { BaseButton, PrimaryButton, SecondaryButton } from "sebu-dev-react-lib";
 import QuestionSyncButton from "../../api/useQuestionSync";
 import { useQuizNavigation } from "../../routes/useQuizNavigation";
 import useQuizStore from "../../store/QuizStore";
@@ -11,13 +11,12 @@ export const LandingPage = () => {
   const { generateQuizSet } = useQuizStore();
   const [toggleDownload, setToggleDownload] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { startQuiz } = useQuizNavigation();
-
+  const { startQuiz, startProgressQuiz, startEndlessQuiz } = useQuizNavigation();
   const handleCategoryClick = () => {
-    ("handleCategoryClick");
-    if (!isSidebarOpen) setIsSidebarOpen(true);
+    setIsSidebarOpen(true);
   };
-  const handleStartQuizOnClick = () => {
+
+  const handleStartExamMode = () => {
     generateQuizSet();
     startQuiz();
   };
@@ -42,27 +41,39 @@ export const LandingPage = () => {
             Wähle eine Kategorie oder erstelle dein eigenes Quiz!
           </p>
           <div className="flex ">
-            <PrimaryButton
+          <PrimaryButton
               animationHover
               hoverEffect={{ scale: 1.03 }}
-              handleOnClick={handleCategoryClick}
+              handleOnClick={handleStartExamMode}
               glowEffect
-              className="text-md"
+              className="py-3 text-lg"
             >
-              Kategorien
+              Prüfungsmodus
             </PrimaryButton>
-
             <SecondaryButton
-              className="text-md"
               animationHover
-              hoverEffect={{
-                scale: 1,
-              }}
+              hoverEffect={{ scale: 1.03 }}
+              handleOnClick={startProgressQuiz}
               glowEffect
-              handleOnClick={handleStartQuizOnClick}
+              className="py-3 text-lg"
             >
-              Quiz starten
+              Progress-Modus
             </SecondaryButton>
+            <SecondaryButton
+              animationHover
+              hoverEffect={{ scale: 1.03 }}
+              handleOnClick={startEndlessQuiz}
+              glowEffect
+              className="py-3 text-lg"
+            >
+              Endlos-Modus
+            </SecondaryButton>
+            <BaseButton
+              handleOnClick={handleCategoryClick}
+              className="py-3 text-lg bg-neutral-700/50 hover:bg-neutral-600/50"
+            >
+              Kategorien anpassen
+            </BaseButton>
           </div>
         </div>
         <CsvDownloadButton setToggleDownload={setToggleDownload} />

@@ -14,6 +14,14 @@ export const useQuizNavigation = () => {
     navigate(ROUTES.QUIZ); // Stellt sicher, dass das Quiz gestartet wird
   };
 
+
+  const startProgressQuiz = () => {
+    navigate(ROUTES.PROGRESS);
+  };
+
+  const startEndlessQuiz = () => {
+    navigate(ROUTES.ENDLESS);
+  };
   const showQuizResults = () => {
     navigate(ROUTES.QUIZ_RESULT); // Zeigt die Quiz-Ergebnisse
   };
@@ -41,6 +49,8 @@ export const useQuizNavigation = () => {
     showDownload,
     showSolution,
     restartQuiz,
-    showAdminPanel
+    showAdminPanel,
+    startProgressQuiz,
+    startEndlessQuiz
   };
 };

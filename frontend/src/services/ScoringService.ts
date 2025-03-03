@@ -4,22 +4,22 @@ export class ScoringService {
   /** Berechnet die Punkte für eine einzelne Frage */
   static calculateQuestionPoints(answer: Answer): number {
     const correctOptions = answer.question.options.filter(
-      (opt) => opt.correct,
+      (opt) => opt.correct
     ).length;
 
     if (correctOptions === 1) {
       const allCorrect = answer.userAnswers.every(
-        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
+        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct
       );
       return allCorrect ? 4 : 0;
     }
 
     const correctSelections = answer.userAnswers.filter(
-      (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
+      (userAnswer) => userAnswer.isSelected === userAnswer.option.correct
     ).length;
 
     let incorrectSelections = answer.userAnswers.filter(
-      (userAnswer) => userAnswer.isSelected !== userAnswer.option.correct,
+      (userAnswer) => userAnswer.isSelected !== userAnswer.option.correct
     ).length;
 
     incorrectSelections = Math.min(incorrectSelections, 4); // Maximal -4 Punkte Abzug
@@ -31,7 +31,13 @@ export class ScoringService {
   static calculateTotalPoints(answers: Answer[]): number {
     return answers.reduce((total, answer) => total + answer.achievedPoints, 0);
   }
-
+  static updateStatsAfterAnswer(
+    answer: Answer,
+    updateStatsFn: (questionId: string, points: number) => void
+  ) {
+    const points = this.calculateQuestionPoints(answer);
+    updateStatsFn(answer.question.id, points);
+  }
   /** Berechnet die Punkte pro Schwierigkeitsgrad */
   static calculateCategoryPoints(answers: Answer[]): Record<string, number> {
     return answers.reduce(
@@ -41,7 +47,7 @@ export class ScoringService {
           (pointsByDifficulty[difficulty] || 0) + answer.achievedPoints;
         return pointsByDifficulty;
       },
-      { easy: 0, medium: 0, hard: 0 },
+      { easy: 0, medium: 0, hard: 0 }
     );
   }
 
@@ -49,8 +55,8 @@ export class ScoringService {
   static countCorrectAnswers(quizSet: QuizSet): number {
     return quizSet.answers.filter((answer) =>
       answer.userAnswers.every(
-        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct,
-      ),
+        (userAnswer) => userAnswer.isSelected === userAnswer.option.correct
+      )
     ).length;
   }
 
@@ -58,7 +64,7 @@ export class ScoringService {
   static recalculateTotalPoints(answers: Answer[]): number {
     return answers.reduce(
       (total, answer) => total + this.calculateQuestionPoints(answer),
-      0,
+      0
     );
   }
 }

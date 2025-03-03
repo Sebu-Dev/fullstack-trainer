@@ -86,11 +86,8 @@ function createInitialAnswers(questions: Question[]): Answer[] {
  * Erlaubt das Umschalten mehrerer Optionen unabhängig voneinander.
  */
 function updateUserAnswer(answer: Answer, optionId: number): Answer {
-  const updatedUserAnswers = answer.userAnswers.map(
-    (ua) =>
-      ua.option.id === optionId
-        ? { ...ua, isSelected: !ua.isSelected } 
-        : ua 
+  const updatedUserAnswers = answer.userAnswers.map((ua) =>
+    ua.option.id === optionId ? { ...ua, isSelected: !ua.isSelected } : ua
   );
 
   return {
