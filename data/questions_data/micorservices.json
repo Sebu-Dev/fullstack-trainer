@@ -1,0 +1,332 @@
+[
+  {
+    "text": "Was sind Vorteile von Microservices?",
+    "options": [
+      {
+        "text": "Erhöhte Skalierbarkeit durch unabhängige Services",
+        "correct": true
+      },
+      {
+        "text": "Jeder Service kann mit einer eigenen Technologie entwickelt werden",
+        "correct": true
+      },
+      {
+        "text": "Geringere Komplexität durch zentrale Steuerung",
+        "correct": false
+      },
+      {
+        "text": "Microservices reduzieren den Bedarf an Netzwerkinfrastruktur",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur"],
+    "explanation": "Microservices ermöglichen eine bessere Skalierbarkeit und Flexibilität, da jeder Service unabhängig entwickelt und betrieben werden kann."
+  },
+  {
+    "text": "Welche Herausforderungen bringen Microservices mit sich?",
+    "options": [
+      {
+        "text": "Komplexere Netzwerkkommunikation zwischen den Services",
+        "correct": true
+      },
+      {
+        "text": "Höhere Anforderungen an Monitoring und Logging",
+        "correct": true
+      },
+      {
+        "text": "Einfache Bereitstellung durch monolithische Deployment-Pipelines",
+        "correct": false
+      },
+      {
+        "text": "Geringere Fehlertoleranz als Monolithen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Herausforderungen"],
+    "explanation": "Microservices benötigen eine komplexere Infrastruktur für Kommunikation, Monitoring und Deployment."
+  },
+  {
+    "text": "Warum ist die hexagonale Architektur für Microservices vorteilhaft?",
+    "options": [
+      {
+        "text": "Sie trennt die Geschäftslogik von der technischen Implementierung",
+        "correct": true
+      },
+      {
+        "text": "Sie erlaubt den Austausch von Datenbanken ohne Anpassung der Geschäftslogik",
+        "correct": true
+      },
+      {
+        "text": "Sie macht den Code vollständig unabhängig von Schnittstellen",
+        "correct": false
+      },
+      {
+        "text": "Sie ermöglicht eine einfachere vertikale Skalierung",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonal"],
+    "explanation": "Die hexagonale Architektur fördert eine saubere Trennung zwischen Geschäftslogik und technischen Abhängigkeiten, was Microservices flexibler macht."
+  },
+  {
+    "text": "Was bedeutet Spezialisierung in einer Microservice-Architektur?",
+    "options": [
+      {
+        "text": "Jeder Service ist auf eine spezifische Geschäftsfunktion fokussiert",
+        "correct": true
+      },
+      {
+        "text": "Services sollten klein bleiben und bei Komplexität weiter unterteilt werden",
+        "correct": true
+      },
+      {
+        "text": "Alle Services teilen eine gemeinsame Code-Basis",
+        "correct": false
+      },
+      {
+        "text": "Services sind auf mehrere Funktionen gleichzeitig spezialisiert",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices"],
+    "explanation": "• Spezialisierung bedeutet, dass jeder Service eine einzige Funktion erfüllt, • Bei zu hoher Komplexität wird er in kleinere Services zerlegt."
+  },
+  {
+    "text": "Warum ermöglicht die technologische Freiheit in Microservices eine bessere Entwicklung?",
+    "options": [
+      {
+        "text": "Jeder Service kann den optimalen Technologie-Stack für seine Aufgabe wählen",
+        "correct": true
+      },
+      {
+        "text": "Services sind unabhängig und nicht an eine einheitliche Technologie gebunden",
+        "correct": true
+      },
+      {
+        "text": "Alle Services müssen denselben Stack verwenden",
+        "correct": false
+      },
+      {
+        "text": "Technologische Freiheit erhöht die Abhängigkeit zwischen Services",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices"],
+    "explanation": "• Unabhängigkeit erlaubt die Wahl des besten Tools für jede Funktion, • Fördert Flexibilität und Effizienz."
+  },
+  {
+    "text": "Wie trägt Agilität durch kleine Teams zur Microservice-Entwicklung bei?",
+    "options": [
+      {
+        "text": "Kleine Teams verstehen den Kontext schneller und treffen Entscheidungen effizienter",
+        "correct": true
+      },
+      {
+        "text": "Schnellere Deployments durch reduzierte Abstimmungsaufwände",
+        "correct": true
+      },
+      {
+        "text": "Große Teams sind für Microservices besser geeignet",
+        "correct": false
+      },
+      {
+        "text": "Agilität verlangsamt die Entwicklung durch häufige Änderungen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices"],
+    "explanation": "• Kleine Teams erhöhen die Entscheidungsgeschwindigkeit, • Weniger Koordination beschleunigt den Entwicklungsprozess."
+  },
+  {
+    "text": "Welche Rolle spielt Containerisierung bei der Implementierung von Microservices?",
+    "options": [
+      {
+        "text": "Docker ermöglicht die Isolierung und Portabilität von Services",
+        "correct": true
+      },
+      {
+        "text": "Containerisierung erleichtert das Deployment in der Cloud",
+        "correct": true
+      },
+      {
+        "text": "Container sind nur für monolithische Anwendungen geeignet",
+        "correct": false
+      },
+      {
+        "text": "Docker erschwert die Skalierung von Services",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Implementierung"],
+    "explanation": "• Container bieten eine konsistente Laufzeitumgebung, • Ermöglichen einfache Bereitstellung und Skalierung."
+  },
+  {
+    "text": "Warum wird Kubernetes häufig für Microservices eingesetzt?",
+    "options": [
+      {
+        "text": "Orchestrierung von Containern für automatische Skalierung und Ausfallsicherheit",
+        "correct": true
+      },
+      {
+        "text": "Verwaltung mehrerer Services als einheitliche Anwendung",
+        "correct": true
+      },
+      {
+        "text": "Kubernetes ist nur für monolithische Systeme geeignet",
+        "correct": false
+      },
+      { "text": "Es ersetzt die Notwendigkeit von Docker", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Implementierung"],
+    "explanation": "• Kubernetes managed Container dynamisch, • Bietet Hochverfügbarkeit und Lastverteilung."
+  },
+  {
+    "text": "Welche Frameworks sind typisch für die Implementierung eines Microservices in Node.js?",
+    "options": [
+      { "text": "TypeScript für Typisierung und Interfaces", "correct": true },
+      {
+        "text": "TypeORM für Datenbankzugriff und Repositories",
+        "correct": true
+      },
+      {
+        "text": "Express.js für HTTP-Endpunkte im Transport-Layer",
+        "correct": true
+      },
+      { "text": "React.js für serverseitige Logik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Frameworks"],
+    "explanation": "• TypeScript und TypeORM unterstützen die Struktur, • Express.js stellt APIs bereit, • React.js ist clientseitig."
+  },
+  {
+    "text": "Wie kommunizieren Microservices typischerweise miteinander?",
+    "options": [
+      { "text": "Über REST APIs mit JSON/XML über HTTP", "correct": true },
+      {
+        "text": "Durch klar definierte Schnittstellen zur Wahrung der Isolation",
+        "correct": true
+      },
+      {
+        "text": "Durch direkten Zugriff auf die Datenbanken anderer Services",
+        "correct": false
+      },
+      { "text": "Nur über eine gemeinsame Code-Basis", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Kommunikation"],
+    "explanation": "• REST APIs sind Standard, • Isolation bleibt durch definierte APIs erhalten."
+  },
+  {
+    "text": "Was ist die Aufgabe einer Service Registry in einer Microservice-Architektur?",
+    "options": [
+      {
+        "text": "Bereitstellung eines Verzeichnisses aller Services mit deren URLs",
+        "correct": true
+      },
+      {
+        "text": "Automatische Registrierung und Nachschlagen von Services",
+        "correct": true
+      },
+      {
+        "text": "Feste Konfiguration der URLs aller Services",
+        "correct": false
+      },
+      { "text": "Nur für die Geschäftslogik zuständig", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Service Discovery"],
+    "explanation": "• Ermöglicht dynamisches Auffinden von Services, • Verhindert feste URL-Abhängigkeiten."
+  },
+  {
+    "text": "Welche Endpunkte bietet eine einfache Service Registry typischerweise an?",
+    "options": [
+      {
+        "text": "POST /registration/:servicename zum Registrieren",
+        "correct": true
+      },
+      {
+        "text": "DELETE /registration/:servicename zum Abmelden",
+        "correct": true
+      },
+      {
+        "text": "GET /registration/:servicename zum Nachschlagen",
+        "correct": true
+      },
+      { "text": "PUT /logic zum Ändern der Geschäftslogik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Service Discovery"],
+    "explanation": "• Standard-Endpunkte für Verwaltung und Abfrage, • Keine Geschäftslogik enthalten."
+  },
+  {
+    "text": "Warum kann die Vernetzung von Microservices die Autonomie gefährden?",
+    "options": [
+      {
+        "text": "Ausfall eines Services beeinträchtigt abhängige Services",
+        "correct": true
+      },
+      {
+        "text": "Enge Kopplung führt zu einem verteilten Monolithen",
+        "correct": true
+      },
+      {
+        "text": "Lose Kopplung verhindert jegliche Abhängigkeiten",
+        "correct": false
+      },
+      { "text": "Vernetzung erhöht immer die Resilienz", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Kommunikation"],
+    "explanation": "• Abhängigkeiten reduzieren Unabhängigkeit, • Kann Ausfälle kaskadierend wirken lassen."
+  },
+  {
+    "text": "Wie kann Replikation die Autonomie von Microservices verbessern?",
+    "options": [
+      {
+        "text": "Lokale Datenkopien reduzieren Abhängigkeiten von anderen Services",
+        "correct": true
+      },
+      {
+        "text": "Daten werden durch Polling oder Events aktualisiert",
+        "correct": true
+      },
+      {
+        "text": "Replikation sorgt für sofortige Konsistenz",
+        "correct": false
+      },
+      { "text": "Daten müssen immer live abgefragt werden", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Datenmanagement"],
+    "explanation": "• Lokale Kopien erhöhen Unabhängigkeit, • Aktualisierung erfolgt asynchron."
+  },
+  {
+    "text": "Was versteht man unter Eventual Consistency in Microservices?",
+    "options": [
+      {
+        "text": "Daten sind irgendwann konsistent, aber nicht sofort",
+        "correct": true
+      },
+      {
+        "text": "Akzeptanz von temporären Inkonsistenzen durch Replikation",
+        "correct": true
+      },
+      { "text": "Daten sind immer sofort konsistent", "correct": false },
+      {
+        "text": "Konsistenz wird durch zentrale Datenbanken erzwungen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Datenmanagement"],
+    "explanation": "• Eventual Consistency ist typisch für verteilte Systeme, • Replikation führt zu Verzögerungen."
+  }
+]

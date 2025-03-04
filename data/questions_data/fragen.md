@@ -1,5 +1,4 @@
-warum sollte man eine naming convention machen?
- * res-stage-
+
 welceh arten von redundanzen gibt es bezüglich der skalierbarkeit
 * verschieden regions 
 * verschiednen zonen

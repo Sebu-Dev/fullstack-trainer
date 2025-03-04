@@ -1,0 +1,350 @@
+[
+  {
+    "text": "Wie wird der Zustand in zustandsbehafteten Webanwendungen typischerweise verwaltet?",
+    "options": [
+      {
+        "text": "Durch Sessions mit Cookies oder Session-IDs auf dem Server",
+        "correct": true
+      },
+      {
+        "text": "Durch Client-Logik, z. B. JavaScript im Browser",
+        "correct": true
+      },
+      {
+        "text": "Durch feste Zuordnung von Nutzern an eine Instanz",
+        "correct": false
+      },
+      {
+        "text": "Durch direkte Speicherung in der Datenbank ohne Sessions",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Sessions nutzen Cookies oder IDs zur Zustandsspeicherung, • Client-Logik speichert Zustände lokal im Browser."
+  },
+  {
+    "text": "Warum ist Zustandslosigkeit für die horizontale Skalierung in der Cloud wichtig?",
+    "options": [
+      {
+        "text": "Ermöglicht Lastverteilung ohne feste Instanzzuordnung",
+        "correct": true
+      },
+      {
+        "text": "Vermeidet Komplexität durch geteilte Zustände zwischen Instanzen",
+        "correct": true
+      },
+      {
+        "text": "Erfordert komplexe Synchronisation zwischen Instanzen",
+        "correct": false
+      },
+      { "text": "Ist nur bei vertikaler Skalierung relevant", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Zustandslosigkeit vereinfacht horizontale Skalierung, • Keine Synchronisation nötig."
+  },
+  {
+    "text": "Was ist der Unterschied zwischen einem geteilten und einem isolierten Zustand?",
+    "options": [
+      {
+        "text": "Geteilter Zustand: In einer Datenbank für alle Instanzen sichtbar",
+        "correct": true
+      },
+      {
+        "text": "Isolierter Zustand: Im Heap einer Instanz, nicht für andere zugänglich",
+        "correct": true
+      },
+      {
+        "text": "Geteilter Zustand: Nur im Client gespeichert",
+        "correct": false
+      },
+      {
+        "text": "Isolierter Zustand: Automatisch zwischen Instanzen synchronisiert",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Geteilter Zustand ist skalierbar, • Isolierter Zustand erschwert die Verteilung."
+  },
+  {
+    "text": "Welche Rolle spielt ein Load Balancer als Reverse-Proxy?",
+    "options": [
+      {
+        "text": "Stellt eine virtuelle IP-Adresse (VIP) für Clients bereit",
+        "correct": true
+      },
+      {
+        "text": "Verteilt Anfragen an Backend-Server unsichtbar für den Client",
+        "correct": true
+      },
+      { "text": "Speichert den Zustand der Anwendung", "correct": false },
+      { "text": "Ersetzt die Notwendigkeit von Autoscaling", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Load Balancer"],
+    "explanation": "• Reverse-Proxy abstrahiert Backend-Server, • VIP vereinheitlicht Zugriff."
+  },
+  {
+    "text": "Wie unterstützt ein Load Balancer dynamische Skalierung?",
+    "options": [
+      {
+        "text": "Startet oder stoppt Instanzen basierend auf Last",
+        "correct": true
+      },
+      {
+        "text": "Entfernt nicht verfügbare Instanzen aus dem Pool",
+        "correct": true
+      },
+      {
+        "text": "Erfordert manuelle Konfiguration für jede Instanz",
+        "correct": false
+      },
+      { "text": "Funktioniert nur bei vertikaler Skalierung", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Load Balancer"],
+    "explanation": "• Dynamische Anpassung an Last, • Health-Checks sichern Verfügbarkeit."
+  },
+  {
+    "text": "Welche Hochverfügbarkeitsoptionen bietet Azure Database for MySQL?",
+    "options": [
+      {
+        "text": "Same-zone HA: Mehrere Instanzen in einer Zone",
+        "correct": true
+      },
+      {
+        "text": "Zone-redundant HA: Verteilung über verschiedene Zonen",
+        "correct": true
+      },
+      {
+        "text": "Automatische globale Verteilung ohne Konfiguration",
+        "correct": false
+      },
+      {
+        "text": "Nur für nicht verwaltete Datenbanken verfügbar",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Azure", "Managed Services"],
+    "explanation": "• Same-zone HA für lokale Redundanz, • Zone-redundant HA für regionale Ausfallsicherheit."
+  },
+  {
+    "text": "Welche Features bietet Azure Database for MySQL als Managed Service?",
+    "options": [
+      {
+        "text": "Automatische Backups und Speicherverwaltung",
+        "correct": true
+      },
+      { "text": "Integration in Azure Monitoring", "correct": true },
+      {
+        "text": "Manuelle Konfiguration von Netzwerksicherheit erforderlich",
+        "correct": false
+      },
+      { "text": "Keine Unterstützung für Hochverfügbarkeit", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Azure", "Managed Services"],
+    "explanation": "• Verwaltete Features reduzieren Administrationsaufwand, • Monitoring ist integriert."
+  },
+  {
+    "text": "Warum sind Azure App Services nicht serverless?",
+    "options": [
+      {
+        "text": "Sie nutzen dedizierte VMs, die ständig laufen",
+        "correct": true
+      },
+      {
+        "text": "Skalierung erfolgt nicht nutzungsbasiert wie bei Serverless",
+        "correct": true
+      },
+      {
+        "text": "Sie skalieren automatisch ohne VM-Bereitstellung",
+        "correct": false
+      },
+      { "text": "Sie bieten keine Plattformfunktionen", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "Service Modelle"],
+    "explanation": "• Dedizierte VMs unterscheiden App Services von Serverless, • Keine nutzungsbasierte Abrechnung."
+  },
+  {
+    "text": "Welche Authentifizierungsmethoden gibt es für die Verbindung von Cloud-Services?",
+    "options": [
+      {
+        "text": "Anwendungsbasierte Authentifizierung mit Username/Passwort",
+        "correct": true
+      },
+      {
+        "text": "Infrastrukturbasierte Authentifizierung über Azure",
+        "correct": true
+      },
+      { "text": "Nur öffentliche Schlüssel ohne Benutzer", "correct": false },
+      { "text": " ausschließlich manuelle Konfiguration", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Sicherheit"],
+    "explanation": "• Anwendung: z. B. MySQL mit Credentials, • Infrastruktur: z. B. Azure IAM."
+  },
+  {
+    "text": "Was ist das Principle of Least Privilege und warum ist es wichtig?",
+    "options": [
+      {
+        "text": "Minimierung der Berechtigungen für jeden Dienstnutzer",
+        "correct": true
+      },
+      {
+        "text": "Reduziert Sicherheitsrisiken bei Kompromittierung",
+        "correct": true
+      },
+      { "text": "Gewährt jedem Nutzer maximale Rechte", "correct": false },
+      {
+        "text": "Ist nur für nicht verwaltete Dienste relevant",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Sicherheit"],
+    "explanation": "• Least Privilege schützt vor Missbrauch, • Standard für sichere Cloud-Architekturen."
+  },
+  {
+    "text": "Wie kann eine Node.js-Anwendung mit Azure MySQL verbunden werden?",
+    "options": [
+      {
+        "text": "Über eine Connection String mit Admin-Credentials",
+        "correct": true
+      },
+      {
+        "text": "Mittels eines ORM wie TypeORM für Datenbankzugriffe",
+        "correct": true
+      },
+      {
+        "text": "Nur über öffentliche APIs ohne Authentifizierung",
+        "correct": false
+      },
+      { "text": "Durch direkten Zugriff auf die VM", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "Datenbanken"],
+    "explanation": "• Connection String für direkte Verbindung, • ORM für strukturierte Zugriffe."
+  },
+  {
+    "text": "Warum sind Storage Accounts für Cloud-Anwendungen essenziell?",
+    "options": [
+      {
+        "text": "Sie bieten persistenten Speicher für kurzlebige VMs",
+        "correct": true
+      },
+      {
+        "text": "Ermöglichen Zugriff auf Dateien über mehrere Instanzen hinweg",
+        "correct": true
+      },
+      { "text": "Speichern nur temporäre Daten", "correct": false },
+      { "text": "Ersetzen die Notwendigkeit von Datenbanken", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Storage"],
+    "explanation": "• Persistenz trotz VM-Neustarts, • Verteilte Nutzung möglich."
+  },
+  {
+    "text": "Wie kann eine Node.js-Anwendung auf Storage Containers zugreifen?",
+    "options": [
+      {
+        "text": "Über das Azure SDK mit authentifizierten API-Aufrufen",
+        "correct": true
+      },
+      {
+        "text": "Mittels Blob-Client-Bibliotheken für BLOB-Operationen",
+        "correct": true
+      },
+      {
+        "text": "Durch direkten Dateisystemzugriff auf die VM",
+        "correct": false
+      },
+      { "text": "Nur über manuelle HTTP-Anfragen ohne SDK", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Storage", "Azure"],
+    "explanation": "• SDK und Blob-Client abstrahieren Zugriffe, • Authentifizierung erforderlich."
+  },
+  {
+    "text": "Was ist AI as a Service in Azure und welche Beispiele gibt es?",
+    "options": [
+      {
+        "text": "Verwaltete KI-Dienste für Bilderkennung oder Textanalyse",
+        "correct": true
+      },
+      {
+        "text": "Beispiele: Azure Cognitive Services, Azure Machine Learning",
+        "correct": true
+      },
+      { "text": "Nur für lokale Anwendungen verfügbar", "correct": false },
+      { "text": "Ersetzt die Notwendigkeit von Datenbanken", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "AI"],
+    "explanation": "• Bereitgestellte KI-Funktionen, • Beispiele für einfache Integration."
+  },
+  {
+    "text": "Welche Objekte werden in einem Directory Service wie Microsoft Entra ID verwaltet?",
+    "options": [
+      {
+        "text": "Benutzer mit IDs und grundlegenden Informationen",
+        "correct": true
+      },
+      { "text": "Rollen zur Gruppierung von Berechtigungen", "correct": true },
+      { "text": "Zuordnungen zwischen Benutzern und Rollen", "correct": true },
+      { "text": "Vollständige Anwendungslogik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "Entra ID"],
+    "explanation": "• Directory Services verwalten flache Strukturen, • Keine Geschäftslogik enthalten."
+  },
+  {
+    "text": "Was unterscheidet Microsoft Entra ID von Active Directory Domain Services?",
+    "options": [
+      {
+        "text": "Entra ID: Cloud-basierter Service mit OAuth für Webanwendungen",
+        "correct": true
+      },
+      {
+        "text": "AD DS: On-Premise für Windows-Domänen ohne OAuth",
+        "correct": true
+      },
+      {
+        "text": "Entra ID: Verwaltet lokale Windows-Gruppenrichtlinien",
+        "correct": false
+      },
+      {
+        "text": "AD DS: Unterstützt standardmäßig Webanwendungen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "Entra ID"],
+    "explanation": "• Entra ID für Cloud, • AD DS für lokale Domänen."
+  },
+  {
+    "text": "Wie wird eine App-Registrierung in Microsoft Entra ID für eine Node.js-Anwendung genutzt?",
+    "options": [
+      {
+        "text": "Registrierung erstellt Client-ID und Secret für Authentifizierung",
+        "correct": true
+      },
+      {
+        "text": "Node.js verwendet OAuth-Token für Zugriff auf geschützte Ressourcen",
+        "correct": true
+      },
+      {
+        "text": "Ersetzt die Notwendigkeit von Benutzeranmeldungen",
+        "correct": false
+      },
+      { "text": "Nur für lokale Anwendungen geeignet", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure", "Entra ID"],
+    "explanation": "• App-Registrierung ermöglicht sichere API-Zugriffe, • OAuth für Token-basierte Auth."
+  }
+]

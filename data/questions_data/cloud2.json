@@ -1,0 +1,146 @@
+[
+  {
+    "text": "Welche Arten der Skalierung gibt es in der Cloud?",
+    "options": [
+      {
+        "text": "Vertikale Skalierung: Ressourcen eines Servers werden erhöht",
+        "correct": true
+      },
+      {
+        "text": "Horizontale Skalierung: Mehrere Instanzen eines Services werden bereitgestellt",
+        "correct": true
+      },
+      {
+        "text": "Diagonale Skalierung: Mischung aus horizontaler und vertikaler Skalierung",
+        "correct": true
+      },
+      {
+        "text": "Cloud-Skalierung: Jeder Service wird automatisch dupliziert",
+        "correct": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Scalability"],
+    "explanation": "Skalierung kann vertikal (mehr Ressourcen pro Server), horizontal (mehr Server) oder diagonal (Kombination aus beidem) erfolgen."
+  },
+  {
+    "text": "Welche Load-Balancing-Strategien gibt es?",
+    "options": [
+      {
+        "text": "Round Robin: Anfragen werden gleichmäßig auf alle Instanzen verteilt",
+        "correct": true
+      },
+      {
+        "text": "Dynamischer Load Balancing: CPU-Auslastung beeinflusst die Verteilung",
+        "correct": true
+      },
+      {
+        "text": "Stateful Load Balancing: Jede Instanz behält den kompletten Anwendungszustand",
+        "correct": false
+      },
+      {
+        "text": "Zentralisiertes Load Balancing: Ein einzelner Server übernimmt alle Anfragen",
+        "correct": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Load Balancing"],
+    "explanation": "Load Balancer verteilen Anfragen mit verschiedenen Strategien, um Last gleichmäßig zu verteilen."
+  },
+  {
+    "text": "Was ist ein Managed Service in der Cloud?",
+    "options": [
+      {
+        "text": "Ein Dienst, bei dem der Cloud-Anbieter Betrieb und Wartung übernimmt",
+        "correct": true
+      },
+      {
+        "text": "Ein Service, den der Kunde vollständig selbst verwalten muss",
+        "correct": false
+      },
+      {
+        "text": "Eine Infrastrukturkomponente, die On-Premises betrieben wird",
+        "correct": false
+      },
+      {
+        "text": "Ein Server, der nur für die Entwicklung genutzt wird",
+        "correct": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Managed Services"],
+    "explanation": "Managed Services werden von Cloud-Anbietern betrieben, sodass sich Nutzer auf die Entwicklung konzentrieren können."
+  },
+  {
+    "text": "Was sind Best Practices für Cloud Security?",
+    "options": [
+      {
+        "text": "Services nur aus dem Internet erreichbar machen, wenn notwendig",
+        "correct": true
+      },
+      {
+        "text": "Verschlüsselung der Kommunikation zwischen Services sicherstellen",
+        "correct": true
+      },
+      {
+        "text": "Verwendung fester Passwörter anstelle von Umgebungsvariablen",
+        "correct": false
+      },
+      {
+        "text": "Alle Ports standardmäßig offen lassen, um Verbindungen zu erleichtern",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Security"],
+    "explanation": "Best Practices beinhalten Begrenzung der Internetzugriffe, Verschlüsselung und sichere Authentifizierungsmethoden."
+  },
+  {
+    "text": "Welches Service-Modell beschreibt eine virtuelle Maschine (VM) in der Cloud?",
+    "options": [
+      {
+        "text": "Infrastructure as a Service (IaaS)",
+        "correct": true
+      },
+      {
+        "text": "Platform as a Service (PaaS)",
+        "correct": false
+      },
+      {
+        "text": "Software as a Service (SaaS)",
+        "correct": false
+      },
+      {
+        "text": "Function as a Service (FaaS)",
+        "correct": false
+      }
+    ],
+    "difficulty": "MEDIUM",
+    "categories": ["Cloud", "Service Modelle"],
+    "explanation": "Eine VM ist Teil von IaaS, da der Nutzer das Betriebssystem und alle Anwendungen selbst verwalten muss."
+  },
+  {
+    "text": "Welche Azure-Dienste gehören zu PaaS?",
+    "options": [
+      {
+        "text": "Azure App Service",
+        "correct": true
+      },
+      {
+        "text": "Azure SQL Database",
+        "correct": true
+      },
+      {
+        "text": "Azure Virtual Machines",
+        "correct": false
+      },
+      {
+        "text": "Azure Blob Storage",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Azure"],
+    "explanation": "PaaS-Dienste wie Azure App Service und SQL Database bieten eine Entwicklungsplattform ohne Serververwaltung."
+  }
+]

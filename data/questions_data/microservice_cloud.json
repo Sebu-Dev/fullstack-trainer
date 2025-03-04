@@ -1,0 +1,764 @@
+[
+  {
+    "text": "Warum sollte man eine Naming Convention verwenden?",
+    "options": [
+      {
+        "text": "Einheitliche Benennung verbessert Übersicht und Wartbarkeit",
+        "correct": true
+      },
+      {
+        "text": "Vermeidung von Verwechslungen durch klare Standards",
+        "correct": true
+      },
+      { "text": "Erhöht den Speicherverbrauch", "correct": false },
+      { "text": "Ist überbewertet und unnötig", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Naming Conventions"],
+    "explanation": "• Einheitlichkeit und Standardisierung, • Vermeidung von Missverständnissen, • Erleichterte Wartung und Skalierung."
+  },
+  {
+    "text": "Welches ist ein Beispiel für einen Azure Software as a Service (SaaS)?",
+    "options": [
+      { "text": "Microsoft 365 (z. B. Teams oder Outlook)", "correct": true },
+      { "text": "Azure Virtual Machines", "correct": false },
+      { "text": "Azure App Services", "correct": false },
+      { "text": "Azure Functions", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "SaaS", "Azure"],
+    "explanation": "• Microsoft 365 ist ein SaaS, da es fertige Software über das Internet bereitstellt, • Azure Virtual Machines (IaaS) und App Services (PaaS) sind keine SaaS-Lösungen."
+  },
+  {
+    "text": "Welche Arten von Redundanzen werden in skalierbaren Systemen eingesetzt?",
+    "options": [
+      { "text": "Mehrere geografische Regionen", "correct": true },
+      { "text": "Unterschiedliche Verfügbarkeitszonen", "correct": true },
+      {
+        "text": "Mehrere Instanzen zur Erhöhung der Hochverfügbarkeit",
+        "correct": true
+      },
+      { "text": "Single-Point-of-Failure implementieren", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Regionale Verteilung, • Zonenbasierte Redundanz, • Mehrfache Instanzen für hohe Verfügbarkeit."
+  },
+  {
+    "text": "Welche Aufgaben hat ein Load Balancer?",
+    "options": [
+      { "text": "Verteilen der Last auf mehrere Server", "correct": true },
+      { "text": "Durchführen von Health-Checks", "correct": true },
+      {
+        "text": "Steuern des Traffic und Ermöglichen von Failover",
+        "correct": true
+      },
+      { "text": "Implementierung von Anwendungslogik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Load Balancer"],
+    "explanation": "• Lastverteilung, • Überwachung der Servergesundheit, • Sicherstellung von Ausfallsicherheit."
+  },
+  {
+    "text": "Welche Strategien zur Lastverteilung existieren bei Load Balancern?",
+    "options": [
+      {
+        "text": "Dynamischer Algorithmus basierend auf CPU-Auslastung",
+        "correct": true
+      },
+      { "text": "Round Robin (statische Verteilung)", "correct": true },
+      { "text": "Zufällige Verteilung ohne Algorithmus", "correct": false },
+      {
+        "text": "Verwendung von Sticky Sessions als Standard",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Load Balancer", "Strategien"],
+    "explanation": "• Dynamische Strategien (leistungsbasiert) versus statische Ansätze wie Round Robin."
+  },
+  {
+    "text": "Welche Skalierungsarten gibt es?",
+    "options": [
+      { "text": "Vertikale Skalierung", "correct": true },
+      { "text": "Horizontale Skalierung", "correct": true },
+      { "text": "Diagonale Skalierung", "correct": false },
+      { "text": "Kreisförmige Skalierung", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Vertikal: Aufrüstung einzelner Systeme, • Horizontal: Hinzufügen weiterer Systeme."
+  },
+  {
+    "text": "Was versteht man unter vertikaler und horizontaler Skalierung?",
+    "options": [
+      {
+        "text": "Vertikale Skalierung: Aufrüstung der Hardware eines einzelnen Servers",
+        "correct": true
+      },
+      {
+        "text": "Horizontale Skalierung: Hinzufügen weiterer Server zur Lastverteilung",
+        "correct": true
+      },
+      {
+        "text": "Vertikale Skalierung: Hinzufügen weiterer Server",
+        "correct": false
+      },
+      {
+        "text": "Horizontale Skalierung: Aufrüstung der Hardware",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Vertikal: Leistungssteigerung durch bessere Hardware, • Horizontal: Mehrere Systeme werden eingesetzt."
+  },
+  {
+    "text": "Was sind die Vor- und Nachteile von horizontaler und vertikaler Skalierung?",
+    "options": [
+      {
+        "text": "Horizontale Skalierung: Geeignet für stateless Anwendungen, kann Probleme bei stateful Anwendungen verursachen",
+        "correct": true
+      },
+      {
+        "text": "Vertikale Skalierung: Einfach umzusetzen, aber begrenzt skalierbar",
+        "correct": true
+      },
+      {
+        "text": "Horizontale Skalierung: Unbegrenzt skalierbar und ohne Herausforderungen",
+        "correct": false
+      },
+      {
+        "text": "Vertikale Skalierung: Bietet unbegrenzte Leistungserweiterung",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Horizontale Skalierung: Flexibel, aber problematisch bei stateful Anwendungen, • Vertikale Skalierung: Einfach, aber mit begrenztem Wachstumspotenzial."
+  },
+  {
+    "text": "Was sind Managed Services?",
+    "options": [
+      {
+        "text": "Externe Verwaltung von IT-Ressourcen durch einen Service Provider",
+        "correct": true
+      },
+      {
+        "text": "Interne Verwaltung von Servern und Anwendungen",
+        "correct": false
+      },
+      {
+        "text": "Vollständige Auslagerung von Infrastrukturaufgaben",
+        "correct": true
+      },
+      { "text": "Nur für große Unternehmen geeignet", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Managed Services"],
+    "explanation": "• Outsourcing von Infrastrukturmanagement, • Entlastung des internen IT-Teams."
+  },
+  {
+    "text": "Welche Vor- und Nachteile bieten Managed Services?",
+    "options": [
+      {
+        "text": "Vorteil: Entlastung und Konzentration auf Kernthemen",
+        "correct": true
+      },
+      { "text": "Vorteil: Reduzierter Verwaltungsaufwand", "correct": true },
+      { "text": "Nachteil: Verlust der direkten Kontrolle", "correct": true },
+      {
+        "text": "Nachteil: Erhöhter Aufwand in der internen Verwaltung",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Managed Services"],
+    "explanation": "• Vorteile: Entlastung, Fokus auf Entwicklung; • Nachteil: Eingeschränkte Kontrolle über Prozesse."
+  },
+  {
+    "text": "Welche Service-Modelle kennst du?",
+    "options": [
+      { "text": "Platform as a Service (PaaS)", "correct": true },
+      { "text": "Software as a Service (SaaS)", "correct": true },
+      { "text": "Infrastructure as a Service (IaaS)", "correct": true },
+      { "text": "Network as a Service (NaaS)", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle"],
+    "explanation": "• Die drei Hauptmodelle im Cloud Computing: IaaS, PaaS und SaaS."
+  },
+  {
+    "text": "Welches Service-Modell gehört eine virtuelle Maschine (VM) an?",
+    "options": [
+      { "text": "Infrastructure as a Service (IaaS)", "correct": true },
+      { "text": "Platform as a Service (PaaS)", "correct": false },
+      { "text": "Software as a Service (SaaS)", "correct": false },
+      { "text": "Function as a Service (FaaS)", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "IaaS"],
+    "explanation": "• Eine VM stellt ein komplettes Betriebssystem bereit und gehört daher zu IaaS."
+  },
+  {
+    "text": "Warum ist eine VM ein Infrastructure as a Service?",
+    "options": [
+      { "text": "Weil das Betriebssystem mitverwaltet wird", "correct": true },
+      { "text": "Weil die Hardware virtualisiert wird", "correct": true },
+      {
+        "text": "Weil sie keine Anwendungssoftware bereitstellt",
+        "correct": true
+      },
+      {
+        "text": "Weil sie speziell für die Anwendungsentwicklung entwickelt wurde",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "IaaS"],
+    "explanation": "• Virtualisierung der Hardware, • Bereitstellung eines eigenen Betriebssystems, • Keine direkte Anwendungsentwicklung."
+  },
+  {
+    "text": "MySQL ist welcher Service?",
+    "options": [
+      { "text": "Platform as a Service (PaaS)", "correct": true },
+      { "text": "Infrastructure as a Service (IaaS)", "correct": false },
+      { "text": "Software as a Service (SaaS)", "correct": false },
+      { "text": "Database as a Service (DaaS)", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Service Modelle", "PaaS"],
+    "explanation": "• MySQL als verwalteter Datenbankservice wird üblicherweise als PaaS angeboten."
+  },
+  {
+    "text": "Was ist Software as a Service (SaaS)?",
+    "options": [
+      {
+        "text": "Bereitstellung fertiger Software über das Internet",
+        "correct": true
+      },
+      {
+        "text": "Keine Notwendigkeit für lokale Installation",
+        "correct": true
+      },
+      {
+        "text": "Erfordert manuelle Verwaltung des Betriebssystems",
+        "correct": false
+      },
+      {
+        "text": "Software wird als offene Quelle zur Verfügung gestellt",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "SaaS"],
+    "explanation": "• Nutzer greifen auf fertige Anwendungen zu, • Lokale Installation und Wartung entfallen."
+  },
+  {
+    "text": "Was sind Azure App Services?",
+    "options": [
+      {
+        "text": "Bereitstellung einer Plattform zur Entwicklung und Ausführung von Anwendungen",
+        "correct": true
+      },
+      { "text": "Eine Form von Platform as a Service (PaaS)", "correct": true },
+      {
+        "text": "Ermöglicht die Entwicklung ohne eigene Infrastrukturverwaltung",
+        "correct": true
+      },
+      { "text": "Eine reine IaaS-Lösung", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "PaaS"],
+    "explanation": "• Azure App Services bieten eine PaaS-Umgebung, in der Entwickler sich auf den Code konzentrieren können."
+  },
+  {
+    "text": "Welche Aussage trifft auf die verschiedenen Azure Service Modelle zu?",
+    "options": [
+      {
+        "text": "Infrastructure as a Service: Entwickler verwalten alles außer dem Betriebssystem",
+        "correct": true
+      },
+      {
+        "text": "Platform as a Service: Entwickler konzentrieren sich auf die Anwendungsentwicklung",
+        "correct": true
+      },
+      {
+        "text": "App Service: Entwickler müssen sich nicht um die Infrastruktur kümmern",
+        "correct": true
+      },
+      {
+        "text": "Software as a Service: Entwickler sind für die Entwicklung der Software verantwortlich",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Service Modelle", "Azure"],
+    "explanation": "• Unterschiedliche Service-Modelle definieren, welcher Anteil der Infrastruktur vom Anbieter verwaltet wird."
+  },
+  {
+    "text": "Was bedeutet Serverless?",
+    "options": [
+      {
+        "text": "Entwickler müssen sich nicht um die Serververwaltung kümmern",
+        "correct": true
+      },
+      {
+        "text": "Abrechnung erfolgt basierend auf tatsächlicher Nutzung",
+        "correct": true
+      },
+      { "text": "Es werden keine Server verwendet", "correct": false },
+      {
+        "text": "Nur in AWS Lambda und Azure Functions verfügbar",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Serverless"],
+    "explanation": "• Abstraktion der Infrastruktur, • Fokus auf Code, • Anbieter verwalten die Server."
+  },
+  {
+    "text": "Was sind Best Practices in der Cloud bezüglich Services?",
+    "options": [
+      {
+        "text": "Dienste nur über notwendige Endpunkte zugänglich machen",
+        "correct": true
+      },
+      {
+        "text": "Zugriff auf Services über definierte IP-Adressen beschränken",
+        "correct": true
+      },
+      {
+        "text": "Verwendung von Umgebungsvariablen zur Konfiguration",
+        "correct": true
+      },
+      {
+        "text": "Unverschlüsselte Kommunikation zwischen Services",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Sicherheit"],
+    "explanation": "• Minimierung der Angriffsfläche, • Nutzung von sicheren Konfigurationsmethoden, • Verschlüsselung der Kommunikation."
+  },
+  {
+    "text": "Was sind Storage Accounts?",
+    "options": [
+      {
+        "text": "Dienste zum Speichern von Dateien wie Bildern",
+        "correct": true
+      },
+      { "text": "Key-Value Stores zur Zuordnung von Dateien", "correct": true },
+      { "text": "Container zur Ablage von Binärdaten", "correct": true },
+      { "text": "Temporäre Speicherlösungen für Anwendungen", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Storage"],
+    "explanation": "• Dauerhafte Speicherung von Daten, • Unterstützung verschiedener Datentypen und -formate."
+  },
+  {
+    "text": "Was kann man mit Entra ID machen?",
+    "options": [
+      { "text": "Benutzerverwaltung", "correct": true },
+      { "text": "Rollen und Gruppen anlegen", "correct": true },
+      { "text": "App-Registrierung und Authentifizierung", "correct": true },
+      { "text": "Hardwarewartung durchführen", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Identity & Access Management", "Entra ID"],
+    "explanation": "• Verwaltung von Identitäten, • Erstellen von Rollen und Gruppen, • Registrierung von Anwendungen."
+  },
+  {
+    "text": "Was sind die Vorteile von Monolithen?",
+    "options": [
+      {
+        "text": "Einheitliche Codebasis und einfaches Debugging",
+        "correct": true
+      },
+      { "text": "Schnellere Entwicklung in kleinen Teams", "correct": true },
+      {
+        "text": "Geringerer Overhead in der Kommunikation zwischen Komponenten",
+        "correct": true
+      },
+      {
+        "text": "Schwierige Skalierung einzelner Komponenten",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Monolith"],
+    "explanation": "• Einfache Architektur, • Konsistentes Deployment, • Geringere Komplexität in kleinen Systemen."
+  },
+  {
+    "text": "Was sind die Nachteile von Monolithen?",
+    "options": [
+      {
+        "text": "Schwierige Skalierung einzelner Komponenten",
+        "correct": true
+      },
+      { "text": "Komplexität bei großen Systemen", "correct": true },
+      { "text": "Schwerfällige Deployment-Prozesse", "correct": true },
+      { "text": "Einheitliche Codebasis", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Monolith"],
+    "explanation": "• Enge Kopplung, • Herausforderungen beim Skalieren einzelner Teile, • Komplexität in umfangreichen Systemen."
+  },
+  {
+    "text": "Was sind die Vorteile von Microservices?",
+    "options": [
+      {
+        "text": "Bessere Skalierbarkeit einzelner Komponenten",
+        "correct": true
+      },
+      { "text": "Unabhängige Deployments", "correct": true },
+      { "text": "Höhere Fehlertoleranz durch lose Kopplung", "correct": true },
+      {
+        "text": "Komplexe Kommunikation zwischen den Services",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices"],
+    "explanation": "• Flexible Skalierung, • Unabhängige Entwicklung und Deployment, • Erhöhte Ausfallsicherheit."
+  },
+  {
+    "text": "Was sind die Nachteile von Microservices?",
+    "options": [
+      {
+        "text": "Komplexere Kommunikation zwischen den Services",
+        "correct": true
+      },
+      { "text": "Erhöhter Verwaltungsaufwand", "correct": true },
+      { "text": "Schwierige Transaktionsverwaltung", "correct": true },
+      {
+        "text": "Einfachere Fehlerbehebung als bei Monolithen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices"],
+    "explanation": "• Erhöhter Kommunikationsaufwand, • Komplexe Verwaltung verteilter Systeme, • Herausforderungen bei der Transaktionssicherheit."
+  },
+  {
+    "text": "Was ist eine hexagonale Architektur?",
+    "options": [
+      {
+        "text": "Architekturstil zur Isolierung der Geschäftslogik",
+        "correct": true
+      },
+      { "text": "Verwendung von Ports und Adaptern", "correct": true },
+      { "text": "Fokus auf Datenbankintegration", "correct": false },
+      {
+        "text": "Schaffung einer losen Kopplung zwischen Kernlogik und Infrastruktur",
+        "correct": true
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Trennung der Geschäftslogik von technischen Details, • Nutzung von Ports und Adaptern für Flexibilität."
+  },
+  {
+    "text": "Warum wird in der hexagonalen Architektur die Geschäftslogik isoliert?",
+    "options": [
+      {
+        "text": "Um unabhängig von technischen Details zu bleiben",
+        "correct": true
+      },
+      { "text": "Für eine bessere Testbarkeit der Kernlogik", "correct": true },
+      {
+        "text": "Um schnell auf technische Änderungen reagieren zu können",
+        "correct": true
+      },
+      { "text": "Zur Verbesserung der Performance", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Unabhängigkeit von Infrastruktur, • Erhöhte Testbarkeit, • Vereinfachte Wartung."
+  },
+  {
+    "text": "Welche Schichten gibt es in der hexagonalen Architektur?",
+    "options": [
+      { "text": "Interaktionsschicht", "correct": true },
+      { "text": "Adapter-Schicht", "correct": true },
+      { "text": "Technologische Schicht", "correct": false },
+      { "text": "Datenbankschicht", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Hauptsächlich Interaktions- und Adapter-Schichten, • Fokus auf Trennung von Kernlogik und externen Systemen."
+  },
+  {
+    "text": "Was macht die Interaktionsschicht in der hexagonalen Architektur?",
+    "options": [
+      { "text": "Verwaltung und Steuerung von Entitäten", "correct": true },
+      { "text": "Organisation der Geschäftslogik", "correct": true },
+      {
+        "text": "Implementierung technischer Schnittstellen",
+        "correct": false
+      },
+      { "text": "Präsentation von Daten an den Nutzer", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Zuständig für die Kernlogik und Verwaltung von Entitäten, • Trennung von externen Schnittstellen."
+  },
+  {
+    "text": "Was ist ein Adapter in der hexagonalen Architektur?",
+    "options": [
+      {
+        "text": "Implementierung der Schnittstellen für den Datenverkehr",
+        "correct": true
+      },
+      {
+        "text": "Umsetzung von Requests in technische Anfragen",
+        "correct": true
+      },
+      { "text": "Implementiert einen Port zur Kommunikation", "correct": true },
+      { "text": "Verwaltung der Geschäftslogik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Übersetzt externe Anfragen in ein Format der Kernlogik, • Bindeglied zwischen externen Systemen und Geschäftslogik."
+  },
+  {
+    "text": "Was ist ein Port in der hexagonalen Architektur?",
+    "options": [
+      {
+        "text": "Definiert die Schnittstelle zwischen Geschäftslogik und Adaptern",
+        "correct": true
+      },
+      { "text": "Legt den Kommunikationsvertrag fest", "correct": true },
+      { "text": "Implementiert technische Details", "correct": false },
+      {
+        "text": "Wird direkt von externen Systemen verwendet",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Abstrakte Schnittstelle zur Kommunikation, • Definiert, wie externe Systeme mit der Geschäftslogik interagieren."
+  },
+  {
+    "text": "Wie kann man eine alternative Verbindung standardmäßig herstellen?",
+    "options": [
+      {
+        "text": "Neuen Adapter schreiben, der dasselbe Interface implementiert",
+        "correct": true
+      },
+      { "text": "Bestehenden Port erweitern", "correct": false },
+      { "text": "Die Geschäftslogik anpassen", "correct": false },
+      {
+        "text": "Die bestehende Verbindung neu konfigurieren",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Austausch des Adapters ermöglicht alternative Verbindungen ohne Änderung der Kernlogik."
+  },
+  {
+    "text": "Was ist ein Repository?",
+    "options": [
+      { "text": "Ein Interface zur Datenzugriffsschicht", "correct": true },
+      { "text": "Abstraktion der Persistenz", "correct": true },
+      { "text": "Konkrete Implementierung der Datenbank", "correct": false },
+      { "text": "Framework zur Erstellung von Datenbanken", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Architektur"],
+    "explanation": "• Bietet eine Abstraktionsschicht für den Datenzugriff, • Ermöglicht flexible Implementierungen."
+  },
+  {
+    "text": "Was versteht man unter Inversion of Control (IoC)?",
+    "options": [
+      {
+        "text": "Entkopplung von Komponenten durch externe Steuerung",
+        "correct": true
+      },
+      {
+        "text": "Abhängigkeiten werden nicht direkt im Code erzeugt",
+        "correct": true
+      },
+      { "text": "Einsatz von Dependency Injection", "correct": true },
+      { "text": "Direkte Instanziierung von Objekten", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Design Patterns"],
+    "explanation": "• Fördert lose Kopplung, • Abhängigkeiten werden extern verwaltet, • Erleichtert Testbarkeit und Wartung."
+  },
+  {
+    "text": "Wie können hexagonale Repositories alternative Implementierungen ermöglichen?",
+    "options": [
+      {
+        "text": "Durch Verwendung von Interfaces, die unterschiedliche Datenquellen unterstützen",
+        "correct": true
+      },
+      {
+        "text": "Durch Integration von CSV-Importen als alternative Datenquelle",
+        "correct": true
+      },
+      { "text": "Nur in Verbindung mit Spring Boot", "correct": false },
+      { "text": "Durch starre Datenbankkonfiguration", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Interfaces ermöglichen den Austausch der Persistenzschicht, • Unterstützen alternative Implementierungen (z. B. relationale DB, CSV)."
+  },
+  {
+    "text": "Wann hilft ein Interface in der hexagonalen Architektur?",
+    "options": [
+      {
+        "text": "Ermöglicht den Austausch von Implementierungen",
+        "correct": true
+      },
+      {
+        "text": "Erleichtert die Testbarkeit der Geschäftslogik",
+        "correct": true
+      },
+      {
+        "text": "Bindet die Anwendung an spezifische Technologien",
+        "correct": false
+      },
+      { "text": "Verhindert Änderungen an der Kernlogik", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Architektur", "Hexagonale Architektur"],
+    "explanation": "• Fördert Flexibilität, • Erleichtert das Testen, • Unterstützt den Austausch von Komponenten ohne Beeinflussung der Kernlogik."
+  },
+
+  {
+    "text": "Was ist der Unterschied zwischen einem Event-Driven und einem Request-Response-Ansatz in Microservices?",
+    "options": [
+      {
+        "text": "Event-Driven: Asynchrone Kommunikation über Events",
+        "correct": true
+      },
+      {
+        "text": "Request-Response: Synchrone Kommunikation mit direkter Antwort",
+        "correct": true
+      },
+      {
+        "text": "Event-Driven: Erfordert immer eine direkte Antwort",
+        "correct": false
+      },
+      {
+        "text": "Request-Response: Funktioniert nur asynchron",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Kommunikation"],
+    "explanation": "• Event-Driven: Services reagieren auf Ereignisse, • Request-Response: Direkte Anfrage-Antwort-Kommunikation."
+  },
+  {
+    "text": "Warum ist Service Discovery in Microservices wichtig?",
+    "options": [
+      {
+        "text": "Ermöglicht die dynamische Erkennung von Service-Instanzen",
+        "correct": true
+      },
+      {
+        "text": "Reduziert die Notwendigkeit fester IP-Adressen",
+        "correct": true
+      },
+      { "text": "Erhöht die Abhängigkeit zwischen Services", "correct": false },
+      {
+        "text": "Ist nur bei monolithischen Systemen notwendig",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Microservices", "Service Discovery"],
+    "explanation": "• Unterstützt Skalierbarkeit und Flexibilität, • Ermöglicht dynamische Kommunikation in verteilten Systemen."
+  },
+
+  {
+    "text": "Was ist der Unterschied zwischen Multi-Cloud und Hybrid-Cloud?",
+    "options": [
+      {
+        "text": "Multi-Cloud: Nutzung mehrerer Cloud-Anbieter",
+        "correct": true
+      },
+      {
+        "text": "Hybrid-Cloud: Kombination aus Public und Private Cloud",
+        "correct": true
+      },
+      {
+        "text": "Multi-Cloud: Immer eine Kombination aus Public und Private Cloud",
+        "correct": false
+      },
+      {
+        "text": "Hybrid-Cloud: Nutzung mehrerer Anbieter ohne Private Cloud",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Strategien"],
+    "explanation": "• Multi-Cloud: Mehrere Anbieter für Redundanz oder Optimierung, • Hybrid-Cloud: Integration von On-Premise und Cloud."
+  },
+  {
+    "text": "Warum wird Autoscaling in der Cloud eingesetzt?",
+    "options": [
+      {
+        "text": "Automatische Anpassung der Ressourcen an die Nachfrage",
+        "correct": true
+      },
+      {
+        "text": "Kosteneffizienz durch dynamische Skalierung",
+        "correct": true
+      },
+      { "text": "Vermeidung manueller Serververwaltung", "correct": true },
+      {
+        "text": "Erhöhung der Serveranzahl ohne Lastanpassung",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Cloud", "Skalierbarkeit"],
+    "explanation": "• Reagiert auf Lastspitzen, • Optimiert Kosten, • Reduziert manuellen Aufwand."
+  },
+
+  {
+    "text": "Was ist der Unterschied zwischen NoSQL und relationalen Datenbanken?",
+    "options": [
+      {
+        "text": "NoSQL: Flexible Schemata, besser für unstrukturierte Daten",
+        "correct": true
+      },
+      {
+        "text": "Relationale DB: Feste Schemata, besser für strukturierte Daten",
+        "correct": true
+      },
+      {
+        "text": "NoSQL: Unterstützt ausschließlich SQL-Abfragen",
+        "correct": false
+      },
+      {
+        "text": "Relationale DB: Keine festen Beziehungen zwischen Tabellen",
+        "correct": false
+      }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken"],
+    "explanation": "• NoSQL: Skalierbar und flexibel, • Relationale DB: Konsistent und strukturiert."
+  },
+  {
+    "text": "Was sind die Vorteile von Datenbank-Sharding?",
+    "options": [
+      {
+        "text": "Verteilung der Daten auf mehrere Server zur Lastreduktion",
+        "correct": true
+      },
+      {
+        "text": "Verbesserte Skalierbarkeit bei großen Datenmengen",
+        "correct": true
+      },
+      { "text": "Erhöhte Komplexität der Abfragen", "correct": false },
+      { "text": "Vereinfachung der Datenverwaltung", "correct": false }
+    ],
+    "difficulty": "HARD",
+    "categories": ["Datenbanken", "Skalierbarkeit"],
+    "explanation": "• Ermöglicht horizontale Skalierung, • Reduziert die Last auf einzelne Server, • Erhöht jedoch die Komplexität."
+  }
+]
