@@ -7,6 +7,7 @@ import { useQuizNavigation } from "../../../routes/useQuizNavigation";
 import { ScoringService } from "../../../services/ScoringService";
 import useQuizStore from "../../../store/QuizStore";
 import { BackHomeButton } from "../../../ui-components/BackHomeButton";
+import { SolutionsQuizComponent } from "./SolutionsQuizComponent";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const ResultLanding = () => {
@@ -41,14 +42,9 @@ export const ResultLanding = () => {
       )}
       {showResult && (
         <div className="mt-8">
-          <h3 className="text-xl font-semibold text-purple-400">Statistiken pro Frage</h3>
-          <ul className="mt-4 space-y-2">
-            {quizSet.questions.map(q => (
-              <li key={q.id} className="text-neutral-200">
-                {q.text}: {questionStats[q.id]?.correctCount || 0} richtig, {questionStats[q.id]?.incorrectCount || 0} falsch, Teilpunkte: {questionStats[q.id]?.partialPoints?.join(", ") || "keine"}
-              </li>
-            ))}
-          </ul>
+               {quizSet.questions.map((question) => (
+                 <SolutionsQuizComponent key={question.id} question={question} />
+               ))}
           <BackHomeButton />
         </div>
       )}

@@ -1,15 +1,15 @@
-// src/components/AnswerList.tsx
-import React from "react";
+
 import { BaseButton } from "sebu-dev-react-lib";
 import type { Question } from "../../../Question/type/QuestionType";
 import useQuizStore from "../../../store/QuizStore";
 
 interface AnswerListProps {
   question: Question;
-  onAnswer?: (questionId: string, optionId: number) => void; // Angepasste Typisierung
+  selectedOptionIds?: number[]; 
+  onAnswer?: (questionId: string, optionId: number) => void;
 }
 
-export const AnswerList = ({ question, onAnswer }: AnswerListProps) => {
+export const AnswerList = ({ question, selectedOptionIds, onAnswer }: AnswerListProps) => {
   const { quizSet, updateUserAnswer } = useQuizStore();
 
   const userAnswers = quizSet.answers.find(
@@ -18,10 +18,8 @@ export const AnswerList = ({ question, onAnswer }: AnswerListProps) => {
 
   const handleAnswerSelect = (optionId: number) => {
     if (onAnswer) {
-      // Für Progress- und Endlos-Modus: Übergibt questionId und optionId
       onAnswer(question.id, optionId);
     } else {
-      // Für Prüfungsmodus: Standard-Update über den Store
       updateUserAnswer(question.id, optionId);
     }
   };
@@ -29,9 +27,10 @@ export const AnswerList = ({ question, onAnswer }: AnswerListProps) => {
   return (
     <ul className="w-full space-y-2">
       {question.options.map((option) => {
-        const isSelected = userAnswers?.find(
-          (ua) => ua.option.id === option.id
-        )?.isSelected ?? false;
+        const isSelected =
+          selectedOptionIds?.includes(option.id) ??
+          userAnswers?.find((ua) => ua.option.id === option.id)?.isSelected ??
+          false;
 
         return (
           <li key={option.id} className="flex flex-col">

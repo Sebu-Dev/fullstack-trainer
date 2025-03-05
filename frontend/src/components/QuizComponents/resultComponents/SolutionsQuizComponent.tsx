@@ -1,3 +1,5 @@
+// src/components/SolutionsQuizComponent.tsx
+
 import { Card } from "sebu-dev-react-lib";
 import type { Question } from "../../../Question/type/QuestionType";
 import useQuizStore from "../../../store/QuizStore";
@@ -7,10 +9,12 @@ import { CheckedAnswerList } from "./CheckedAnswerList";
 
 interface SolutionsQuizComponentProps {
   question: Question;
+  selectedOptionIds?: number[]; // Neue Prop für ausgewählte Antworten
 }
 
 export const SolutionsQuizComponent = ({
   question,
+  selectedOptionIds,
 }: SolutionsQuizComponentProps) => {
   const { getQuestionPoints } = useQuizStore();
 
@@ -33,15 +37,11 @@ export const SolutionsQuizComponent = ({
       className={`h-full ${calculateCardColor()}`}
     >
       <div className="flex flex-col items-start h-full">
-        {/* Punkte-Anzeige */}
-        <div className="self-end mb-2 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm ">
+        <div className="self-end mb-2 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm">
           {achievedPoints}/{maxPoints} Punkte
         </div>
-
-        {/* Frage-Inhalt */}
-
         <QuestionImage imageUrl={question.imageUrl} />
-        <CheckedAnswerList question={question} />
+        <CheckedAnswerList question={question} selectedOptionIds={selectedOptionIds} />
         <QuestionDetails
           category={question.categories}
           difficultyLevel={question.difficulty}

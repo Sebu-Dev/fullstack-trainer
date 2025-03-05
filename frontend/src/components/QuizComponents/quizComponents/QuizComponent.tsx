@@ -10,9 +10,10 @@ import useQuizStore from "../../../store/QuizStore";
 interface QuizComponentProps {
   question: Question;
   onAnswer?: (questionId: string, optionId: number) => void;
+  selectedOptionIds?: number[]; 
 }
 
-export const QuizComponent = ({ question, onAnswer }: QuizComponentProps) => {
+export const QuizComponent = ({ question, onAnswer, selectedOptionIds }: QuizComponentProps) => {
   const { updateUserAnswer } = useQuizStore();
 
   const handleAnswer = (questionId: string, optionId: number) => {
@@ -31,11 +32,8 @@ export const QuizComponent = ({ question, onAnswer }: QuizComponentProps) => {
     >
       <div className="flex flex-col items-start gap-4 p-4">
         <QuestionImage imageUrl={question.imageUrl} />
-        <AnswerList question={question} onAnswer={handleAnswer} />
-        <QuestionDetails
-          category={question.categories}
-          difficultyLevel={question.difficulty}
-        />
+        <AnswerList question={question} onAnswer={handleAnswer} selectedOptionIds={selectedOptionIds} />
+        <QuestionDetails category={question.categories} difficultyLevel={question.difficulty} />
       </div>
     </Card>
   );
