@@ -1,9 +1,10 @@
-// src/components/FilterSidebar.tsx
+
 import { motion } from "framer-motion";
 import { useCallback, useRef } from "react";
 import { BaseButton, SecondaryButton } from "sebu-dev-react-lib";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import useQuizStore from "../../store/QuizStore";
+import { FilterService } from "../../services/FilterService";
 
 interface FilterSidebarProps {
   isOpen: boolean;
@@ -12,12 +13,13 @@ interface FilterSidebarProps {
 
 export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
   const {
-    mainCategories,
     selectedCategories,
     setSelectedCategories,
     filterQuestions,
-    questionList, 
+    questionList,
   } = useQuizStore();
+
+  const mainCategories = FilterService.getMainCategories();
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -37,18 +39,14 @@ export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
     [selectedCategories, setSelectedCategories, filterQuestions]
   );
 
-  // Prüfe, ob "Sonstige" Fragen enthält
   const hasOtherCategory = questionList.some((question) =>
     question.categories.includes("Sonstige") &&
-    question.categories.every((cat) => cat === "Sonstige" || !mainCategories?.includes(cat))
+    question.categories.every((cat) => cat === "Sonstige" || !mainCategories.includes(cat))
   );
 
-  // Filtere "Sonstige" aus mainCategories, wenn keine Fragen vorhanden sind
-  const displayedCategories = mainCategories
-    ? hasOtherCategory
-      ? mainCategories
-      : mainCategories.filter((cat) => cat !== "Sonstige")
-    : [];
+  const displayedCategories = hasOtherCategory
+    ? mainCategories
+    : mainCategories.filter((cat) => cat !== "Sonstige");
 
   return (
     <motion.div
@@ -56,7 +54,7 @@ export const FilterSidebar = ({ isOpen, onClose }: FilterSidebarProps) => {
       initial={{ x: -300, opacity: 0 }}
       animate={{ x: isOpen ? 0 : -300, opacity: isOpen ? 1 : 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed top-0 left-0 h-full w-64 bg-white-800/60 backdrop-blur-md shadow-lg z-50 flex flex-col "
+      className="fixed top-0 left-0 h-full w-64 bg-white-800/60 backdrop-blur-md shadow-lg z-50 flex flex-col"
     >
       <div className="flex flex-col h-full">
         <div className="p-4 bg-neutral-900/60 backdrop-blur-sm">

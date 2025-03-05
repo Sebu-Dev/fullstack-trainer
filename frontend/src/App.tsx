@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Route, Routes } from "react-router-dom";
 import { Layout, Navbar } from "sebu-dev-react-lib";
 import "sebu-dev-react-lib/dist/sebu-dev-react-lib.css";

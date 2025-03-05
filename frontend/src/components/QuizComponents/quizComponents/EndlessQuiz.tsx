@@ -1,37 +1,33 @@
-// src/components/EndlessQuiz.tsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BaseButton } from "sebu-dev-react-lib";
-import type { Question, QuizSet } from "../../../Question/type/QuestionType";
-import { QuizService } from "../../../services/QuizService";
-import { ScoringService } from "../../../services/ScoringService";
 import useQuizStore from "../../../store/QuizStore";
 import { BackHomeButton } from "../../../ui-components/BackHomeButton";
-import { QuizComponent } from "./QuizComponent";
 import { SolutionsQuizComponent } from "../resultComponents/SolutionsQuizComponent";
+import { QuizComponent } from "./QuizComponent";
 
 export const EndlessQuiz: React.FC = () => {
-  const { generateEndlessNextQuestion, endlessModeState, setEndlessModeState, updateQuestionStats } = useQuizStore();
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const {
+    endlessQuizSet,
+    endlessModeState,
+    generateEndlessNextQuestion,
+    updateEndlessAnswer,
+    setEndlessModeState,
+  } = useQuizStore();
   const [selectedOptionIds, setSelectedOptionIds] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [localQuizSet, setLocalQuizSet] = useState<QuizSet | null>(null);
 
   useEffect(() => {
-    if (!currentQuestion) {
-      loadNextQuestion();
+    if (!endlessQuizSet || endlessQuizSet.questions.length === 0) {
+      const nextQuestion = generateEndlessNextQuestion();
+      if (nextQuestion) {
+        updateEndlessAnswer(nextQuestion.id, -1); // Initialize
+      }
     }
-  }, [currentQuestion]);
+  }, [endlessQuizSet, generateEndlessNextQuestion, updateEndlessAnswer]);
 
-  const loadNextQuestion = () => {
-    const nextQuestion = generateEndlessNextQuestion();
-    if (nextQuestion) {
-      const tempQuizSet = QuizService.generateQuizSet([nextQuestion], [], 1);
-      setLocalQuizSet(tempQuizSet);
-      setCurrentQuestion(nextQuestion);
-    }
-  };
-
+  // Adjusted to match QuizComponent's onAnswer signature
   const handleAnswer = (questionId: string, optionId: number) => {
+    // questionId is not used here, but kept for type compatibility
     setSelectedOptionIds((prev) =>
       prev.includes(optionId)
         ? prev.filter((id) => id !== optionId)
@@ -40,51 +36,37 @@ export const EndlessQuiz: React.FC = () => {
   };
 
   const handleConfirm = () => {
-    if (!currentQuestion || !localQuizSet || selectedOptionIds.length === 0) return;
-
-    let updatedQuizSet = localQuizSet;
+    if (!endlessQuizSet || selectedOptionIds.length === 0) return;
     selectedOptionIds.forEach((optionId) => {
-      updatedQuizSet = QuizService.updateAnswer(updatedQuizSet, currentQuestion.id, optionId);
+      updateEndlessAnswer(endlessQuizSet.questions[0].id, optionId);
     });
-
-    const answer = updatedQuizSet.answers.find((a) => a.question.id === currentQuestion.id);
-    if (answer) {
-      const points = ScoringService.calculateQuestionPoints(answer);
-      ScoringService.updateStatsAfterAnswer(answer, updateQuestionStats);
-    }
-
-    if (endlessModeState.mode === "random") {
-      setEndlessModeState({
-        ...endlessModeState,
-        answered: [...(endlessModeState.answered || []), currentQuestion.id],
-      });
-    } else {
+    if (endlessModeState.mode === "sequential") {
       setEndlessModeState({
         ...endlessModeState,
         lastIndex: (endlessModeState.lastIndex || 0) + 1,
       });
     }
-
-    setLocalQuizSet(updatedQuizSet); // Speichere das aktualisierte QuizSet für die Auswertung
     setShowResult(true);
   };
 
   const handleNextQuestion = () => {
     setSelectedOptionIds([]);
     setShowResult(false);
-    setLocalQuizSet(null);
-    setCurrentQuestion(null); // Trigger useEffect für neue Frage
+    const nextQuestion = generateEndlessNextQuestion();
+    if (nextQuestion) {
+      updateEndlessAnswer(nextQuestion.id, -1);
+    }
   };
 
   return (
     <div className="px-4 py-8 max-w-screen-md mx-auto">
       <h2 className="text-2xl font-bold text-cyan-400 mb-6">Endlos-Modus</h2>
-      {currentQuestion ? (
+      {endlessQuizSet && endlessQuizSet.questions.length > 0 ? (
         <div className="flex flex-col gap-4">
           {!showResult ? (
             <>
               <QuizComponent
-                question={currentQuestion}
+                question={endlessQuizSet.questions[0]}
                 onAnswer={handleAnswer}
                 selectedOptionIds={selectedOptionIds}
               />
@@ -98,7 +80,10 @@ export const EndlessQuiz: React.FC = () => {
             </>
           ) : (
             <div className="flex flex-col gap-4">
-              <SolutionsQuizComponent question={currentQuestion} />
+              <SolutionsQuizComponent
+                question={endlessQuizSet.questions[0]}
+                selectedOptionIds={selectedOptionIds}
+              />
               <BaseButton
                 handleOnClick={handleNextQuestion}
                 className="w-full py-3 text-lg bg-purple-600 hover:bg-purple-700 text-white"

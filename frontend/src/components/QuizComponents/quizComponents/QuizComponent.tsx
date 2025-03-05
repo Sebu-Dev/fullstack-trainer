@@ -1,5 +1,4 @@
-// src/components/QuizComponent.tsx
-import React from "react";
+
 import { Card } from "sebu-dev-react-lib";
 import type { Question } from "../../../Question/type/QuestionType";
 import { QuestionDetails } from "../QuestionDetails";

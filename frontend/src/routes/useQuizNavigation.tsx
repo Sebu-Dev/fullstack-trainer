@@ -4,16 +4,15 @@ import { ROUTES } from "./routes";
 
 export const useQuizNavigation = () => {
   const navigate = useNavigate();
-  const resetQuizState = useQuizStore((state) => state.resetQuizState);
+  const resetAllQuizStates = useQuizStore((state) => state.resetAllQuizStates);
 
   const showMainPage = () => {
     navigate(ROUTES.HOME);
   };
 
   const startQuiz = () => {
-    navigate(ROUTES.QUIZ); // Stellt sicher, dass das Quiz gestartet wird
+    navigate(ROUTES.QUIZ);
   };
-
 
   const startProgressQuiz = () => {
     navigate(ROUTES.PROGRESS);
@@ -22,25 +21,27 @@ export const useQuizNavigation = () => {
   const startEndlessQuiz = () => {
     navigate(ROUTES.ENDLESS);
   };
+
   const showQuizResults = () => {
-    navigate(ROUTES.QUIZ_RESULT); // Zeigt die Quiz-Ergebnisse
+    navigate(ROUTES.QUIZ_RESULT);
   };
 
   const showDownload = () => {
-    navigate(ROUTES.CSV); // Zeigt die CSV-Download-Seite
+    navigate(ROUTES.CSV);
   };
 
   const showSolution = () => {
-    navigate(ROUTES.SOLUTION); // Zeigt die Lösung des Quizzes
+    navigate(ROUTES.SOLUTION);
   };
 
   const restartQuiz = () => {
-    resetQuizState();
+    resetAllQuizStates(); 
     navigate(ROUTES.HOME);
   };
-  const showAdminPanel=()=>{
-    navigate (ROUTES.ADMIN)
-  }
+
+  const showAdminPanel = () => {
+    navigate(ROUTES.ADMIN);
+  };
 
   return {
     showMainPage,
@@ -51,6 +52,6 @@ export const useQuizNavigation = () => {
     restartQuiz,
     showAdminPanel,
     startProgressQuiz,
-    startEndlessQuiz
+    startEndlessQuiz,
   };
 };

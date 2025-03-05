@@ -1,4 +1,3 @@
-// src/components/AdminPanel.tsx
 import React, { useEffect, useState } from "react";
 import { Bar, Doughnut } from "react-chartjs-2";
 import {
