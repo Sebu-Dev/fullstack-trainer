@@ -10,8 +10,9 @@ export const NextSetButton: React.FC<NextSetButtonProps> = ({ onNextSet }) => {
   return (
     <BaseButton
       handleOnClick={onNextSet}
-      className="w-full py-3 text-lg bg-purple-600 hover:bg-purple-700 text-white"
-    >
+      className="w-full py-3 px-8  sm:w-auto text-lg bg-purple-600 hover:bg-purple-700 text-white"
+    >      
+
       Nächstes Set
     </BaseButton>
   );

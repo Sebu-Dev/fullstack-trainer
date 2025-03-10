@@ -18,10 +18,10 @@ export const ConfirmAnswersButton: React.FC<ConfirmAnswersButtonProps> = ({
   return (
     <BaseButton
       handleOnClick={onConfirm}
-      className="w-full py-3 text-lg bg-cyan-500 hover:bg-cyan-600 text-white"
+      className="w-full py-3 px-8  sm:w-auto text-lg bg-cyan-500 hover:bg-cyan-600 text-white"
       disabled={isDisabled}
     >
-      Antworten bestätigen
+      Bestätigen
     </BaseButton>
   );
 };

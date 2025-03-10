@@ -9,7 +9,7 @@ export const BackHomeButton = () => {
       className="w-full sm:w-auto py-3 px-8 text-lg bg-gradient-to-r from-cyan-400 to-cyan-700 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-800 font-bold"
       handleOnClick={restartQuiz}
     >
-      Neustarten
+      Home
     </BaseButton>
   );
 };
