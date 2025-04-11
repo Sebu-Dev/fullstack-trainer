@@ -36,9 +36,9 @@ interface QuizStore {
   updateProgressAnswer: (questionId: string, optionId: number) => void;
   setProgressModeState: (state: Record<string, { status: "unanswered" | "correct" | "incorrect"; attempts: number }>) => void;
 
-  endlessQuizSet: QuizSet | null;
+  endlessQuestion: Question | null;
   endlessModeState: { answered?: string[]; lastIndex?: number; mode: "random" | "sequential" };
-  generateEndlessNextQuestion: () => Question | null;
+  generateEndlessNextQuestion: () =>  void;
   updateEndlessAnswer: (questionId: string, optionId: number) => void;
   setEndlessModeState: (state: { answered?: string[]; lastIndex?: number; mode: "random" | "sequential" }) => void;
 }
@@ -82,7 +82,7 @@ const useQuizStore = create<QuizStore>((set, get) => ({
       quizSet: emptyQuizSet,
       progressQuizSet: emptyQuizSet,
       progressModeState: {},
-      endlessQuizSet: null,
+      endlessQuestion: null,
       endlessModeState: { mode: "random", answered: [], lastIndex: 0 },
       selectedCategories: [],
       answeredQuestionIds: [],
@@ -163,55 +163,36 @@ const useQuizStore = create<QuizStore>((set, get) => ({
     set({ progressModeState: state });
   },
 
-  endlessQuizSet: LocalStorageService.getItem("endlessQuizSet", null),
+  endlessQuestion: LocalStorageService.getItem("endlessQuizSet", null),
   endlessModeState: LocalStorageService.getItem("endlessModeState", { mode: "random", answered: [], lastIndex: 0 }),
   generateEndlessNextQuestion: () => {
     const { questionList, endlessModeState, answeredQuestionIds } = get();
+
+    const availableQuestions = FilterService.filterQuestions(questionList, get().selectedCategories);
     if (endlessModeState.mode === "random") {
-      const unanswered = questionList.filter(q => !answeredQuestionIds.includes(q.id));
-      if (unanswered.length === 0) {
-        LocalStorageService.saveAnsweredQuestionIds([]);
-        set({ answeredQuestionIds: [] });
-        return questionList[Math.floor(Math.random() * questionList.length)];
-      }
-      return unanswered[Math.floor(Math.random() * unanswered.length)] || null;
+      const unanswered = availableQuestions.filter(q => !answeredQuestionIds.includes(q.id));
+      if (unanswered.length === 0) set({ answeredQuestionIds: [] });
+      set({ endlessQuestion: unanswered.length ? unanswered[Math.floor(Math.random() * unanswered.length)] : null });
     } else {
-      const nextIndex = endlessModeState.lastIndex || 0;
-      const remainingQuestions = questionList.filter(q => !answeredQuestionIds.includes(q.id));
-      if (remainingQuestions.length === 0) {
-        LocalStorageService.saveAnsweredQuestionIds([]);
-        set({ answeredQuestionIds: [] });
-        return nextIndex < questionList.length ? questionList[nextIndex] : null;
-      }
-      const nextQuestion = remainingQuestions[0];
-      const newIndex = questionList.findIndex(q => q.id === nextQuestion.id);
-      set({ endlessModeState: { ...endlessModeState, lastIndex: newIndex + 1 } });
-      return nextQuestion || null;
+      const nextIndex = (endlessModeState.lastIndex ?? 0) % availableQuestions.length;
+      set({ endlessQuestion: availableQuestions[nextIndex], endlessModeState: { ...endlessModeState, lastIndex: nextIndex + 1 } });
     }
   },
+
   updateEndlessAnswer: (questionId, optionId) => {
-    const currentQuizSet = get().endlessQuizSet || QuizService.generateQuizSet([get().questionList.find(q => q.id === questionId)!], [], 1);
-    const updatedQuizSet = QuizService.updateAnswer(currentQuizSet, questionId, optionId);
-    const answer = updatedQuizSet.answers.find(a => a.question.id === questionId);
-    if (answer) {
-      ScoringService.updateStatsAfterAnswer(answer, get().updateQuestionStats);
-      const newAnsweredQuestionIds = [...get().answeredQuestionIds, questionId];
-      LocalStorageService.saveAnsweredQuestionIds(newAnsweredQuestionIds);
-      set({
-        endlessModeState: {
-          ...get().endlessModeState,
-          answered: [...(get().endlessModeState.answered || []), questionId],
-        },
-        answeredQuestionIds: newAnsweredQuestionIds,
-      });
-    }
-    LocalStorageService.saveItem("endlessQuizSet", updatedQuizSet);
-    set({ endlessQuizSet: updatedQuizSet });
+    const answer = get().endlessQuestion;
+    if (!answer) return;
+
+    ScoringService.updateStatsAfterAnswer({ question: answer, selectedOption: optionId }, get().updateEndlessAnswer);
+    const newAnsweredQuestionIds = [...get().answeredQuestionIds, questionId];
+    LocalStorageService.saveAnsweredQuestionIds(newAnsweredQuestionIds);
+    set({ answeredQuestionIds: newAnsweredQuestionIds });
+    get().generateEndlessNextQuestion();
   },
+
   setEndlessModeState: (state) => {
     LocalStorageService.saveItem("endlessModeState", state);
     set({ endlessModeState: state });
   },
 }));
-
 export default useQuizStore;

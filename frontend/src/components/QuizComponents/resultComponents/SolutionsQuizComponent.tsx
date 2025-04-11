@@ -11,7 +11,7 @@ interface SolutionsQuizComponentProps {
 }
 
 export const SolutionsQuizComponent = ({ question, selectedOptionIds }: SolutionsQuizComponentProps) => {
-  const { quizSet, progressQuizSet, endlessQuizSet } = useQuizStore();
+  const { quizSet, progressQuizSet, endlessQuestion: endlessQuizSet } = useQuizStore();
   const currentQuizSet = endlessQuizSet || progressQuizSet || quizSet; // Fallback to exam mode
   const achievedPoints = currentQuizSet.answers.find((a) => a.question.id === question.id)?.achievedPoints || 0;
   const maxPoints = 4;

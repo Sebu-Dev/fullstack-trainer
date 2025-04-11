@@ -7,7 +7,7 @@ import { QuizComponent } from "./QuizComponent";
 
 export const EndlessQuiz: React.FC = () => {
   const {
-    endlessQuizSet,
+    endlessQuestion: endlessQuizSet,
     endlessModeState,
     generateEndlessNextQuestion,
     updateEndlessAnswer,

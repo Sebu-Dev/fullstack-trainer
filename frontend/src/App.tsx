@@ -36,8 +36,8 @@ const App = () => {
         <Route path={ROUTES.QUIZ_RESULT} element={<ResultLanding />}>
           <Route path={ROUTES.SOLUTION} element={<QuizResult />} />
         </Route>
-        <Route path={ROUTES.PROGRESS} element={<ProgressQuiz />} /> {/* Neue Route */}
-        <Route path={ROUTES.ENDLESS} element={<EndlessQuiz />} />   {/* Neue Route */}
+        <Route path={ROUTES.PROGRESS} element={<ProgressQuiz />} /> 
+        <Route path={ROUTES.ENDLESS} element={<EndlessQuiz />} />   
       </Routes>
     </Layout>
   );
